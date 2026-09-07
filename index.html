@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СОЧИ EMPIRE — Content & Elite Tours</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/latin-wght-normal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/unbounded:vf@latest/latin-wght-normal.css">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --bg-2: #ffffff;
+    --bg-3: #f5f0e8;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --accent: #c9a227;
+    --accent-2: #d64578;
+    --accent-3: #6d28d9;
+    --border: rgba(26, 26, 26, 0.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+  .font-display { font-family: 'Unbounded', sans-serif; letter-spacing: -0.02em; }
+  .gradient-text {
+    background: linear-gradient(135deg, #c9a227 0%, #d64578 50%, #6d28d9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gradient-border {
+    position: relative;
+    background: var(--bg-2);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(201,162,39,0.4), rgba(214,69,120,0.2), rgba(109,40,217,0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .glow {
+    box-shadow: 0 10px 40px rgba(201,162,39,0.15), 0 20px 80px rgba(214,69,120,0.08);
+  }
+  .hero-bg {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #faf8f5 0%, #f5f0e8 100%);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top, rgba(201,162,39,0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .choice-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 32px;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+  }
+  .choice-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+  }
+  .choice-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+    z-index: 2;
+  }
+  .choice-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .choice-card:hover .choice-img {
+    transform: scale(1.08);
+  }
+  .choice-content {
+    position: relative;
+    z-index: 3;
+    padding: 2.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    min-height: 500px;
+  }
+  .choice-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
+  .choice-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: white;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 1.5rem;
+    transition: all 0.3s;
+    width: fit-content;
+  }
+  .choice-card:hover .choice-btn {
+    background: #1a1a1a;
+    color: white;
+    transform: translateX(4px);
+  }
+  .package-card {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .package-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+  .package-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.08;
+    transition: opacity 0.5s;
+    z-index: 0;
+  }
+  .package-card:hover .package-img {
+    opacity: 0.15;
+  }
+  .package-content {
+    position: relative;
+    z-index: 1;
+  }
+  .hit-badge {
+    background: linear-gradient(135deg, #c9a227, #d64578);
+    color: white;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(201,162,39,0.4); }
+    50% { box-shadow: 0 0 40px rgba(214,69,120,0.5); }
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .eco-item {
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .eco-item:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  .eco-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+    transition: opacity 0.4s;
+  }
+  .eco-item:hover .eco-img {
+    opacity: 0.25;
+  }
+  .eco-content {
+    position: relative;
+    z-index: 1;
+  }
+  .nav-link {
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #c9a227, #d64578);
+    transition: width 0.3s;
+  }
+  .nav-link:hover::after { width: 100%; }
+  .btn-primary {
+    background: linear-gradient(135deg, #c9a227, #d64578);
+    color: white;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #d64578, #6d28d9);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .btn-primary:hover::before { opacity: 1; }
+  .btn-primary span { position: relative; z-index: 1; }
+  .check-icon {
+    color: #c9a227;
+    flex-shrink: 0;
+    font-weight: bold;
+  }
+  .marquee {
+    animation: marquee 30s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .stat-number {
+    background: linear-gradient(180deg, #1a1a1a 0%, #6b6b6b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(26,26,26,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,26,26,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  details[open] summary .chevron { transform: rotate(180deg); }
+  summary .chevron { transition: transform 0.3s; }
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  .modal-backdrop {
+    background: rgba(250,248,245,0.85);
+    backdrop-filter: blur(10px);
+  }
+  .gallery-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;
+  }
+  .gallery-item img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+  .process-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .process-card .process-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .process-card:hover .process-img {
+    opacity: 0.15;
+  }
+  .process-content {
+    position: relative;
+    z-index: 1;
+  }
+  .tours-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+  .tours-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.7) 60%, rgba(26,26,26,0.95) 100%);
+    z-index: 1;
+  }
+  .tours-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .utp-card {
+    transition: all 0.4s ease;
+  }
+  .utp-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  .upsell-card {
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .upsell-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201,162,39,0.4);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  .floating-emoji {
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(26,26,26,0.1), transparent);
+  }
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 40;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .back-to-top:hover {
+    transform: translateY(-4px);
+    background: #1a1a1a;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/70 border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-pink-500 flex items-center justify-center font-display font-bold text-white">С</div>
+      <div class="font-display text-sm tracking-widest">
+        <div class="text-black">СОЧИ</div>
+        <div class="text-amber-600 text-[10px]">EMPIRE</div>
+      </div>
+    </a>
+    <div class="hidden md:flex items-center gap-7 text-sm">
+      <a href="#content-empire" class="nav-link text-black/70 hover:text-black">Content Empire</a>
+      <a href="#elite-tours" class="nav-link text-black/70 hover:text-black">Elite Tours</a>
+      <a href="#gallery" class="nav-link text-black/70 hover:text-black">Галерея</a>
+      <a href="#faq" class="nav-link text-black/70 hover:text-black">FAQ</a>
+    </div>
+    <a href="#top" class="btn-primary px-5 py-2.5 rounded-full text-sm font-medium">
+      <span>К выбору</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO / CHOICE -->
+<section id="top" class="hero-bg min-h-screen flex items-center relative pt-24 pb-16">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 bg-white/80 backdrop-blur mb-8">
+        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+        <span class="text-xs tracking-widest text-black/70">СОЧИ · АДЛЕР · КРАСНАЯ ПОЛЯНА</span>
+      </div>
+      
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6">
+        <span class="block">СОЧИ</span>
+        <span class="block gradient-text">EMPIRE</span>
+      </h1>
+      
+      <p class="text-lg md:text-xl text-black/60 max-w-2xl mx-auto leading-relaxed">
+        Выберите свой опыт — от премиум-контента до эксклюзивных вечеров
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+      <!-- Choice 1: Content Empire -->
+      <a href="#content-empire" class="choice-card fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f59dbef9-3351-4a15-b2f6-385620fa8ed0.png" class="choice-img" alt="Content Empire">
+        <div class="choice-content">
+          <div class="choice-badge">📸 ФОТО · ВИДЕО · КОНТЕНТ</div>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight">
+            СОЧИ<br>
+            <span class="bg-gradient-to-r from-amber-300 to-pink-300 bg-clip-text text-transparent">CONTENT</span><br>
+            EMPIRE
+          </h2>
+          <p class="text-white/80 text-sm md:text-base max-w-md leading-relaxed">
+            Фотосессии, видеопродакшн, экосистема контента. От 5 900 ₽ до 75 000 ₽.
+          </p>
+          <div class="flex items-center gap-6 mt-6 text-xs text-white/70">
+            <div>
+              <div class="font-display text-xl font-bold text-white">6</div>
+              <div>ПАКЕТОВ</div>
+            </div>
+            <div>
+              <div class="font-display text-xl font-bold text-white">500+</div>
+              <div>КЛИЕНТОВ</div>
+            </div>
+            <div>
+              <div class="font-display text-xl font-bold text-white">4.9★</div>
+              <div>РЕЙТИНГ</div>
+            </div>
+          </div>
+          <div class="choice-btn">
+            Выбрать пакет <span>→</span>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Choice 2: Elite Tours -->
+      <a href="#elite-tours" class="choice-card fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="choice-img" alt="Elite Tours">
+        <div class="choice-content">
+          <div class="choice-badge">🍸 ТУРЫ · ВЕЧЕРИНКИ · VIP</div>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight">
+            СОЧИ<br>
+            <span class="bg-gradient-to-r from-amber-300 to-pink-300 bg-clip-text text-transparent">ELITE</span><br>
+            TOURS
+          </h2>
+          <p class="text-white/80 text-sm md:text-base max-w-md leading-relaxed">
+            Бар-хоппинг, SUP-фотосессии, закрытые вечеринки. От 7 900 ₽ до 120 000 ₽.
+          </p>
+          <div class="flex items-center gap-6 mt-6 text-xs text-white/70">
+            <div>
+              <div class="font-display text-xl font-bold text-white">4</div>
+              <div>ТУРА</div>
+            </div>
+            <div>
+              <div class="font-display text-xl font-bold text-white">15+</div>
+              <div>ЗАВЕДЕНИЙ</div>
+            </div>
+            <div>
+              <div class="font-display text-xl font-bold text-white">NEW</div>
+              <div>2026</div>
+            </div>
+          </div>
+          <div class="choice-btn">
+            Забронировать тур <span>→</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="flex justify-center mt-16 fade-in">
+      <div class="flex flex-col items-center gap-2">
+        <div class="text-[10px] tracking-widest text-black/40">ИЛИ ПРОКРУТИТЕ ВНИЗ</div>
+        <div class="w-px h-12 bg-gradient-to-b from-black/30 to-transparent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<section class="border-y border-black/5 py-6 overflow-hidden bg-white">
+  <div class="flex marquee whitespace-nowrap">
+    <div class="flex items-center gap-12 px-6 text-black/40 font-display text-sm tracking-widest">
+      <span>📸 ФОТОСТУДИЯ</span><span>✦</span>
+      <span>🎥 ВИДЕОПРОДАКШН</span><span>✦</span>
+      <span>🌐 АГЕНТСТВО ФОТОГРАФОВ</span><span>✦</span>
+      <span>🎓 ОНЛАЙН-ШКОЛА</span><span>✦</span>
+      <span>💼 B2B КОНТЕНТ</span><span>✦</span>
+      <span>🛍 E-COMMERCE</span><span>✦</span>
+      <span>🏖 EVENT-ПЛОЩАДКА</span><span>✦</span>
+      <span>🍸 ELITE TOURS</span><span>✦</span>
+    </div>
+    <div class="flex items-center gap-12 px-6 text-black/40 font-display text-sm tracking-widest">
+      <span>📸 ФОТОСТУДИЯ</span><span>✦</span>
+      <span>🎥 ВИДЕОПРОДАКШН</span><span>✦</span>
+      <span>🌐 АГЕНТСТВО ФОТОГРАФОВ</span><span>✦</span>
+      <span>🎓 ОНЛАЙН-ШКОЛА</span><span>✦</span>
+      <span>💼 B2B КОНТЕНТ</span><span>✦</span>
+      <span>🛍 E-COMMERCE</span><span>✦</span>
+      <span>🏖 EVENT-ПЛОЩАДКА</span><span>✦</span>
+      <span>🍸 ELITE TOURS</span><span>✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================= -->
+<!-- CONTENT EMPIRE SECTION -->
+<!-- ========================================= -->
+<section id="content-empire" class="py-24 px-6 bg-gradient-to-b from-white to-[#faf8f5]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-700 text-xs tracking-widest mb-6">
+        <span>📸</span>
+        <span>РАЗДЕЛ 01</span>
+      </div>
+      <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">
+        СОЧИ <span class="gradient-text">CONTENT EMPIRE</span>
+      </h2>
+      <p class="text-black/60 max-w-2xl mx-auto text-lg">
+        Экосистема контента премиум-класса: фотостудия, видеопродакшн, агентство, онлайн-школа и B2B-решения.
+      </p>
+    </div>
+    
+    <!-- Gallery -->
+    <div id="gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+      <div class="gallery-item aspect-[3/4] fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f59dbef9-3351-4a15-b2f6-385620fa8ed0.png" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-[3/4] fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-[3/4] fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="w-full h-full object-cover" alt="">
+      </div>
+      <div class="gallery-item aspect-[3/4] fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/12098158e-9af2-4bfd-b58e-ee1dd75d7335.png" class="w-full h-full object-cover" alt="">
+      </div>
+    </div>
+    
+    <!-- Ecosystem -->
+    <div class="mb-20">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 fade-in">
+        <div>
+          <div class="text-amber-600 text-sm tracking-widest mb-4">// ЭКОСИСТЕМА</div>
+          <h3 class="font-display text-3xl md:text-5xl font-bold leading-tight">
+            Больше, чем<br>
+            <span class="gradient-text">фотостудия</span>
+          </h3>
+        </div>
+        <p class="text-black/60 max-w-md mt-6 md:mt-0">
+          Единая платформа для создания контента любого уровня — от туристических снимков до корпоративных продакшнов.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="eco-item gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f59dbef9-3351-4a15-b2f6-385620fa8ed0.png" class="eco-img" alt="">
+          <div class="eco-content">
+            <div class="text-4xl mb-6">📸</div>
+            <h4 class="font-display text-xl font-bold mb-2">Фотостудия</h4>
+            <p class="text-black/60 text-sm leading-relaxed">Премиум-класс с профессиональным светом. 7 локаций в Сочи.</p>
+            <div class="mt-6 text-amber-600 text-xs tracking-widest">PREMIUM STUDIO →</div>
+          </div>
+        </div>
+        
+        <div class="eco-item gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1a6bb1b25-c39f-4fa0-a9e9-e26c87b08ed8.png" class="eco-img" alt="">
+          <div class="eco-content">
+            <div class="text-4xl mb-6">🎥</div>
+            <h4 class="font-display text-xl font-bold mb-2">Видеопродакшн</h4>
+            <p class="text-black/60 text-sm leading-relaxed">Reels, TikTok, YouTube Shorts, клипы и полнометражные фильмы.</p>
+            <div class="mt-6 text-amber-600 text-xs tracking-widest">FULL PRODUCTION →</div>
+          </div>
+        </div>
+        
+        <div class="eco-item gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="eco-img" alt="">
+          <div class="eco-content">
+            <div class="text-4xl mb-6">🌐</div>
+            <h4 class="font-display text-xl font-bold mb-2">Агентство</h4>
+            <p class="text-black/60 text-sm leading-relaxed">Сеть из 20+ фотографов по всему побережью Чёрного моря.</p>
+            <div class="mt-6 text-amber-600 text-xs tracking-widest">NETWORK →</div>
+          </div>
+        </div>
+        
+        <div class="eco-item gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1cf9419b4-a2fa-434f-ba42-fac3cb38bca1.png" class="eco-img" alt="">
+          <div class="eco-content">
+            <div class="text-4xl mb-6">🎓</div>
+            <h4 class="font-display text-xl font-bold mb-2">Онлайн-школа</h4>
+            <p class="text-black/60 text-sm leading-relaxed">Курсы по мобильной фотографии, обработке и ведению Instagram.</p>
+            <div class="mt-6 text-amber-600 text-xs tracking-widest">LEARN →</div>
+          </div>
+        </div>
+        
+        <div class="eco-item gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1db2d3ce9-ba63-495c-a42a-5388fe4ce971.png" class="eco-img" alt="">
+          <div class="eco-content">
+            <div class="text-4xl mb-6">💼</div>
+            <h4 class="font-display text-xl font-bold mb-2">B2B Контент</h4>
+            <p class="text-black/60 text-sm leading-relaxed">Комплексное ведение визуала для отелей, ресторанов, салонов.</p>
+            <div class="mt-6 text-amber-600 text-xs tracking-widest">BUSINESS →</div>
+          </div>
+        </div>
+        
+        <div class="eco-item gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="eco-img" alt="">
+          <div class="eco-content">
+            <div class="text-4xl mb-6">🛍</div>
+            <h4 class="font-display text-xl font-bold mb-2">E-commerce</h4>
+            <p class="text-black/60 text-sm leading-relaxed">Пресеты, гайды, LUTs и образовательные материалы.</p>
+            <div class="mt-6 text-amber-600 text-xs tracking-widest">SHOP →</div>
+          </div>
+        </div>
+        
+        <div class="eco-item gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/12098158e-9af2-4bfd-b58e-ee1dd75d7335.png" class="eco-img" alt="">
+          <div class="eco-content">
+            <div class="text-4xl mb-6">🏖</div>
+            <h4 class="font-display text-xl font-bold mb-2">Event-площадка</h4>
+            <p class="text-black/60 text-sm leading-relaxed">Съёмка мероприятий, свадеб, корпоративов под ключ.</p>
+            <div class="mt-6 text-amber-600 text-xs tracking-widest">EVENTS →</div>
+          </div>
+        </div>
+        
+        <a href="#elite-tours" class="eco-item gradient-border p-8 flex flex-col justify-center items-center text-center fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.08), rgba(214,69,120,0.08));">
+          <div class="eco-content">
+            <div class="font-display text-5xl font-bold gradient-text mb-2">🍸</div>
+            <div class="text-black/70 text-sm">Elite Tours<br><span class="text-amber-600 text-xs">ПЕРЕЙТИ →</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Packages -->
+    <div>
+      <div class="text-center mb-16 fade-in">
+        <div class="text-amber-600 text-sm tracking-widest mb-4">// ПАКЕТЫ</div>
+        <h3 class="font-display text-3xl md:text-5xl font-bold mb-6">
+          Выберите свой <span class="gradient-text">уровень</span>
+        </h3>
+      </div>
+      
+      <!-- Package 1: INSTANT -->
+      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="package-img" alt="">
+        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+          <div>
+            <div class="text-xs tracking-widest text-black/40 mb-2">ПАКЕТ 01</div>
+            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">INSTANT</h4>
+            <p class="text-black/60 text-sm">Быстрый старт для туристов</p>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">5 900</span>
+              <span class="text-black/60">₽</span>
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">45 минут съёмки</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">1 локация</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">25 фото в ретуши</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">3 Reels (до 15 сек)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Готовность за 48 часов</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Сириус, набережная Адлера</span></div>
+          </div>
+          
+          <div class="md:text-right">
+            <div class="text-xs text-black/40 mb-2 tracking-widest">ФОРМАТ</div>
+            <div class="text-sm text-black/80 mb-4">Индивидуально / пара</div>
+            <button onclick="openModal('INSTANT', '5 900')" class="w-full md:w-auto px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
+              Выбрать →
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Package 2: STANDARD PLUS (HIT) -->
+      <div class="package-card gradient-border p-8 md:p-10 mb-6 glow fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.06), rgba(214,69,120,0.03), #ffffff);">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="package-img" alt="" style="opacity: 0.12;">
+        <div class="absolute top-6 right-6 hit-badge px-4 py-1.5 rounded-full text-xs font-bold tracking-widest z-10">⭐ ХИТ</div>
+        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+          <div>
+            <div class="text-xs tracking-widest text-amber-600 mb-2">ПАКЕТ 02</div>
+            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">STANDARD PLUS</h4>
+            <p class="text-black/60 text-sm">Полный пакет с видео</p>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">12 900</span>
+              <span class="text-black/60">₽</span>
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">2,5 часа съёмки</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">3-4 локации (включая закат)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">80+ фото в журнальной ретуши</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">10 Reels / TikTok видео</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Видео-клип 30-60 сек</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Трансфер на авто фотографа</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Помощь с позированием</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Пресеты + гайд по Instagram</span></div>
+          </div>
+          
+          <div class="md:text-right">
+            <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
+            <div class="text-sm text-black/80 mb-4">Отпуск 5-7 дней,<br>максимальный охват</div>
+            <button onclick="openModal('STANDARD PLUS', '12 900')" class="btn-primary w-full md:w-auto px-6 py-3 rounded-full text-sm font-medium">
+              <span>Выбрать ⭐</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Package 3: PREMIUM EXPERIENCE -->
+      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1a6bb1b25-c39f-4fa0-a9e9-e26c87b08ed8.png" class="package-img" alt="">
+        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+          <div>
+            <div class="text-xs tracking-widest text-black/40 mb-2">ПАКЕТ 03</div>
+            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">PREMIUM<br>EXPERIENCE</h4>
+            <p class="text-black/60 text-sm">Полный день с командой</p>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">29 900</span>
+              <span class="text-black/60">₽</span>
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фотограф + видеограф + ассистент</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">4-5 часов съёмки</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">5+ локаций (Красная Поляна)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">150+ фото в ретуши</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">15 Reels + 5 TikTok</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Highlight video 2-3 мин</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">💄 Визажист + стилист</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🚁 Аэросъёмка (дрон)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">📖 Фотокнига 30 стр.</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🖼 Холст 60x90 см</span></div>
+          </div>
+          
+          <div class="md:text-right">
+            <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
+            <div class="text-sm text-black/80 mb-4">Блогеры, знаменательные даты, премиум-сегмент</div>
+            <button onclick="openModal('PREMIUM EXPERIENCE', '29 900')" class="w-full md:w-auto px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
+              Выбрать →
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Package 4: LUXURY ULTIMATE -->
+      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.04), #ffffff);">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="package-img" alt="" style="opacity: 0.12;">
+        <div class="absolute top-6 right-6 px-4 py-1.5 rounded-full border border-amber-500/40 text-xs font-bold text-amber-700 tracking-widest z-10">💎 LUXURY</div>
+        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+          <div>
+            <div class="text-xs tracking-widest text-amber-600 mb-2">ПАКЕТ 04</div>
+            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">LUXURY<br>ULTIMATE</h4>
+            <p class="text-black/60 text-sm">Эксклюзивный продакшн</p>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">75 000</span>
+              <span class="text-black/60">₽</span>
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">2 фотографа + 2 видеографа + режиссёр</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">8-10 часов (полный день)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Неограниченно локаций</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">300+ фото в ретуши</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">30+ видео (Reels, TikTok, Shorts)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фильм о дне 5-10 мин</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">💎 Полный стилист + визажист</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🚗 Mercedes G-Class / кабриолет</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🚁 Вертолётная прогулка 30 мин</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">⛵ Яхта 3 часа</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🏔 Съёмка на горнолыжном курорте</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🌊 Underwater photography</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">📖 Фотокнига 50 стр. (кожа)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🖼 3 холста + SSD 1TB</span></div>
+          </div>
+          
+          <div class="md:text-right">
+            <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
+            <div class="text-sm text-black/80 mb-4">Свадьбы, юбилеи,<br>инфлюенсеры 500K+,<br>корпоративы топ-уровня</div>
+            <button onclick="openModal('LUXURY ULTIMATE', '75 000')" class="w-full md:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-bold">
+              💎 Запросить
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Business & Influencer row -->
+      <div class="grid md:grid-cols-2 gap-6" id="business">
+        <div class="package-card gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1db2d3ce9-ba63-495c-a42a-5388fe4ce971.png" class="package-img" alt="">
+          <div class="package-content">
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <div class="text-xs tracking-widest text-black/40 mb-2">ПАКЕТ 05 · B2B</div>
+                <h4 class="font-display text-2xl md:text-3xl font-bold mb-2">BUSINESS PRO</h4>
+                <p class="text-black/60 text-sm">Контент-агентство для бизнеса</p>
+              </div>
+              <div class="text-2xl">💼</div>
+            </div>
+            <div class="flex items-baseline gap-2 mb-6">
+              <span class="text-xs text-black/40">от</span>
+              <span class="font-display text-4xl font-bold gradient-text">50 000</span>
+              <span class="text-black/60">₽</span>
+            </div>
+            
+            <div class="space-y-2 mb-6">
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">100+ фото для сайта и соцсетей</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">20 видео (Reels для бизнеса)</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Съёмка меню / интерьера / команды</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Контент-план на 3 месяца</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">30 текстов + хештеги</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Таргет + аналитика (1 месяц)</span></div>
+            </div>
+            
+            <div class="pt-6 border-t border-black/5">
+              <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
+              <div class="text-sm text-black/80 mb-4">Отели, рестораны, салоны красоты</div>
+              <button onclick="openModal('BUSINESS PRO', 'от 50 000')" class="w-full px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
+                Обсудить проект →
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="package-card gradient-border p-8 fade-in">
+          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1cf9419b4-a2fa-434f-ba42-fac3cb38bca1.png" class="package-img" alt="">
+          <div class="package-content">
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <div class="text-xs tracking-widest text-pink-600 mb-2">ПАКЕТ 06 · BLOGGERS</div>
+                <h4 class="font-display text-2xl md:text-3xl font-bold mb-2">INFLUENCER PRO</h4>
+                <p class="text-black/60 text-sm">Специально для блогеров</p>
+              </div>
+              <div class="text-2xl">🎬</div>
+            </div>
+            <div class="flex items-baseline gap-2 mb-6">
+              <span class="font-display text-4xl font-bold gradient-text">45 000</span>
+              <span class="text-black/60">₽</span>
+            </div>
+            
+            <div class="space-y-2 mb-6">
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">6-8 часов съёмки, 5-7 локаций</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">200+ фото в ретуши</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">30 Reels/TikTok (контент на 30 дней)</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">5 YouTube Shorts</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Vlog + Highlight + BTS</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Контент-план + анализ аккаунта</span></div>
+              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">10 пресетов под стиль блогера</span></div>
+            </div>
+            
+            <div class="pt-6 border-t border-black/5">
+              <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
+              <div class="text-sm text-black/80 mb-4">Блогеры 10K-500K подписчиков</div>
+              <button onclick="openModal('INFLUENCER PRO', '45 000')" class="w-full px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm font-medium">
+                Стать клиентом →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER BETWEEN SECTIONS -->
+<div class="divider max-w-7xl mx-auto"></div>
+
+<!-- ========================================= -->
+<!-- ELITE TOURS SECTION -->
+<!-- ========================================= -->
+<section id="elite-tours" class="relative">
+  <div class="tours-hero">
+    <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="tours-hero-img" alt="Elite Tours">
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur mb-8 fade-in">
+          <span class="w-2 h-2 rounded-full bg-amber-300 animate-pulse"></span>
+          <span class="text-xs tracking-widest text-white/90">НОВОЕ НАПРАВЛЕНИЕ · 2026</span>
+        </div>
+        
+        <h2 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8 fade-in text-white">
+          <span class="block">СОЧИ</span>
+          <span class="block bg-gradient-to-r from-amber-300 to-pink-300 bg-clip-text text-transparent">ELITE</span>
+          <span class="block">TOURS</span>
+        </h2>
+        
+        <p class="text-lg md:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed fade-in">
+          Не просто бар-хоппинг. Иммерсивный опыт с профессиональным контентом, закрытым комьюнити успешных людей и эффектом «роскошной жизни» за один вечер.
+        </p>
+        
+        <div class="flex flex-wrap gap-4 fade-in">
+          <a href="#tour-packages" class="btn-primary px-8 py-4 rounded-full font-medium">
+            <span>Выбрать тур →</span>
+          </a>
+          <a href="#upsell" class="px-8 py-4 rounded-full border border-white/30 bg-white/10 backdrop-blur hover:bg-white/20 transition font-medium text-white">
+            Доп. услуги
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- UTP -->
+  <div class="py-20 px-6 bg-white border-b border-black/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 fade-in">
+        <div class="text-amber-600 text-sm tracking-widest mb-4">// УТП</div>
+        <h3 class="font-display text-3xl md:text-4xl font-bold mb-4">
+          Что делает нас <span class="gradient-text">уникальными</span>
+        </h3>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="utp-card gradient-border p-6 fade-in">
+          <div class="text-3xl mb-4 floating-emoji">📸</div>
+          <h4 class="font-display font-bold mb-2">Контент для соцсетей</h4>
+          <p class="text-black/60 text-sm">Профессиональные фото и видео во время тура</p>
+        </div>
+        <div class="utp-card gradient-border p-6 fade-in">
+          <div class="text-3xl mb-4 floating-emoji" style="animation-delay: 0.5s">👥</div>
+          <h4 class="font-display font-bold mb-2">Закрытое комьюнити</h4>
+          <p class="text-black/60 text-sm">Нетворкинг с успешными людьми Сочи</p>
+        </div>
+        <div class="utp-card gradient-border p-6 fade-in">
+          <div class="text-3xl mb-4 floating-emoji" style="animation-delay: 1s">🔑</div>
+          <h4 class="font-display font-bold mb-2">Эксклюзивный доступ</h4>
+          <p class="text-black/60 text-sm">Топовые заведения, закрытые зоны, VIP</p>
+        </div>
+        <div class="utp-card gradient-border p-6 fade-in">
+          <div class="text-3xl mb-4 floating-emoji" style="animation-delay: 1.5s">💎</div>
+          <h4 class="font-display font-bold mb-2">Эффект роскоши</h4>
+          <p class="text-black/60 text-sm">Ощущение luxury-жизни за один вечер</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Tour Packages -->
+  <div id="tour-packages" class="py-32 px-6 relative grid-bg bg-gradient-to-b from-[#faf8f5] to-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-20 fade-in">
+        <div class="text-amber-600 text-sm tracking-widest mb-4">// ТУРЫ</div>
+        <h3 class="font-display text-4xl md:text-6xl font-bold mb-6">
+          Пакеты <span class="gradient-text">Elite Tours</span>
+        </h3>
+        <p class="text-black/60 max-w-2xl mx-auto">
+          От камерного бара до закрытой вечеринки на яхте. Выберите уровень вашего вечера.
+        </p>
+      </div>
+      
+      <!-- Tour Package 1: START -->
+      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="package-img" alt="">
+        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+          <div>
+            <div class="text-xs tracking-widest text-black/40 mb-2">ТУР 01</div>
+            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">START</h4>
+            <p class="text-black/60 text-sm">Базовый опыт с фото-контентом</p>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">7 900</span>
+              <span class="text-black/60">₽</span>
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">4-5 топовых заведений</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Welcome drink в каждом</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фотограф 3 часа (30-50 фото)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Трансфер между локациями</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Хостес-сопровождение</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Доступ в закрытые зоны</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Игры и нетворкинг</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Группа до 15 человек</span></div>
+          </div>
+          
+          <div class="md:text-right">
+            <div class="text-xs text-black/40 mb-2 tracking-widest">ДЛИТЕЛЬНОСТЬ</div>
+            <div class="text-sm text-black/80 mb-4">4-5 часов</div>
+            <button onclick="openModal('TOUR: START', '7 900')" class="w-full md:w-auto px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
+              Забронировать →
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tour Package 2: VIP (HIT) -->
+      <div class="package-card gradient-border p-8 md:p-10 mb-6 glow fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.06), rgba(214,69,120,0.03), #ffffff);">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f59dbef9-3351-4a15-b2f6-385620fa8ed0.png" class="package-img" alt="" style="opacity: 0.12;">
+        <div class="absolute top-6 right-6 hit-badge px-4 py-1.5 rounded-full text-xs font-bold tracking-widest z-10">⭐ ХИТ ПРОДАЖ</div>
+        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+          <div>
+            <div class="text-xs tracking-widest text-amber-600 mb-2">ТУР 02</div>
+            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">VIP</h4>
+            <p class="text-black/60 text-sm">Полный пакет с SUP-фотосессией</p>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">15 900</span>
+              <span class="text-black/60">₽</span>
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Всё из пакета START</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🏄 SUP-фотосессия на закате 45 мин</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">50+ фото в ретуши</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🍾 Шампанское / авторские коктейли</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фруктовая тарелка</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Приоритетная посадка</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">📱 3-5 Reels до 30 сек</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Монтаж в день тура</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Скидка 15% на следующий тур</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Закрытый чат + мерч</span></div>
+          </div>
+          
+          <div class="md:text-right">
+            <div class="text-xs text-black/40 mb-2 tracking-widest">ДЛИТЕЛЬНОСТЬ</div>
+            <div class="text-sm text-black/80 mb-4">6-7 часов<br><span class="text-amber-600 text-xs">до 8 человек</span></div>
+            <button onclick="openModal('TOUR: VIP', '15 900')" class="btn-primary w-full md:w-auto px-6 py-3 rounded-full text-sm font-medium">
+              <span>Забронировать ⭐</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tour Package 3: PLATINUM -->
+      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.04), #ffffff);">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="package-img" alt="" style="opacity: 0.12;">
+        <div class="absolute top-6 right-6 px-4 py-1.5 rounded-full border border-amber-500/40 text-xs font-bold text-amber-700 tracking-widest z-10">💎 PLATINUM</div>
+        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+          <div>
+            <div class="text-xs tracking-widest text-amber-600 mb-2">ТУР 03</div>
+            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">PLATINUM</h4>
+            <p class="text-black/60 text-sm">Закрытая тусовка для избранных</p>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">35 000</span>
+              <span class="text-black/60">₽</span>
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Всё из пакета VIP</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🏖 Private party (VIP-зона / лофт)</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Персональный бармен</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🎷 DJ или живой саксофонист</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">📸 2 фотографа + видеограф</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">150+ фото + highlight video</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🚗 Premium трансфер Mercedes V-Class</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🍽 Ужин от шефа + wine pairing</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🥂 Top shelf без ограничений</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">💎 Личный менеджер 24/7</span></div>
+          </div>
+          
+          <div class="md:text-right">
+            <div class="text-xs text-black/40 mb-2 tracking-widest">ДЛИТЕЛЬНОСТЬ</div>
+            <div class="text-sm text-black/80 mb-4">8-10 часов<br><span class="text-amber-600 text-xs">до 6 человек</span></div>
+            <button onclick="openModal('TOUR: PLATINUM', '35 000')" class="w-full md:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-bold">
+              💎 Забронировать
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tour Package 4: CORPORATE -->
+      <div class="package-card gradient-border p-8 md:p-10 fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1db2d3ce9-ba63-495c-a42a-5388fe4ce971.png" class="package-img" alt="">
+        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
+          <div>
+            <div class="text-xs tracking-widest text-pink-600 mb-2">ТУР 04 · B2B</div>
+            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">CORPORATE</h4>
+            <p class="text-black/60 text-sm">Для компаний и тимбилдингов</p>
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="text-xs text-black/40">от</span>
+              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">120 000</span>
+              <span class="text-black/60">₽</span>
+            </div>
+            <div class="text-xs text-black/50 mt-2">от 15 000 ₽/чел · мин. 8 человек</div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Индивидуальный сценарий</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Брендирование мероприятия</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Командные игры и квесты</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фотозона с логотипом</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Нетворкинг с предпринимателями</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Презентация продукта</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Team building активности</span></div>
+            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Полный фото/видео отчёт</span></div>
+          </div>
+          
+          <div class="md:text-right">
+            <div class="text-xs text-black/40 mb-2 tracking-widest">ФОРМАТ</div>
+            <div class="text-sm text-black/80 mb-4">Индивидуально<br>под ваш бренд</div>
+            <button onclick="openModal('TOUR: CORPORATE', 'от 120 000')" class="w-full md:w-auto px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
+              Обсудить проект →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- UPSELL -->
+  <div id="upsell" class="py-32 px-6 relative bg-white border-t border-black/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <div class="text-amber-600 text-sm tracking-widest mb-4">// UPSELL</div>
+        <h3 class="font-display text-4xl md:text-6xl font-bold mb-6">
+          Дополнительные <span class="gradient-text">услуги</span>
+        </h3>
+        <p class="text-black/60 max-w-2xl mx-auto">
+          Усильте свой опыт эксклюзивными опциями: от вертолётных прогулок до спорткаров и частных фотосессий.
+        </p>
+      </div>
+      
+      <!-- Content packages -->
+      <div class="mb-12 fade-in">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white">📹</div>
+          <h4 class="font-display text-2xl font-bold">Контент-пакеты</h4>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="flex items-start justify-between mb-4">
+              <div class="text-2xl">📹</div>
+              <div class="text-xs text-amber-600 tracking-widest">REELS</div>
+            </div>
+            <h5 class="font-display font-bold text-lg mb-2">Reels Pack</h5>
+            <p class="text-black/60 text-sm mb-4">5 профессиональных видео для соцсетей</p>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display text-2xl font-bold gradient-text">3 000</span>
+              <span class="text-black/60 text-sm">₽</span>
+            </div>
+          </div>
+          
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="flex items-start justify-between mb-4">
+              <div class="text-2xl">⚡</div>
+              <div class="text-xs text-amber-600 tracking-widest">SAME DAY</div>
+            </div>
+            <h5 class="font-display font-bold text-lg mb-2">Same Day Edit</h5>
+            <p class="text-black/60 text-sm mb-4">Видео в день тура — выложите пока эмоции свежие</p>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display text-2xl font-bold gradient-text">7 000</span>
+              <span class="text-black/60 text-sm">₽</span>
+            </div>
+          </div>
+          
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="flex items-start justify-between mb-4">
+              <div class="text-2xl">📱</div>
+              <div class="text-xs text-amber-600 tracking-widest">CONTENT DAY</div>
+            </div>
+            <h5 class="font-display font-bold text-lg mb-2">Content Day</h5>
+            <p class="text-black/60 text-sm mb-4">Отдельная съёмка — полный день контента</p>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display text-2xl font-bold gradient-text">10 000</span>
+              <span class="text-black/60 text-sm">₽</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Premium experiences -->
+      <div class="mb-12 fade-in">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-pink-500 flex items-center justify-center text-white">💎</div>
+          <h4 class="font-display text-2xl font-bold">Премиум-опыты</h4>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="text-3xl mb-3">🚁</div>
+            <h5 class="font-display font-bold mb-2">Вертолёт</h5>
+            <p class="text-black/60 text-sm mb-4">Прогулка над побережьем с съёмкой</p>
+            <div class="flex items-baseline gap-1">
+              <span class="text-xs text-black/40">от</span>
+              <span class="font-display text-xl font-bold gradient-text">25 000</span>
+              <span class="text-black/60 text-xs">₽</span>
+            </div>
+          </div>
+          
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="text-3xl mb-3">🛥</div>
+            <h5 class="font-display font-bold mb-2">Яхтинг</h5>
+            <p class="text-black/60 text-sm mb-4">2 часа на яхте с капитаном и командой</p>
+            <div class="flex items-baseline gap-1">
+              <span class="text-xs text-black/40">от</span>
+              <span class="font-display text-xl font-bold gradient-text">40 000</span>
+              <span class="text-black/60 text-xs">₽</span>
+            </div>
+          </div>
+          
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="text-3xl mb-3">🏎</div>
+            <h5 class="font-display font-bold mb-2">Спорткар тур</h5>
+            <p class="text-black/60 text-sm mb-4">Ferrari, Lamborghini — съёмка включена</p>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display text-xl font-bold gradient-text">15 000</span>
+              <span class="text-black/60 text-xs">₽/час</span>
+            </div>
+          </div>
+          
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="text-3xl mb-3">🎰</div>
+            <h5 class="font-display font-bold mb-2">VIP казино</h5>
+            <p class="text-black/60 text-sm mb-4">Личный хост, стартовые фишки, напитки</p>
+            <div class="flex items-baseline gap-1">
+              <span class="text-xs text-black/40">от</span>
+              <span class="font-display text-xl font-bold gradient-text">20 000</span>
+              <span class="text-black/60 text-xs">₽</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Photoshoots -->
+      <div class="fade-in">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white">📸</div>
+          <h4 class="font-display text-2xl font-bold">Фотосессии</h4>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="flex items-start justify-between mb-4">
+              <div class="text-2xl">🌅</div>
+              <div class="text-xs text-amber-600 tracking-widest">SUNSET</div>
+            </div>
+            <h5 class="font-display font-bold text-lg mb-2">Sunset Beach Session</h5>
+            <p class="text-black/60 text-sm mb-4">Закатная съёмка на лучшем пляже Сочи</p>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display text-2xl font-bold gradient-text">8 000</span>
+              <span class="text-black/60 text-sm">₽</span>
+            </div>
+          </div>
+          
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="flex items-start justify-between mb-4">
+              <div class="text-2xl">🏙</div>
+              <div class="text-xs text-amber-600 tracking-widest">URBAN</div>
+            </div>
+            <h5 class="font-display font-bold text-lg mb-2">Urban Fashion Shoot</h5>
+            <p class="text-black/60 text-sm mb-4">Городская fashion-съёмка в стиле Vogue</p>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display text-2xl font-bold gradient-text">6 000</span>
+              <span class="text-black/60 text-sm">₽</span>
+            </div>
+          </div>
+          
+          <div class="upsell-card gradient-border p-6 fade-in">
+            <div class="flex items-start justify-between mb-4">
+              <div class="text-2xl">💃</div>
+              <div class="text-xs text-amber-600 tracking-widest">PORTRAIT</div>
+            </div>
+            <h5 class="font-display font-bold text-lg mb-2">Individual Portrait</h5>
+            <p class="text-black/60 text-sm mb-4">Персональный портрет для соцсетей и бизнеса</p>
+            <div class="flex items-baseline gap-1">
+              <span class="font-display text-2xl font-bold gradient-text">5 000</span>
+              <span class="text-black/60 text-sm">₽</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="py-32 px-6 relative bg-gradient-to-b from-white to-[#faf8f5]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-20 fade-in">
+      <div class="text-amber-600 text-sm tracking-widest mb-4">// ПРОЦЕСС</div>
+      <h2 class="font-display text-4xl md:text-6xl font-bold">
+        Как мы <span class="gradient-text">работаем</span>
+      </h2>
+    </div>
+    
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="process-card gradient-border p-8 fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="process-img" alt="">
+        <div class="process-content">
+          <div class="font-display text-6xl font-bold gradient-text mb-4">01</div>
+          <h3 class="font-display text-xl font-bold mb-3">Бриф</h3>
+          <p class="text-black/60 text-sm leading-relaxed">Обсуждаем ваши цели, стиль, локации. Подбираем пакет под задачи.</p>
+        </div>
+      </div>
+      <div class="process-card gradient-border p-8 fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1a6bb1b25-c39f-4fa0-a9e9-e26c87b08ed8.png" class="process-img" alt="">
+        <div class="process-content">
+          <div class="font-display text-6xl font-bold gradient-text mb-4">02</div>
+          <h3 class="font-display text-xl font-bold mb-3">Подготовка</h3>
+          <p class="text-black/60 text-sm leading-relaxed">Собираем команду, согласовываем мудборд, планируем логистику.</p>
+        </div>
+      </div>
+      <div class="process-card gradient-border p-8 fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="process-img" alt="">
+        <div class="process-content">
+          <div class="font-display text-6xl font-bold gradient-text mb-4">03</div>
+          <h3 class="font-display text-xl font-bold mb-3">Съёмка</h3>
+          <p class="text-black/60 text-sm leading-relaxed">Работаем по таймингу. Помогаем с позированием и образами.</p>
+        </div>
+      </div>
+      <div class="process-card gradient-border p-8 fade-in">
+        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/12098158e-9af2-4bfd-b58e-ee1dd75d7335.png" class="process-img" alt="">
+        <div class="process-content">
+          <div class="font-display text-6xl font-bold gradient-text mb-4">04</div>
+          <h3 class="font-display text-xl font-bold mb-3">Результат</h3>
+          <p class="text-black/60 text-sm leading-relaxed">Ретушь, монтаж, доставка материалов в онлайн-галерее.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-32 px-6 relative bg-white border-t border-black/5">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+      <div class="text-amber-600 text-sm tracking-widest mb-4">// FAQ</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold">
+        Частые <span class="gradient-text">вопросы</span>
+      </h2>
+    </div>
+    
+    <div class="space-y-3">
+      <details class="gradient-border p-6 fade-in">
+        <summary class="flex justify-between items-center cursor-pointer">
+          <span class="font-display font-bold text-lg">Как быстро я получу готовые материалы?</span>
+          <span class="chevron text-amber-600">▼</span>
+        </summary>
+        <p class="mt-4 text-black/70 leading-relaxed">Пакет INSTANT — 48 часов. STANDARD PLUS — 5-7 дней. PREMIUM и выше — 10-14 дней из-за объёма работы.</p>
+      </details>
+      
+      <details class="gradient-border p-6 fade-in">
+        <summary class="flex justify-between items-center cursor-pointer">
+          <span class="font-display font-bold text-lg">Можно ли комбинировать пакеты?</span>
+          <span class="chevron text-amber-600">▼</span>
+        </summary>
+        <p class="mt-4 text-black/70 leading-relaxed">Да, мы соберём индивидуальное решение под ваши задачи. Напишите нам — обсудим детали и сделаем персональное предложение.</p>
+      </details>
+      
+      <details class="gradient-border p-6 fade-in">
+        <summary class="flex justify-between items-center cursor-pointer">
+          <span class="font-display font-bold text-lg">Работаете ли вы за пределами Сочи?</span>
+          <span class="chevron text-amber-600">▼</span>
+        </summary>
+        <p class="mt-4 text-black/70 leading-relaxed">Да, у нас сеть фотографов по всему побережью: Адлер, Сириус, Красная Поляна, а также выездные съёмки по России и миру.</p>
+      </details>
+      
+      <details class="gradient-border p-6 fade-in">
+        <summary class="flex justify-between items-center cursor-pointer">
+          <span class="font-display font-bold text-lg">Нужно ли мне готовить образ самостоятельно?</span>
+          <span class="chevron text-amber-600">▼</span>
+        </summary>
+        <p class="mt-4 text-black/70 leading-relaxed">В пакетах INSTANT и STANDARD PLUS мы помогаем с рекомендациями. В PREMIUM и выше — работают профессиональный стилист и визажист.</p>
+      </details>
+      
+      <details class="gradient-border p-6 fade-in">
+        <summary class="flex justify-between items-center cursor-pointer">
+          <span class="font-display font-bold text-lg">Как происходит оплата?</span>
+          <span class="chevron text-amber-600">▼</span>
+        </summary>
+        <p class="mt-4 text-black/70 leading-relaxed">50% предоплата для бронирования даты, 50% в день съёмки. Для BUSINESS PRO — поэтапная оплата по договору.</p>
+      </details>
+      
+      <details class="gradient-border p-6 fade-in">
+        <summary class="flex justify-between items-center cursor-pointer">
+          <span class="font-display font-bold text-lg">Можно ли прийти на Elite Tours одному?</span>
+          <span class="chevron text-amber-600">▼</span>
+        </summary>
+        <p class="mt-4 text-black/70 leading-relaxed">Конечно! Пакеты START и VIP — групповые, вы познакомитесь с интересными людьми. PLATINUM — приватный формат для вашей компании.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-32 px-6 relative bg-gradient-to-b from-[#faf8f5] to-white">
+  <div class="max-w-4xl mx-auto text-center fade-in">
+    <h2 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+      Готовы создать<br>
+      <span class="gradient-text">свой опыт?</span>
+    </h2>
+    <p class="text-black/60 text-lg mb-10 max-w-xl mx-auto">
+      Оставьте заявку — мы свяжемся в течение 15 минут и подберём идеальный пакет под ваш запрос.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <button onclick="openModal('Консультация', '')" class="btn-primary px-10 py-4 rounded-full font-medium">
+        <span>Оставить заявку →</span>
+      </button>
+      <a href="https://t.me/" class="px-10 py-4 rounded-full border border-black/10 hover:bg-black hover:text-white transition font-medium">
+        Telegram
+      </a>
+      <a href="https://wa.me/" class="px-10 py-4 rounded-full border border-black/10 hover:bg-black hover:text-white transition font-medium">
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-black/5 py-16 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-pink-500 flex items-center justify-center font-display font-bold text-white">С</div>
+          <div class="font-display text-sm tracking-widest">
+            <div class="text-black">СОЧИ</div>
+            <div class="text-amber-600 text-[10px]">EMPIRE</div>
+          </div>
+        </div>
+        <p class="text-black/60 text-sm leading-relaxed max-w-md">
+          Экосистема контента и премиум-туров на побережье Чёрного моря. Фото, видео, продакшн, Elite Tours и стратегия для бизнеса и блогеров.
+        </p>
+      </div>
+      
+      <div>
+        <div class="text-xs tracking-widest text-black/40 mb-4">УСЛУГИ</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#content-empire" class="text-black/70 hover:text-black">Content Empire</a></li>
+          <li><a href="#elite-tours" class="text-black/70 hover:text-black">Elite Tours</a></li>
+          <li><a href="#business" class="text-black/70 hover:text-black">Для бизнеса</a></li>
+          <li><a href="#upsell" class="text-black/70 hover:text-black">Доп. услуги</a></li>
+          <li><a href="#faq" class="text-black/70 hover:text-black">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <div class="text-xs tracking-widest text-black/40 mb-4">КОНТАКТЫ</div>
+        <ul class="space-y-2 text-sm">
+          <li class="text-black/70">Сочи, ул. Приморская, 1</li>
+          <li><a href="tel:+78620000000" class="text-black/70 hover:text-black">+7 (862) 000-00-00</a></li>
+          <li><a href="mailto:hello@sochi-empire.ru" class="text-black/70 hover:text-black">hello@sochi-empire.ru</a></li>
+          <li class="flex gap-3 pt-2">
+            <a href="#" class="w-9 h-9 rounded-full border border-black/10 hover:border-amber-500 flex items-center justify-center text-xs">IG</a>
+            <a href="#" class="w-9 h-9 rounded-full border border-black/10 hover:border-amber-500 flex items-center justify-center text-xs">TG</a>
+            <a href="#" class="w-9 h-9 rounded-full border border-black/10 hover:border-amber-500 flex items-center justify-center text-xs">YT</a>
+            <a href="#" class="w-9 h-9 rounded-full border border-black/10 hover:border-amber-500 flex items-center justify-center text-xs">VK</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between gap-4 text-xs text-black/40">
+      <div>© 2026 СОЧИ EMPIRE. Все права защищены.</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-black/70">Политика конфиденциальности</a>
+        <a href="#" class="hover:text-black/70">Оферта</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<a href="#top" class="back-to-top" title="Наверх">↑</a>
+
+<!-- MODAL -->
+<div id="modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4 modal-backdrop">
+  <div class="gradient-border p-8 md:p-10 max-w-lg w-full relative">
+    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full border border-black/10 hover:bg-black hover:text-white flex items-center justify-center transition">✕</button>
+    
+    <div class="mb-6">
+      <div class="text-xs tracking-widest text-amber-600 mb-2">ЗАЯВКА</div>
+      <h3 class="font-display text-2xl md:text-3xl font-bold">
+        <span class="gradient-text" id="modalPackage">—</span>
+      </h3>
+      <div class="text-black/60 text-sm mt-1" id="modalPrice"></div>
+    </div>
+    
+    <form onsubmit="submitForm(event)" class="space-y-4">
+      <div>
+        <label class="text-xs tracking-widest text-black/50 mb-2 block">ИМЯ</label>
+        <input required type="text" class="w-full bg-[#faf8f5] border border-black/10 rounded-xl px-4 py-3 focus:border-amber-500 focus:outline-none transition">
+      </div>
+      <div>
+        <label class="text-xs tracking-widest text-black/50 mb-2 block">ТЕЛЕФОН / TELEGRAM</label>
+        <input required type="text" class="w-full bg-[#faf8f5] border border-black/10 rounded-xl px-4 py-3 focus:border-amber-500 focus:outline-none transition">
+      </div>
+      <div>
+        <label class="text-xs tracking-widest text-black/50 mb-2 block">КОММЕНТАРИЙ</label>
+        <textarea rows="3" class="w-full bg-[#faf8f5] border border-black/10 rounded-xl px-4 py-3 focus:border-amber-500 focus:outline-none transition resize-none"></textarea>
+      </div>
+      <button type="submit" class="btn-primary w-full py-4 rounded-full font-medium">
+        <span>Отправить заявку →</span>
+      </button>
+      <div class="text-xs text-black/40 text-center">
+        Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+      </div>
+    </form>
+    
+    <div id="successMessage" class="hidden text-center py-8">
+      <div class="text-5xl mb-4">✨</div>
+      <h3 class="font-display text-2xl font-bold mb-2">Заявка отправлена!</h3>
+      <p class="text-black/60">Мы свяжемся с вами в течение 15 минут</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  
+  function openModal(pkg, price) {
+    document.getElementById('modalPackage').textContent = pkg;
+    document.getElementById('modalPrice').textContent = price ? `${price} ₽` : '';
+    document.getElementById('modal').classList.remove('hidden');
+    document.getElementById('modal').classList.add('flex');
+    document.getElementById('successMessage').classList.add('hidden');
+    document.querySelector('#modal form').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeModal() {
+    document.getElementById('modal').classList.add('hidden');
+    document.getElementById('modal').classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  
+  function submitForm(e) {
+    e.preventDefault();
+    document.querySelector('#modal form').classList.add('hidden');
+    document.getElementById('successMessage').classList.remove('hidden');
+    setTimeout(closeModal, 2500);
+  }
+  
+  document.getElementById('modal').addEventListener('click', (e) => {
+    if (e.target.id === 'modal') closeModal();
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+
+</body>
+</html>
