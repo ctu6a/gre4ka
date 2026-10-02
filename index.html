@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Союз ветеранов СВО · Адлерский район Сочи — поддержка, братство, память</title>
+<title>Совет ветеранов Адлерского района · Сочи — поддержка, братство, память</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/500.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/600.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/700.css">
@@ -294,6 +294,41 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
   display:grid;place-items:center;font-weight:800;font-size:14px;margin-top:2px;
 }
 
+/* leader box */
+.gov-label{
+  display:inline-flex;align-items:center;gap:12px;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--green);border:1px solid rgba(185,140,51,.5);background:var(--card);
+  padding:10px 18px;border-radius:99px;margin-bottom:28px;
+}
+.gov-box{
+  background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  display:grid;grid-template-columns:360px 1fr;box-shadow:var(--shadow);
+}
+.gov-side{
+  background:linear-gradient(170deg,var(--green-d),var(--green-x));color:#e9ecdc;
+  padding:40px 34px;display:flex;flex-direction:column;gap:16px;position:relative;
+}
+.gov-side::after{
+  content:"";position:absolute;right:-50px;bottom:-50px;width:170px;height:170px;
+  border:1px solid rgba(217,181,103,.25);border-radius:50%;
+}
+.gov-avatar{
+  width:106px;height:106px;border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,var(--gold-l),var(--gold) 60%,#8a6620);
+  color:var(--green-x);font-family:'Unbounded';font-weight:700;font-size:30px;
+  display:grid;place-items:center;
+  box-shadow:inset 0 0 0 4px rgba(255,255,255,.3),0 12px 26px rgba(0,0,0,.35);
+}
+.gov-who{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-l);font-weight:800}
+.gov-name{font-family:'Unbounded';font-weight:700;font-size:24px;color:#fff;line-height:1.2}
+.gov-role{font-size:13.5px;opacity:.9;line-height:1.55}
+.gov-facts{list-style:none;display:grid;gap:10px;margin-top:8px;font-size:13px;opacity:.92}
+.gov-facts b{color:var(--gold-l)}
+.gov-body{padding:44px 46px;display:grid;gap:18px;font-size:15.5px;align-content:start}
+.gov-title{font-family:'Unbounded';font-weight:700;font-size:22px;color:var(--green)}
+.gov-sign{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:800;margin-top:4px}
+@media(max-width:960px){.gov-box{grid-template-columns:1fr}.gov-body{padding:32px 26px}}
+
 /* timeline */
 .timeline{position:relative;margin-top:16px;padding-left:34px}
 .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),rgba(185,140,51,.15))}
@@ -318,21 +353,6 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 .val-card p{font-size:13.5px;opacity:.85}
 @media(max-width:960px){.val-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.val-grid{grid-template-columns:1fr}}
-
-/* team */
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.team-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 22px;text-align:center;transition:transform .3s,box-shadow .3s}
-.team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.avatar{
-  width:78px;height:78px;border-radius:50%;margin:0 auto 16px;
-  background:radial-gradient(circle at 30% 25%,var(--gold-l),var(--gold) 60%,#8a6620);
-  color:var(--green-x);font-family:'Unbounded';font-weight:700;font-size:22px;
-  display:grid;place-items:center;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35);
-}
-.team-card h3{font-size:14.5px;line-height:1.4}
-.team-role{font-size:12.5px;color:var(--gold);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
-.team-note{font-size:13px;color:var(--ink-soft);margin-top:10px}
-@media(max-width:960px){.team-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* docs */
 .doc-list{display:grid;gap:12px;max-width:760px}
@@ -526,35 +546,6 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 @media(max-width:560px){.reg-grid{grid-template-columns:1fr}}
 
 /* ===== memory tab ===== */
-.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.mem-card{
-  background:var(--green-x);color:#e9ecdc;border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;
-  transition:transform .3s,box-shadow .3s;
-}
-.mem-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.mem-card::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:6px;
-  background:repeating-linear-gradient(90deg,var(--gblack) 0 14px,var(--gorange) 14px 28px);
-  opacity:.85;
-}
-.mem-top{display:flex;justify-content:space-between;align-items:center;margin:8px 0 18px}
-.mem-avatar{
-  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
-  background:#2c3620;border:1.5px solid rgba(217,181,103,.55);
-  font-family:'Unbounded';font-weight:700;font-size:19px;color:var(--gold-l);
-}
-.mem-star{color:var(--gold-l);font-size:22px}
-.mem-card h3{font-size:15.5px;color:#fff;line-height:1.35}
-.mem-rank{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:7px 0 12px}
-.mem-card p{font-size:13px;opacity:.85}
-.mem-tag{
-  display:inline-block;margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--gold-l);border:1px solid rgba(217,181,103,.5);padding:5px 11px;border-radius:99px;
-}
-@media(max-width:960px){.mem-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.mem-grid{grid-template-columns:1fr}}
-
-/* candle */
 .candle-frame{
   border-radius:18px;overflow:hidden;aspect-ratio:1/1.05;box-shadow:var(--shadow);position:relative;
   background:radial-gradient(circle at 50% 30%,#2c3620 0%,var(--green-x) 70%);
@@ -574,6 +565,61 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
   font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;
   background:linear-gradient(transparent,rgba(16,20,12,.85));
 }
+
+/* hero profiles */
+.hp-list{display:grid;gap:22px}
+.hero-profile{
+  background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  display:grid;grid-template-columns:330px 1fr;
+  box-shadow:0 10px 30px -22px rgba(24,28,22,.45);
+  transition:transform .3s,box-shadow .3s;
+}
+.hero-profile:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.hp-side{
+  background:linear-gradient(170deg,var(--green-d),var(--green-x));color:#e9ecdc;
+  padding:34px 30px;display:flex;flex-direction:column;gap:14px;position:relative;
+}
+.hp-side::after{
+  content:"";position:absolute;right:-46px;bottom:-46px;width:150px;height:150px;
+  border:1px solid rgba(217,181,103,.25);border-radius:50%;
+}
+.hp-avatar{
+  width:88px;height:88px;border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,var(--gold-l),var(--gold) 60%,#8a6620);
+  color:var(--green-x);font-family:'Unbounded';font-weight:700;font-size:26px;
+  display:grid;place-items:center;box-shadow:inset 0 0 0 3px rgba(255,255,255,.3);
+}
+.hp-tagline{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l)}
+.hp-name{font-family:'Unbounded';font-weight:700;font-size:21px;color:#fff;line-height:1.25}
+.hp-role{font-size:13px;opacity:.87;line-height:1.55}
+.hp-motto{
+  display:flex;gap:10px;align-items:flex-start;margin-top:auto;
+  font-family:'Unbounded';font-weight:600;font-size:13.5px;color:var(--gold-l);line-height:1.5;
+}
+.hp-motto .mstar{flex:none;margin-top:2px}
+.hp-body{padding:38px 42px;display:grid;gap:16px;font-size:15px;align-content:start}
+.hp-quote{
+  border-left:4px solid var(--gold);background:var(--paper2);
+  padding:16px 20px;border-radius:0 12px 12px 0;font-weight:600;font-size:14.5px;
+}
+@media(max-width:960px){.hero-profile{grid-template-columns:1fr}.hp-body{padding:28px 24px}}
+
+/* press block */
+.press-block{
+  margin-top:26px;background:var(--green-x);color:#e9ecdc;border-radius:20px;
+  padding:38px 42px;display:flex;gap:26px;align-items:flex-start;position:relative;overflow:hidden;
+}
+.press-block::after{
+  content:"";position:absolute;left:0;top:0;right:0;height:6px;
+  background:repeating-linear-gradient(90deg,var(--gblack) 0 16px,var(--gorange) 16px 32px);
+}
+.press-ico{
+  flex:none;width:56px;height:56px;border-radius:14px;background:rgba(217,181,103,.15);
+  color:var(--gold-l);display:grid;place-items:center;
+}
+.press-block p{font-size:15px;max-width:840px;line-height:1.7}
+.press-sign{margin-top:14px;font-weight:800;color:var(--gold-l);font-size:14.5px}
+.press-sub{font-size:12.5px;opacity:.72;margin-top:5px;letter-spacing:.04em}
 
 /* volunteer */
 .vol-box{
@@ -672,6 +718,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     <symbol id="i-hand" viewBox="0 0 24 24"><path d="M11 14l-2-2a2 2 0 013-3l2 2m-3 3l5 5a2 2 0 003-3l-5-5m-3-3l-1.5-1.5a2 2 0 00-3 3L8 11m8 0l2-2a2 2 0 00-3-3l-2 2" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3l2-5a2 2 0 012-1.5h8A2 2 0 0118 8l2 5v3M4 16h16M4 16v2h2v-2m12 0v2h2v-2" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="14" r="1" fill="currentColor"/><circle cx="16" cy="14" r="1" fill="currentColor"/></symbol>
     <symbol id="i-star5" viewBox="0 0 24 24"><path d="M12 2l2.6 5.4 6 .8-4.4 4.2 1.1 5.9L12 15.5l-5.3 2.8 1.1-5.9L3.4 8.2l6-.8L12 2z" fill="currentColor"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L17 4a2.12 2.12 0 013 3L8 19l-4 1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 7l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
   </defs>
 </svg>
 
@@ -691,10 +738,10 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     <a class="brand" href="#" onclick="switchTab('home');return false;">
       <svg class="emblem"><use href="#sym-emblem"/></svg>
       <div>
-        <div class="brand-name">СОЮЗ ВЕТЕРАНОВ СВО
+        <div class="brand-name">СОВЕТ ВЕТЕРАНОВ
           <span class="gribbon" style="width:40px;margin-left:10px" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
         </div>
-        <div class="brand-sub">Адлерское районное отделение
+        <div class="brand-sub">Адлерский район · ветераны СВО
           <span class="brand-geo">г. Сочи · Краснодарский край</span>
         </div>
       </div>
@@ -728,13 +775,13 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="kicker">Адлерское районное отделение · Сочи</span>
+        <span class="kicker">Совет ветеранов Адлерского района · Сочи</span>
         <h1>
           <span class="lm"><span>Своих</span></span>
           <span class="lm"><span>не бросаем —</span></span>
           <span class="lm"><span style="color:var(--gold)">никогда.</span></span>
         </h1>
-        <p class="lead">Союз ветеранов СВО Адлерского района города Сочи объединяет участников специальной военной операции и их семьи. Мы помогаем с реабилитацией, юридическими вопросами, трудоустройством и возвращением к мирной жизни — бесплатно, рядом с домом, в каждом посёлке района.</p>
+        <p class="lead">Совет ветеранов Адлерского района города Сочи объединяет участников специальной военной операции и их семьи. Мы помогаем с реабилитацией, юридическими вопросами, трудоустройством и возвращением к мирной жизни — бесплатно, рядом с домом, в каждом микрорайоне района.</p>
         <div class="btn-row">
           <button class="btn btn-gold" data-goto="support">Получить поддержку</button>
           <button class="btn btn-ghost" data-goto="contacts">Как нас найти</button>
@@ -747,7 +794,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       </div>
       <div class="hero-visual">
         <div class="hero-frame">
-          <svg class="hero-art" viewBox="0 0 500 540" preserveAspectRatio="xMidYMid slice" aria-label="Эмблема союза">
+          <svg class="hero-art" viewBox="0 0 500 540" preserveAspectRatio="xMidYMid slice" aria-label="Эмблема совета ветеранов">
             <defs>
               <radialGradient id="hg1" cx="50%" cy="35%" r="70%">
                 <stop offset="0%" stop-color="#5d6e48"/>
@@ -784,7 +831,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         </svg>
         <div class="hero-badge">
           <div class="hb-big" data-count="1240" data-suffix="+">0</div>
-          <div class="hb-sm">ветеранов Адлерского района уже состоят в реестре отделения</div>
+          <div class="hb-sm">ветеранов Адлерского района уже состоят в реестре совета</div>
         </div>
       </div>
     </div>
@@ -822,13 +869,13 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     <section>
       <div class="sec-head">
         <div>
-          <span class="kicker">Новости отделения</span>
+          <span class="kicker">Новости совета</span>
           <h2>Что нового в Адлере</h2>
         </div>
         <button class="sec-link" data-goto="events">Календарь мероприятий <span>→</span></button>
       </div>
       <div class="news-grid">
-        <article class="news-card rv"><div class="news-top"></div><div class="news-body"><span class="news-date">28 сентября 2026</span><h3>Подписаны соглашения с санаториями Сочи о реабилитации ветеранов</h3><p>Ветераны Адлерского района смогут проходить восстановительное лечение в четырёх санаториях курорта по направлениям союза.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
+        <article class="news-card rv"><div class="news-top"></div><div class="news-body"><span class="news-date">28 сентября 2026</span><h3>Подписаны соглашения с санаториями Сочи о реабилитации ветеранов</h3><p>Ветераны Адлерского района смогут проходить восстановительное лечение в четырёх санаториях курорта по направлениям совета ветеранов.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
         <article class="news-card rv" style="transition-delay:.1s"><div class="news-top"></div><div class="news-body"><span class="news-date">15 сентября 2026</span><h3>Открыта новая точка приёма в Красной Поляне</h3><p>Теперь ветеранам горного кластера не нужно ехать в центр Адлера: приём ведут юрист и координатор по вторникам и пятницам.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
         <article class="news-card rv" style="transition-delay:.2s"><div class="news-top"></div><div class="news-body"><span class="news-date">2 сентября 2026</span><h3>Адлерские волонтёры отправили 14-й гуманитарный конвой</h3><p>Более 4 тонн помощи собрали жители района за две недели. Сбор продолжает работать на улице Ленина, 42.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
       </div>
@@ -886,13 +933,50 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         </div>
         <div class="rv">
           <span class="kicker">Кто мы</span>
-          <h2>Созданы ветеранами — для ветеранов Адлера</h2>
-          <p class="lead" style="margin-top:18px">Адлерское районное отделение Союза ветеранов СВО создано в 2022 году по инициативе самих участников боевых действий — жителей Адлерского района Сочи. Наша цель — чтобы ни один ветеран и ни одна семья от Лазурного берега до Красной Поляны не остались один на один со своими вопросами.</p>
+          <h2>Дом для тех, кто отдал Родине лучшие годы</h2>
+          <p class="lead" style="margin-top:18px">Совет ветеранов Адлерского района города Сочи — это не просто общественная организация. Это настоящий дом для тех, кто защищал страну, и для их семей. От берега Чёрного моря до Красной Поляны — ни один ветеран не должен оставаться один на один со своими вопросами.</p>
           <ul class="check-list">
             <li><span class="check-ico">✓</span><span><b>Адресная помощь каждому.</b> За каждым обращением закрепляется персональный координатор, который ведёт вопрос до результата.</span></li>
-            <li><span class="check-ico">✓</span><span><b>Равный — равному.</b> Большинство наших сотрудников и наставников сами прошли службу и понимают ситуацию изнутри.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Без категорий.</b> Для нас каждый, кто защищал страну, равен в своём подвиге — независимо от поколения и рода войск.</span></li>
             <li><span class="check-ico">✓</span><span><b>Рядом с домом.</b> Точки приёма работают в центре Адлера, Красной Поляне, Блинове и Молдовке.</span></li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- РУКОВОДСТВО -->
+    <section style="padding-top:0">
+      <span class="kicker">Руководство</span>
+      <h2 style="margin-bottom:8px">Люди, которые ведут совет</h2>
+      <div style="margin-top:30px">
+        <div class="gov-label rv">
+          <span class="gribbon" style="width:34px;height:7px"><i></i><i></i><i></i><i></i><i></i></span>
+          Раздел сайта Совета ветеранов Адлерского района
+        </div>
+        <div class="gov-box rv">
+          <aside class="gov-side">
+            <div class="gov-avatar">ВР</div>
+            <div>
+              <div class="gov-who">Руководитель</div>
+              <h3 class="gov-name">Владислав Рамазанов</h3>
+            </div>
+            <div class="gov-role">Председатель Совета ветеранов Адлерского района</div>
+            <ul class="gov-facts">
+              <li><b>40+</b> лет во главе ветеранского движения района</li>
+              <li><b>с 2014 года</b> — председатель Совета ветеранов</li>
+              <li><b>ул. Свердлова</b> — кабинет открыт без «неприёмных дней»</li>
+            </ul>
+            <div class="gr-line" style="margin-top:auto;border-radius:3px" aria-hidden="true"></div>
+          </aside>
+          <div class="gov-body">
+            <div class="gov-title">«Служение долгу и людям»</div>
+            <p>Человек, который более сорока лет стоит во главе ветеранского движения Адлерского района, знает цену слову «братство» не понаслышке. Владислав Хидирович Рамазанов принял руководство Советом ветеранов в 2014 году — в непростое время, когда страна стояла перед новыми вызовами, а ветераны нуждались в защите как никогда.</p>
+            <p>За его плечами — годы службы, закалившие характер и выработавшие привычку ставить интересы людей выше собственных. Под его руководством Совет ветеранов Адлерского района стал не просто общественной организацией, а настоящим домом для тех, кто отдал Родине лучшие годы жизни.</p>
+            <div class="hp-quote">«Мы не делим ветеранов на категории, — говорит Владислав Хидирович. — Для нас каждый, кто защищал страну, равен в своём подвиге».</div>
+            <p>Его кабинет на улице Свердлова всегда открыт. Здесь не бывает «неприёмных дней», когда на пороге стоит человек с бедой. Рамазанов лично контролирует каждую заявку на льготу, каждую просьбу о помощи, каждый звонок от вдовы ветерана.</p>
+            <div class="hp-motto"><span class="mstar">★</span>Служение людям — это не работа. Это призвание.</div>
+            <div class="gov-sign">Совет ветеранов Адлерского района · под руководством В. Х. Рамазанова</div>
+          </div>
         </div>
       </div>
     </section>
@@ -901,43 +985,34 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <div class="split" style="align-items:start">
         <div class="rv">
           <span class="kicker">История</span>
-          <h2>Путь отделения: 2022 — 2026</h2>
+          <h2>Путь совета: 2014 — 2026</h2>
           <div class="timeline" style="margin-top:30px">
-            <div class="tl-item"><div class="tl-year">2022</div><p>Инициативная группа адлерских ветеранов учреждает районное отделение. Первый пункт помощи открыт на улице Ленина.</p></div>
-            <div class="tl-item"><div class="tl-year">2023</div><p>Запущена горячая линия и программа юридической помощи. Первые 150 ветеранов в реестре, сформирован волонтёрский актив.</p></div>
+            <div class="tl-item"><div class="tl-year">2014</div><p>Владислав Хидирович Рамазанов принимает руководство Советом ветеранов Адлерского района — в непростое время новых вызовов для страны.</p></div>
+            <div class="tl-item"><div class="tl-year">2022</div><p>На базе совета создано направление поддержки ветеранов СВО и их семей. Открыт первый пункт помощи на улице Ленина.</p></div>
+            <div class="tl-item"><div class="tl-year">2023</div><p>Запущена горячая линия и программа юридической помощи. Первые сотни подопечных, сформирован волонтёрский актив района.</p></div>
             <div class="tl-item"><div class="tl-year">2024</div><p>Старт программы реабилитации совместно с санаториями Сочи. Первые группы семейной психологической поддержки.</p></div>
             <div class="tl-item"><div class="tl-year">2025</div><p>Открыты точки приёма в Красной Поляне, Блинове и Молдовке. Проведён первый районный турнир «Кубок героев».</p></div>
-            <div class="tl-item"><div class="tl-year">2026</div><p>В реестре отделения — более 1 240 ветеранов и членов семей, 340 волонтёров, 14 гуманитарных конвоев.</p></div>
+            <div class="tl-item"><div class="tl-year">2026</div><p>В реестре совета — более 1 240 ветеранов и членов семей, 340 волонтёров, 14 гуманитарных конвоев.</p></div>
           </div>
         </div>
         <div class="rv">
-          <span class="kicker">Команда</span>
-          <h2>Руководство отделения</h2>
-          <div class="team-grid" style="grid-template-columns:1fr 1fr;margin-top:26px">
-            <div class="team-card"><div class="avatar">АС</div><h3>Алексей Соколов</h3><div class="team-role">Руководитель отделения</div><p class="team-note">Ветеран боевых действий, житель Адлера</p></div>
-            <div class="team-card"><div class="avatar">ДМ</div><h3>Дмитрий Мартынов</h3><div class="team-role">Реабилитация</div><p class="team-note">Курирует программы санаторного лечения</p></div>
-            <div class="team-card"><div class="avatar">ОВ</div><h3>Ольга Ветрова</h3><div class="team-role">Работа с семьями</div><p class="team-note">Ведёт семейные центры поддержки района</p></div>
-            <div class="team-card"><div class="avatar">СК</div><h3>Сергей Казаков</h3><div class="team-role">Точки приёма</div><p class="team-note">Координирует 6 точек приёма в районе</p></div>
+          <span class="kicker">Наши ценности</span>
+          <h2>На чём стоит братство</h2>
+          <div class="val-grid" style="grid-template-columns:1fr 1fr;margin-top:26px">
+            <div class="val-card rv"><div class="vc-n">Ценность 01</div><h3>Братство</h3><p>Мы отвечаем за товарищей так же, как отвечали в строю. Взаимовыручка — основа всего, что мы делаем.</p></div>
+            <div class="val-card rv" style="transition-delay:.08s"><div class="vc-n">Ценность 02</div><h3>Достоинство</h3><p>Помощь оказывается уважительно и адресно, без формальностей и бюрократических барьеров.</p></div>
+            <div class="val-card rv" style="transition-delay:.16s"><div class="vc-n">Ценность 03</div><h3>Память</h3><p>Мы храним память о подвигах и товарищах, ухаживаем за мемориалами Адлерского района.</p></div>
+            <div class="val-card rv" style="transition-delay:.24s"><div class="vc-n">Ценность 04</div><h3>Служение</h3><p>Ветераны совета ведут патриотическую работу с молодёжью Сочи и участвуют в жизни района.</p></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section style="padding-top:0">
-      <div class="sec-head"><div><span class="kicker">Наши ценности</span><h2>На чём стоит союз</h2></div></div>
-      <div class="val-grid">
-        <div class="val-card rv"><div class="vc-n">Ценность 01</div><h3>Братство</h3><p>Мы отвечаем за товарищей так же, как отвечали в строю. Взаимовыручка — основа всего, что мы делаем.</p></div>
-        <div class="val-card rv" style="transition-delay:.08s"><div class="vc-n">Ценность 02</div><h3>Достоинство</h3><p>Помощь оказывается уважительно и адресно, без формальностей и бюрократических барьеров.</p></div>
-        <div class="val-card rv" style="transition-delay:.16s"><div class="vc-n">Ценность 03</div><h3>Память</h3><p>Мы храним память о подвигах и товарищах, ухаживаем за мемориалами Адлерского района.</p></div>
-        <div class="val-card rv" style="transition-delay:.24s"><div class="vc-n">Ценность 04</div><h3>Служение</h3><p>Ветераны отделения ведут патриотическую работу с молодёжью Сочи и участвуют в жизни района.</p></div>
       </div>
     </section>
 
     <section style="padding-top:0">
       <div class="sec-head"><div><span class="kicker">Документы</span><h2>Официальные материалы</h2></div></div>
       <div class="doc-list">
-        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Положение об Адлерском районном отделении</b><span>Утверждено краевым советом союза · 2,4 МБ</span></span><span class="doc-dl">↓</span></a>
-        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Отчёт о деятельности отделения за 2025 год</b><span>Результаты работы, статистика обращений · 6,1 МБ</span></span><span class="doc-dl">↓</span></a>
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Положение о Совете ветеранов Адлерского района</b><span>Утверждено краевым советом ветеранов · 2,4 МБ</span></span><span class="doc-dl">↓</span></a>
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Отчёт о деятельности совета за 2025 год</b><span>Результаты работы, статистика обращений · 6,1 МБ</span></span><span class="doc-dl">↓</span></a>
         <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Свидетельство о государственной регистрации</b><span>Главное управление Минюста по Краснодарскому краю · 1,1 МБ</span></span><span class="doc-dl">↓</span></a>
         <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Политика обработки персональных данных</b><span>Действующая редакция от 12.01.2026 · 0,6 МБ</span></span><span class="doc-dl">↓</span></a>
       </div>
@@ -999,7 +1074,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     <section style="padding-top:0">
       <div class="sec-head"><div><span class="kicker">Как это работает</span><h2>Четыре шага до помощи</h2></div></div>
       <div class="steps">
-        <div class="step rv"><h3>Обращение</h3><p>Позвоните на горячую линию, напишите через форму или придите в точку приёма вашего посёлка.</p></div>
+        <div class="step rv"><h3>Обращение</h3><p>Позвоните на горячую линию, напишите через форму или придите в точку приёма вашего микрорайона.</p></div>
         <div class="step rv" style="transition-delay:.08s"><h3>Координатор</h3><p>В течение одного рабочего дня с вами связывается персональный координатор и уточняет детали.</p></div>
         <div class="step rv" style="transition-delay:.16s"><h3>План помощи</h3><p>Составляется индивидуальная программа: какие документы нужны, какие специалисты подключаются.</p></div>
         <div class="step rv" style="transition-delay:.24s"><h3>Результат</h3><p>Ведём вопрос до полного решения и остаёмся на связи — обращение можно дополнять и уточнять.</p></div>
@@ -1095,7 +1170,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     </section>
 
     <section style="padding-top:0">
-      <div class="sec-head"><div><span class="kicker">Фотоархив</span><h2>Жизнь отделения в кадрах</h2></div></div>
+      <div class="sec-head"><div><span class="kicker">Фотоархив</span><h2>Жизнь совета в кадрах</h2></div></div>
       <div class="gal-grid">
         <div class="gal-item rv">
           <svg class="gal-art" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
@@ -1142,7 +1217,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
             <path d="M150 30l14 29 32 5-23 22 6 32-29-15-29 15 6-32-23-22 32-5 14-29z" fill="#d9b567"/>
             <path d="M80 130c20 16 45 26 70 30 25-4 50-14 70-30" stroke="#d9b567" fill="none" stroke-width="4" stroke-linecap="round"/>
           </svg>
-          <div class="gal-cap">Слёт отделения, июнь 2026</div>
+          <div class="gal-cap">Слёт совета ветеранов, июнь 2026</div>
         </div>
       </div>
     </section>
@@ -1157,14 +1232,14 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div class="rv">
           <span class="kicker"><span class="gribbon" style="width:30px;height:7px;margin-right:2px"><i></i><i></i><i></i><i></i><i></i></span>Никто не забыт</span>
           <h2>Память — наш долг</h2>
-          <p class="lead" style="margin-top:18px">Мы храним имена и истории героев Адлерского района: тех, кто вернулся, и тех, кто отдал жизнь за товарищей. Отделение ухаживает за мемориалами района, проводит памятные акции и помогает семьям сохранять память о своих близких.</p>
+          <p class="lead" style="margin-top:18px">Мы храним имена и истории ветеранов Адлерского района: тех, кто вернулся, и тех, кто отдал жизнь за товарищей. Совет ухаживает за мемориалами района, проводит памятные акции и помогает семьям сохранять память о своих близких.</p>
           <ul class="check-list">
-            <li><span class="check-ico">✓</span><span><b>Стена памяти.</b> Собираем истории и фотографии героев района для районного мемориального стенда.</span></li>
             <li><span class="check-ico">✓</span><span><b>Вахта памяти.</b> Круглый год ухаживаем за памятными местами Адлера и возлагаем цветы в памятные даты.</span></li>
-            <li><span class="check-ico">✓</span><span><b>Семьи героев.</b> Семьи погибших находятся под постоянным сопровождением отделения.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Семьи героев.</b> Семьи погибших находятся под постоянным сопровождением совета.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Уроки мужества.</b> Ветераны района встречаются со школьниками и юнармейцами.</span></li>
           </ul>
           <div class="btn-row" style="margin-top:30px">
-            <button class="btn btn-gold" data-goto="contacts" data-topic="Память и герои">Сообщить о герое</button>
+            <button class="btn btn-gold" data-goto="contacts" data-topic="Память и герои">Рассказать о герое</button>
           </div>
         </div>
         <div class="candle-frame rv">
@@ -1195,45 +1270,117 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       </div>
     </section>
 
+    <!-- НАШИ ГЕРОИ -->
     <section style="padding-top:0">
       <div class="sec-head">
         <div>
-          <span class="kicker">Стена памяти</span>
-          <h2>Герои нашего района</h2>
-          <p class="lead">Имена на этом стенде — истории мужества земляков. Список пополняется по обращениям семей и сослуживцев.</p>
+          <span class="kicker">Наши герои</span>
+          <h2>Люди, на которых держится братство</h2>
+          <p class="lead">Руководители ветеранских организаций Сочи и Адлерского района. Их имена — это живые судьбы тысяч ветеранов, которых они не бросают каждый день.</p>
         </div>
       </div>
-      <div class="mem-grid">
-        <div class="mem-card rv">
-          <div class="mem-top"><div class="mem-avatar">АВ</div><span class="mem-star">★</span></div>
-          <h3>Андрей Волков</h3>
-          <div class="mem-rank">Сержант · командир отделения</div>
-          <p>Вывел группу из-под обстрела и обеспечил переправу подразделения. Уроженец Адлера, сегодня наставляет молодёжь района.</p>
-          <span class="mem-tag">Герой России</span>
-        </div>
-        <div class="mem-card rv" style="transition-delay:.07s">
-          <div class="mem-top"><div class="mem-avatar">ДК</div><span class="mem-star">★</span></div>
-          <h3>Денис Крылов</h3>
-          <div class="mem-rank">Младший сержант · сапёр</div>
-          <p>Ценой собственной жизни закрыл товарищей при разминировании. В его честь названа аллея в парке района.</p>
-          <span class="mem-tag">Орден Мужества · посмертно</span>
-        </div>
-        <div class="mem-card rv" style="transition-delay:.14s">
-          <div class="mem-top"><div class="mem-avatar">ИС</div><span class="mem-star">★</span></div>
-          <h3>Игорь Савин</h3>
-          <div class="mem-rank">Старший лейтенант · разведгруппа</div>
-          <p>Дважды награждён за успешные операции и спасение раненых. Живёт в Красной Поляне, ведёт секцию адаптивного спорта.</p>
-          <span class="mem-tag">Орден Мужества · дважды</span>
-        </div>
-        <div class="mem-card rv" style="transition-delay:.21s">
-          <div class="mem-top"><div class="mem-avatar">ТО</div><span class="mem-star">★</span></div>
-          <h3>Тимур Орлов</h3>
-          <div class="mem-rank">Рядовой · санитар-стрелок</div>
-          <p>Вынес с поля боя семь раненых товарищей. Погиб в 2024 году. Семья находится под сопровождением отделения.</p>
-          <span class="mem-tag">Медаль «За отвагу» · посмертно</span>
+      <div class="hp-list">
+
+        <!-- Шуреков -->
+        <article class="hero-profile rv">
+          <div class="hp-side">
+            <div class="hp-avatar">НШ</div>
+            <div class="hp-tagline">Главный по ветеранским делам Сочи</div>
+            <h3 class="hp-name">Николай Шуреков</h3>
+            <div class="hp-role">Председатель Совета ветеранов войны, труда, Вооружённых Сил и правоохранительных органов города Сочи</div>
+            <div class="hp-motto"><span class="mstar">★</span>Командир, который не бросает своих!</div>
+            <div class="gr-line" style="border-radius:3px" aria-hidden="true"></div>
+          </div>
+          <div class="hp-body">
+            <p>Когда речь заходит о ветеранском движении курорта, имя Николая Шурекова произносят с особым уважением. Человек, объединивший под своим крылом тысячи ветеранов четырёх районов города-курорта, знает: за каждой сухой строчкой отчёта стоит живая судьба.</p>
+            <p>Шуреков — из той породы руководителей, которые не боятся грязи на сапогах. Он лично объезжает каждый микрорайон, от Дагомыса до Весёлого, чтобы убедиться: ветераны не забыты, памятные места ухожены, молодёжь знает своих героев.</p>
+            <p>Под его руководством городской Совет ветеранов стал настоящим штабом патриотической работы. Шуреков лично курирует каждую акцию ко Дню Победы, каждый митинг у мемориалов, каждую встречу с юнармейцами.</p>
+            <div class="hp-quote">«Пока мы помним — они живы», — это не просто слова для Николая. Это кредо, по которому он живёт и работает каждый день.</div>
+          </div>
+        </article>
+
+        <!-- Полевский -->
+        <article class="hero-profile rv">
+          <div class="hp-side">
+            <div class="hp-avatar">ИП</div>
+            <div class="hp-tagline">Братство, скреплённое честью</div>
+            <h3 class="hp-name">Игорь Полевский</h3>
+            <div class="hp-role">Руководитель Сочинского отделения Всероссийской общественной организации ветеранов «Боевое Братство»</div>
+            <div class="hp-motto"><span class="mstar">★</span>Братство не умирает. Пока живы те, кто помнит!</div>
+            <div class="gr-line" style="border-radius:3px" aria-hidden="true"></div>
+          </div>
+          <div class="hp-body">
+            <p>Есть организации, которые создаются не на бумаге, а на фронтовом братстве. «Боевое Братство» — именно такая. А Игорь Сергеевич Полевский — человек, который это братство хранит и приумножает на сочинской земле.</p>
+            <p>Офис на улице Макаренко, 8 стал для многих ветеранов Афганистана, Чечни, а теперь и участников специальной военной операции вторым домом. Здесь не просто выдают удостоверения и оформляют льготы — здесь протягивают руку помощи тем, кто прошёл через горнило войны и не всегда может найти дорогу обратно к мирной жизни.</p>
+            <p>Полевский знает: самый страшный враг ветерана — это одиночество. Поэтому «Боевое Братство» под его руководством не ограничивается кабинетами. Это выезды к тяжелобольным, это помощь вдовам, это работа с подростками, чьи отцы не вернулись с фронта.</p>
+            <div class="hp-quote">«Мы не имеем права забыть ни одного имени», — говорит Игорь Сергеевич. И это не пустые слова: каждая фамилия погибшего, каждая история подвига хранится в офисе организации как святыня.</div>
+          </div>
+        </article>
+
+        <!-- Пиваев -->
+        <article class="hero-profile rv">
+          <div class="hp-side">
+            <div class="hp-avatar">ВП</div>
+            <div class="hp-tagline">Офицерская честь в гражданской жизни</div>
+            <h3 class="hp-name">Вадим Пиваев</h3>
+            <div class="hp-role">Руководитель регионального отделения общероссийской организации «Офицеры России» в Сочи</div>
+            <div class="hp-motto"><span class="mstar">★</span>Честь. Долг. Отечество.</div>
+            <div class="gr-line" style="border-radius:3px" aria-hidden="true"></div>
+          </div>
+          <div class="hp-body">
+            <p>Офицерская честь — это не просто слова на парадном мундире. Это то, что остаётся, когда мундир снят. Вадим Вадимович Пиваев знает об этом не понаслышке.</p>
+            <p>Возглавляя сочинское отделение «Офицеров России», он продолжает служить — уже на гражданском поприще. Его подопечные — не только ветераны-офицеры, но и тысячи школьников, которые благодаря его работе узнают, что значит любить Родину не на словах, а на деле.</p>
+            <p>Пиваев — инициатор десятков патриотических проектов в Адлерском районе. Уроки мужества, которые он лично проводит в школах, не похожи на скучные лекции. Это живые рассказы о подвигах, от которых у подростков загораются глаза. Это встречи с настоящими героями, а не с плакатными образами.</p>
+            <div class="hp-quote">«Офицер не уходит в отставку, — говорит Вадим Вадимович. — Офицер меняет поле боя, но не присягу».</div>
+            <p>И он меняет. Каждый день. Каждый урок. Каждую встречу с ветераном, которому нужна помощь. Честь. Долг. Отечество. Три слова, по которым он живёт.</p>
+          </div>
+        </article>
+
+        <!-- Карпов -->
+        <article class="hero-profile rv">
+          <div class="hp-side">
+            <div class="hp-avatar">АК</div>
+            <div class="hp-tagline">На страже призыва</div>
+            <h3 class="hp-name">Александр Карпов</h3>
+            <div class="hp-role">Военный комиссар городского округа город-курорт Сочи</div>
+            <div class="hp-motto"><span class="mstar">★</span>Мы не имеем права оставить своих!</div>
+            <div class="gr-line" style="border-radius:3px" aria-hidden="true"></div>
+          </div>
+          <div class="hp-body">
+            <p>Есть профессии, где ошибка стоит слишком дорого. Военный комиссар — именно такая. Александр Михайлович Карпов несёт ответственность за тысячи судеб призывников, контрактников, мобилизованных.</p>
+            <p>Его кабинет на улице Кирова, 155А — это не просто место работы. Это пункт принятия решений, от которых зависит безопасность страны. В непростые времена, когда Россия ведёт специальную военную операцию, Карпов лично контролирует каждую отправку земляков на фронт, каждую встречу с семьями мобилизованных.</p>
+            <p>Но военкомат — это не только призыв. Это и работа с ветеранами, и помощь в оформлении удостоверений участников боевых действий, и координация с Советом ветеранов Адлерского района. Карпов понимает: армия не заканчивается там, где заканчивается служба. Она продолжается в памяти, в братстве, в заботе о тех, кто уже снял погоны.</p>
+            <div class="hp-quote">«Мы не имеем права оставить своих» — это принцип, которым руководствуется Александр Михайлович каждый день.</div>
+          </div>
+        </article>
+
+        <!-- Герои первичных организаций -->
+        <article class="hero-profile rv">
+          <div class="hp-side">
+            <div class="hp-avatar">★</div>
+            <div class="hp-tagline">Герои первичных организаций</div>
+            <h3 class="hp-name">Те, кто всегда рядом</h3>
+            <div class="hp-role">Председатели советов ветеранов микрорайонов Адлерского района</div>
+            <div class="hp-motto"><span class="mstar">★</span>Безымянные герои, на которых держится ветеранское братство Адлера</div>
+            <div class="gr-line" style="border-radius:3px" aria-hidden="true"></div>
+          </div>
+          <div class="hp-body">
+            <p>За каждым большим делом стоят маленькие герои. Те, кто не на виду, кто не даёт интервью и не появляется на телеэкранах. Но без которых не было бы самого движения.</p>
+            <p>Председатели первичных ветеранских организаций микрорайонов Адлера — это полевые командиры ветеранского движения. Они знают в лицо каждого ветерана своего двора. Они помнят дни рождения каждой вдовы. Они первыми прибывают на помощь, когда у старого солдата прорвало трубу или закончились лекарства.</p>
+            <p>Их имена не гремят на всю страну. Но в каждом микрорайоне — от Блиново до Молдовки — их знают и уважают. Потому что они — те самые «свои», кто не бросит, не отвернётся, не забудет.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- пресс-служба -->
+      <div class="press-block rv">
+        <div class="press-ico"><svg width="26" height="26"><use href="#i-pen"/></svg></div>
+        <div>
+          <p>Пресс-служба выражает глубокую благодарность всем руководителям ветеранских организаций Адлерского района за их самоотверженный труд. Ваши имена войдут в историю района так же, как имена тех, кого вы защищаете и помните.</p>
+          <div class="press-sign">Павлова Е. С. — пресс-служба Совета ветеранов Адлерского района</div>
+          <div class="press-sub">Совет ветеранов Адлерского района работает под руководством В. Х. Рамазанова</div>
         </div>
       </div>
-      <p style="margin-top:22px;font-size:13px;color:var(--ink-soft)">Чтобы добавить историю героя на Стену памяти, обратитесь в отделение или оставьте обращение с темой «Память и герои».</p>
     </section>
 
     <section style="padding-top:0">
@@ -1249,7 +1396,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     <section style="padding-top:0">
       <div class="sec-head"><div><span class="kicker">Мемориальные места</span><h2>Памятные места Адлерского района</h2></div></div>
       <div class="reg-grid" style="grid-template-columns:repeat(3,1fr)">
-        <div class="reg-card rv"><b>Вечный огонь у мемориала</b><span>Центр Адлера · место районных акций памяти, вахта отделения</span></div>
+        <div class="reg-card rv"><b>Вечный огонь у мемориала</b><span>Центр Адлера · место районных акций памяти, вахта совета</span></div>
         <div class="reg-card rv" style="transition-delay:.07s"><b>Аллея Памяти</b><span>Парк «Южные культуры» · деревья, высаженные в честь героев района</span></div>
         <div class="reg-card rv" style="transition-delay:.14s"><b>Стела героям-землякам</b><span>Сквер у ДК «Олимп» · место сбора 9 декабря и 9 мая</span></div>
       </div>
@@ -1265,7 +1412,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div>
           <span class="kicker">Как помочь</span>
           <h2>Волонтёрам и неравнодушным</h2>
-          <p class="lead">Сила адлерского отделения — в его людях. 340 жителей района уже помогают как волонтёры. Присоединиться может каждый: опытом, временем, руками или делом.</p>
+          <p class="lead">Сила адлерского совета — в его людях. 340 жителей района уже помогают как волонтёры. Присоединиться может каждый: опытом, временем, руками или делом.</p>
         </div>
         <button class="btn btn-gold" data-goto="contacts" data-topic="Волонтёрство">Стать волонтёром</button>
       </div>
@@ -1273,7 +1420,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div class="dir-card rv"><span class="dir-num">01</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-hand"/></svg></div><h3>Наставник для ветерана</h3><p>Помогайте недавно вернувшимся бойцам освоиться: документы, бытовые вопросы, просто общение.</p></div>
         <div class="dir-card rv" style="transition-delay:.08s"><span class="dir-num">02</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-home"/></svg></div><h3>Сбор гуманитарной помощи</h3><p>Работа на пункте сбора на Ленина, 42: приём, сортировка и упаковка посылок для конвоев.</p></div>
         <div class="dir-card rv" style="transition-delay:.16s"><span class="dir-num">03</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-car"/></svg></div><h3>Автоволонтёрство</h3><p>Довезти ветерана до госпиталя, санатория или МФЦ — незаменимая помощь для маломобильных.</p></div>
-        <div class="dir-card rv" style="transition-delay:.24s"><span class="dir-num">04</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-book"/></svg></div><h3>Профессиональная помощь</h3><p>Юристы, медики, психологи, переводчики — ваш профессиональный опыт очень нужен отделению.</p></div>
+        <div class="dir-card rv" style="transition-delay:.24s"><span class="dir-num">04</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-book"/></svg></div><h3>Профессиональная помощь</h3><p>Юристы, медики, психологи, переводчики — ваш профессиональный опыт очень нужен совету.</p></div>
       </div>
     </section>
 
@@ -1316,7 +1463,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div>
           <span class="kicker">Полезная информация</span>
           <h2>Меры поддержки в 2026 году</h2>
-          <p class="lead">Ключевые федеральные и краевые меры для ветеранов СВО и их семей. Координатор отделения поможет оформить любую из них.</p>
+          <p class="lead">Ключевые федеральные и краевые меры для ветеранов СВО и их семей. Координатор совета поможет оформить любую из них.</p>
         </div>
       </div>
       <div class="prog-grid">
@@ -1354,10 +1501,10 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-chat"/></svg></div><span class="prog-tag">Семьям</span></div>
           <h3>Поддержка семей</h3>
           <p>Гарантии для супругов, детей и родителей ветеранов.</p>
-          <ul class="prog-list"><li>Пенсии и выплаты по потере кормильца</li><li>Льготы на детский отдых и обучение</li><li>Адресная помощь отделения</li></ul>
+          <ul class="prog-list"><li>Пенсии и выплаты по потере кормильца</li><li>Льготы на детский отдых и обучение</li><li>Адресная помощь совета</li></ul>
         </div>
       </div>
-      <div class="disclaimer rv">Размеры выплат и перечень льгот регулярно обновляются и дополняются. Актуальные суммы и условия уточняйте у координатора отделения: <b>8 800 200-34-12</b>.</div>
+      <div class="disclaimer rv">Размеры выплат и перечень льгот регулярно обновляются и дополняются. Актуальные суммы и условия уточняйте у координатора совета: <b>8 800 200-34-12</b>.</div>
     </section>
 
     <section style="padding-top:0">
@@ -1367,22 +1514,22 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <h2>Документы для обращения</h2>
           <p class="lead" style="margin-top:14px">Возьмите с собой на первый приём. Если чего-то нет — не страшно, координатор поможет восстановить.</p>
           <ul class="check-list">
-            <li><span class="check-ico">1</span><span><b>Паспорт гражданина РФ</b>и СНИЛС заявителя.</span></li>
-            <li><span class="check-ico">2</span><span><b>Удостоверение ветерана боевых действий</b>или справка из военкомата (при наличии).</span></li>
-            <li><span class="check-ico">3</span><span><b>Военный билет или контракт</b>— для подтверждения периода службы.</span></li>
-            <li><span class="check-ico">4</span><span><b>Реквизиты счёта</b>для перечисления выплат.</span></li>
-            <li><span class="check-ico">5</span><span><b>Свидетельства о рождении детей</b>для семейных льгот.</span></li>
-            <li><span class="check-ico">6</span><span><b>Медицинские документы</b>при обращении по реабилитации.</span></li>
+            <li><span class="check-ico">1</span><span><b>Паспорт гражданина РФ</b> и СНИЛС заявителя.</span></li>
+            <li><span class="check-ico">2</span><span><b>Удостоверение ветерана боевых действий</b> или справка из военкомата (при наличии).</span></li>
+            <li><span class="check-ico">3</span><span><b>Военный билет или контракт</b> — для подтверждения периода службы.</span></li>
+            <li><span class="check-ico">4</span><span><b>Реквизиты счёта</b> для перечисления выплат.</span></li>
+            <li><span class="check-ico">5</span><span><b>Свидетельства о рождении детей</b> для семейных льгот.</span></li>
+            <li><span class="check-ico">6</span><span><b>Медицинские документы</b> при обращении по реабилитации.</span></li>
           </ul>
         </div>
         <div class="rv">
           <span class="kicker">Важные телефоны</span>
           <h2>Куда ещё можно обратиться</h2>
           <div class="phone-grid" style="grid-template-columns:1fr;margin-top:24px">
-            <div class="phone-card"><b>Военкомат Адлерского района</b><a href="tel:+78622402211">+7 (862) 240-22-11</a><span>Статус, справки, военные документы</span></div>
+            <div class="phone-card"><b>Военкомат Адлерского района</b><a href="tel:+78622402211">+7 (862) 240-22-11</a><span>ул. Кирова, 155А · статус, справки, военные документы</span></div>
             <div class="phone-card"><b>Отдел соцзащиты Адлерского района</b><a href="tel:+78622403344">+7 (862) 240-33-44</a><span>Льготы, выплаты, адресная помощь</span></div>
             <div class="phone-card"><b>Социальный фонд (приём в Адлере)</b><a href="tel:+78622405566">+7 (862) 240-55-66</a><span>ЕДВ, пенсии, санаторные путёвки</span></div>
-            <div class="phone-card"><b>Городская больница № 8 г. Сочи</b><a href="tel:+78622407788">+7 (862) 240-77-88</a><span>Адлер · медицинская помощь и обследования</span></div>
+            <div class="phone-card"><b>«Боевое Братство» в Сочи</b><a href="tel:+78622406677">+7 (862) 240-66-77</a><span>ул. Макаренко, 8 · удостоверение ветерана БД</span></div>
             <div class="phone-card"><b>Единая служба помощи</b><a href="tel:112">112</a><span>Экстренные ситуации, круглосуточно</span></div>
           </div>
         </div>
@@ -1412,25 +1559,21 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
             </linearGradient>
           </defs>
           <rect width="900" height="340" fill="#232c1c"/>
-          <!-- mountains -->
           <path d="M620 60 L700 130 L760 90 L840 170 L900 120 L900 0 L560 0 Z" fill="#1c2417" opacity=".9"/>
           <path d="M700 40 L740 75 M760 60 L790 90" stroke="#d9b567" stroke-opacity=".3" stroke-width="2"/>
-          <!-- sea -->
           <path d="M0 340 L0 210 C 180 260 420 300 900 260 L900 340 Z" fill="url(#sea)"/>
           <path d="M0 218 C 180 268 420 306 900 268" fill="none" stroke="#d9b567" stroke-opacity=".5" stroke-width="2"/>
           <path d="M30 260 q30 8 60 0 M140 285 q30 8 60 0 M300 300 q30 8 60 0" stroke="#d9b567" stroke-opacity=".25" fill="none" stroke-width="2"/>
           <text x="60" y="322" font-family="Manrope" font-size="12" fill="#7f97b2" letter-spacing="3">ЧЁРНОЕ МОРЕ</text>
           <text x="735" y="46" font-family="Manrope" font-size="12" fill="#9aa48a" letter-spacing="3">ГОРЫ · КРАСНАЯ ПОЛЯНА</text>
-          <!-- roads -->
           <path d="M240 236 C 380 220 520 190 690 120" fill="none" stroke="#d9b567" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 7"/>
           <path d="M240 236 C 300 180 350 150 430 130" fill="none" stroke="#d9b567" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 7"/>
           <path d="M240 236 C 280 200 300 170 330 150" fill="none" stroke="#d9b567" stroke-opacity=".25" stroke-width="2" stroke-dasharray="4 7"/>
-          <!-- points -->
           <g>
             <circle class="pulse-dot" cx="240" cy="236" r="10" fill="#d9b567"/>
             <circle cx="240" cy="236" r="9" fill="#d9b567"/>
             <text x="240" y="216" text-anchor="middle" font-family="Unbounded" font-size="13" font-weight="600" fill="#fff">Адлер · центр</text>
-            <text x="240" y="262" text-anchor="middle" font-family="Manrope" font-size="11" fill="#b9c1a9">ул. Ленина, 42</text>
+            <text x="240" y="262" text-anchor="middle" font-family="Manrope" font-size="11" fill="#b9c1a9">ул. Ленина, 42 · приём В. Х. Рамазанова</text>
           </g>
           <g>
             <circle cx="690" cy="120" r="7" fill="#d9b567"/>
@@ -1457,7 +1600,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
             <div class="info-card rv"><div class="ic-l">Горячая линия</div><b><a href="tel:88002003412" style="text-decoration:none">8 800 200-34-12</a></b><span>Бесплатно, круглосуточно</span></div>
             <div class="info-card rv" style="transition-delay:.06s"><div class="ic-l">Электронная почта</div><b><a href="mailto:adler@sv-svo.ru" style="text-decoration:none">adler@sv-svo.ru</a></b><span>Ответим в течение суток</span></div>
             <div class="info-card rv" style="transition-delay:.12s"><div class="ic-l">Центральный офис</div><b>Сочи, Адлерский р-н, ул. Ленина, 42</b><span>Пн–Пт: 09:00 — 19:00, Сб: 10:00 — 15:00</span></div>
-            <div class="info-card rv" style="transition-delay:.18s"><div class="ic-l">Для ветеранов</div><b>Личный приём — без записи</b><span>Возьмите паспорт и документы</span></div>
+            <div class="info-card rv" style="transition-delay:.18s"><div class="ic-l">Приём председателя</div><b>ул. Свердлова — без «неприёмных дней»</b><span>В. Х. Рамазанов принимает лично</span></div>
           </div>
           <div style="margin-top:26px" class="rv">
             <span class="kicker">Точки приёма в районе</span>
@@ -1482,7 +1625,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
             </div>
             <div class="field"><label for="cf-topic">Тема обращения</label>
               <select id="cf-topic">
-                <option>Вступление в союз</option>
+                <option>Вступление в совет</option>
                 <option>Вопрос по программам помощи</option>
                 <option>Волонтёрство</option>
                 <option>Память и герои</option>
@@ -1502,12 +1645,12 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <div class="sec-head"><div><span class="kicker">Частые вопросы</span><h2>Ответы на вопросы</h2></div></div>
       <div class="faq">
         <div class="faq-item rv">
-          <button class="faq-q" type="button">Как вступить в союз ветеранов?<span class="fx">+</span></button>
+          <button class="faq-q" type="button">Как вступить в совет ветеранов?<span class="fx">+</span></button>
           <div class="faq-a"><p>Подайте заявление через форму на сайте, по телефону горячей линии или в любой точке приёма Адлерского района. Понадобятся паспорт и удостоверение ветерана боевых действий (при наличии). Решение принимается в течение 10 рабочих дней, членство бесплатное.</p></div>
         </div>
         <div class="faq-item rv">
           <button class="faq-q" type="button">Помощь действительно бесплатная?<span class="fx">+</span></button>
-          <div class="faq-a"><p>Да, все программы отделения полностью бесплатны для ветеранов СВО и членов их семей. Работа ведётся за счёт грантов, пожертвований и партнёрских программ — никаких взносов с обратившихся не взимается.</p></div>
+          <div class="faq-a"><p>Да, все программы совета полностью бесплатны для ветеранов СВО и членов их семей. Работа ведётся за счёт грантов, пожертвований и партнёрских программ — никаких взносов с обратившихся не взимается.</p></div>
         </div>
         <div class="faq-item rv">
           <button class="faq-q" type="button">Может ли обратиться семья ветерана?<span class="fx">+</span></button>
@@ -1518,7 +1661,11 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <div class="faq-a"><p>Нет. В районе работают шесть точек приёма: в центре Адлера, Красной Поляне, Блинове, Молдовке и Имеретинской низменности. Маломобильным ветеранам координатор приедет на дом.</p></div>
         </div>
         <div class="faq-item rv">
-          <button class="faq-q" type="button">Как стать волонтёром отделения?<span class="fx">+</span></button>
+          <button class="faq-q" type="button">Как попасть на приём к председателю?<span class="fx">+</span></button>
+          <div class="faq-a"><p>Владислав Хидирович Рамазанов принимает на улице Свердлова без «неприёмных дней». Если на пороге человек с бедой — его выслушают всегда. Для гарантированной встречи позвоните заранее на горячую линию.</p></div>
+        </div>
+        <div class="faq-item rv">
+          <button class="faq-q" type="button">Как стать волонтёром?<span class="fx">+</span></button>
           <div class="faq-a"><p>Заполните обращение с темой «Волонтёрство» или позвоните на горячую линию. Мы ищем наставников, юристов, медиков, психологов, автоволонтёров и просто неравнодушных жителей района. Для новичков проводится вводное обучение.</p></div>
         </div>
       </div>
@@ -1536,8 +1683,8 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div class="foot-brand">
           <svg class="emblem" style="width:48px;height:48px"><use href="#sym-emblem"/></svg>
           <div>
-            <div class="brand-name">СОЮЗ ВЕТЕРАНОВ СВО</div>
-            <div class="brand-sub" style="color:#8d967c">Адлерское районное отделение · Сочи</div>
+            <div class="brand-name">СОВЕТ ВЕТЕРАНОВ</div>
+            <div class="brand-sub" style="color:#8d967c">Адлерский район · Сочи</div>
             <span class="gribbon" style="width:56px;margin-top:10px"><i></i><i></i><i></i><i></i><i></i></span>
           </div>
         </div>
@@ -1572,12 +1719,12 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <a class="foot-phone" href="tel:88002003412">8 800 200-34-12</a>
         <a class="foot-mail" href="mailto:adler@sv-svo.ru">adler@sv-svo.ru</a>
         <p style="font-size:13px;margin-top:14px;opacity:.8">г. Сочи, Адлерский район,<br>ул. Ленина, 42 · Краснодарский край</p>
-        <p style="font-size:12px;margin-top:8px;opacity:.6">Пн–Пт: 09:00 — 19:00 · линия 24/7</p>
+        <p style="font-size:12px;margin-top:8px;opacity:.6">Приём председателя: ул. Свердлова · линия 24/7</p>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Союз ветеранов СВО России · Адлерское районное отделение</span>
-      <span>г. Сочи, Краснодарский край · Демонстрационный макет сайта</span>
+      <span>© 2026 Совет ветеранов Адлерского района · г. Сочи</span>
+      <span>Под руководством В. Х. Рамазанова · Краснодарский край</span>
     </div>
   </div>
 </footer>
