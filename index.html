@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Союз ветеранов СВО России — поддержка, братство, память</title>
+<title>Союз ветеранов СВО · Адлерский район Сочи — поддержка, братство, память</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/500.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/600.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/700.css">
@@ -25,6 +25,8 @@
   --gold:#b98c33;
   --gold-l:#d9b567;
   --red:#8f3126;
+  --gorange:#e2761b;
+  --gblack:#161512;
   --line:rgba(24,28,22,.16);
   --shadow:0 18px 44px -18px rgba(24,28,22,.35);
 }
@@ -49,6 +51,19 @@ img,svg{display:block;max-width:100%}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* ===== St. George ribbon elements ===== */
+.gr-line{
+  height:7px;
+  background:repeating-linear-gradient(90deg,var(--gblack) 0 26px,var(--gorange) 26px 52px);
+}
+.gribbon{
+  display:inline-flex;height:8px;border-radius:2px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.3);vertical-align:middle;
+}
+.gribbon i{flex:1}
+.gribbon i:nth-child(odd){background:var(--gblack)}
+.gribbon i:nth-child(even){background:var(--gorange)}
+
 /* ===== top bar ===== */
 .topbar{
   background:var(--green-x);color:#cfd6c2;font-size:13px;
@@ -71,11 +86,9 @@ header{
 }
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
 .emblem{width:56px;height:56px;flex:none;filter:drop-shadow(0 4px 10px rgba(24,28,22,.25))}
-.brand-name{font-family:'Unbounded';font-weight:700;font-size:16px;letter-spacing:.02em;line-height:1.25}
-.brand-sub{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
-.tricolor{display:inline-flex;width:34px;height:5px;border-radius:2px;overflow:hidden;margin-left:10px;vertical-align:middle}
-.tricolor i{flex:1}
-.tricolor i:nth-child(1){background:#f2f2ef}.tricolor i:nth-child(2){background:#2b4a8c}.tricolor i:nth-child(3){background:#a63a32}
+.brand-name{font-family:'Unbounded';font-weight:700;font-size:15px;letter-spacing:.02em;line-height:1.3}
+.brand-sub{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-top:3px}
+.brand-geo{display:inline-block;margin-left:8px;font-size:10.5px;letter-spacing:.08em;color:var(--green);font-weight:800}
 .hotline-mini{
   display:flex;align-items:center;gap:12px;background:var(--green);color:#eef0e4;
   padding:10px 18px;border-radius:12px;text-decoration:none;transition:transform .25s,background .25s;
@@ -94,13 +107,13 @@ header{
 .tabnav::-webkit-scrollbar{display:none}
 .tab-btn{
   position:relative;z-index:2;background:none;border:none;
-  padding:12px 20px;border-radius:10px;
-  font-weight:700;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;
+  padding:12px 16px;border-radius:10px;
+  font-weight:800;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;
   color:var(--ink-soft);white-space:nowrap;
-  display:flex;align-items:center;gap:9px;
+  display:flex;align-items:center;gap:8px;
   transition:color .3s;
 }
-.tab-btn .tnum{font-family:'Unbounded';font-size:10px;font-weight:500;color:var(--gold);opacity:.9}
+.tab-btn .tnum{font-family:'Unbounded';font-size:9.5px;font-weight:500;color:var(--gold);opacity:.9}
 .tab-btn:hover{color:var(--ink)}
 .tab-btn.is-active{color:var(--gold-l)}
 .tab-indicator{
@@ -124,7 +137,7 @@ section{padding:64px 0}
   margin-bottom:18px;
 }
 .kicker::before{content:"";width:34px;height:2px;background:var(--gold)}
-h1{font-size:clamp(30px,4.6vw,56px);font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(29px,4.4vw,54px);font-weight:700;letter-spacing:-.01em}
 h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 .lead{font-size:17px;color:var(--ink-soft);max-width:640px}
 
@@ -160,6 +173,7 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 .chip{
   font-size:12px;font-weight:700;padding:8px 14px;border-radius:99px;
   border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+  display:inline-flex;align-items:center;gap:8px;
 }
 .chip b{color:var(--green)}
 
@@ -171,13 +185,14 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
   aspect-ratio:5/5.4;box-shadow:var(--shadow);
 }
 .hero-frame::after{
-  content:"";position:absolute;inset:14px;border:1px solid rgba(217,181,103,.4);border-radius:12px;pointer-events:none;
+  content:"";position:absolute;inset:14px;border:1px solid rgba(217,181,103,.4);border-radius:12px;pointer-events:none;z-index:2;
 }
+.hero-frame .gr-line{position:absolute;bottom:0;left:0;right:0;z-index:3}
 .hero-art{position:absolute;inset:0;animation:kenburns 22s ease-in-out infinite alternate;transform-origin:60% 40%}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
 .hero-badge{
-  position:absolute;left:-22px;bottom:34px;background:var(--card);border-radius:14px;
-  padding:16px 22px;box-shadow:var(--shadow);border-left:4px solid var(--gold);max-width:250px;
+  position:absolute;left:-22px;bottom:44px;background:var(--card);border-radius:14px;
+  padding:16px 22px;box-shadow:var(--shadow);border-left:4px solid var(--gold);max-width:250px;z-index:4;
 }
 .hero-badge .hb-big{font-family:'Unbounded';font-weight:700;font-size:26px;color:var(--green)}
 .hero-badge .hb-sm{font-size:12.5px;color:var(--ink-soft);line-height:1.45}
@@ -209,6 +224,7 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
   font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--green);text-decoration:none;display:inline-flex;align-items:center;gap:8px;
   border-bottom:2px solid var(--gold);padding-bottom:4px;transition:gap .25s;white-space:nowrap;
+  background:none;border-top:none;border-left:none;border-right:none;
 }
 .sec-link:hover{gap:14px}
 
@@ -241,7 +257,7 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
   transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;
 }
 .news-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.news-top{height:8px;background:linear-gradient(90deg,var(--green),var(--gold))}
+.news-top{height:8px;background:repeating-linear-gradient(90deg,var(--gblack) 0 14px,var(--gorange) 14px 28px)}
 .news-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
 .news-date{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 .news-card h3{font-size:16px;line-height:1.4}
@@ -340,9 +356,9 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 .prog-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .prog-card::after{content:"";position:absolute;bottom:0;left:0;height:3px;width:0;background:var(--gold);transition:width .4s}
 .prog-card:hover::after{width:100%}
-.prog-top{display:flex;align-items:center;justify-content:space-between}
-.prog-ico{width:50px;height:50px;border-radius:12px;background:var(--green);color:var(--gold-l);display:grid;place-items:center}
-.prog-tag{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(185,140,51,.4);padding:5px 10px;border-radius:99px}
+.prog-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.prog-ico{width:50px;height:50px;border-radius:12px;background:var(--green);color:var(--gold-l);display:grid;place-items:center;flex:none}
+.prog-tag{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(185,140,51,.4);padding:5px 10px;border-radius:99px;white-space:nowrap}
 .prog-card h3{font-size:16px}
 .prog-card p{font-size:14px;color:var(--ink-soft);flex:1}
 .prog-list{list-style:none;display:grid;gap:6px;font-size:13px}
@@ -353,9 +369,7 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
-.step{
-  background:var(--paper2);border-radius:16px;padding:28px 22px;position:relative;
-}
+.step{background:var(--paper2);border-radius:16px;padding:28px 22px;position:relative}
 .step::before{
   counter-increment:step;content:"0" counter(step);
   font-family:'Unbounded';font-weight:700;font-size:34px;color:var(--gold);display:block;margin-bottom:14px;
@@ -412,9 +426,7 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
   transition:transform .3s,box-shadow .3s,border-color .3s;
 }
 .ev-row:hover{transform:translateX(8px);box-shadow:var(--shadow);border-color:rgba(185,140,51,.5)}
-.ev-date{
-  text-align:center;background:var(--green);color:#e9ecdc;border-radius:12px;padding:14px 8px;
-}
+.ev-date{text-align:center;background:var(--green);color:#e9ecdc;border-radius:12px;padding:14px 8px}
 .ev-date .d{font-family:'Unbounded';font-weight:700;font-size:26px;color:var(--gold-l);line-height:1}
 .ev-date .m{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
 .ev-info h3{font-size:16.5px;margin-bottom:8px}
@@ -435,11 +447,9 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 
 /* gallery */
 .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
-.gal-item{
-  border-radius:14px;overflow:hidden;position:relative;cursor:pointer;
-}
+.gal-item{border-radius:14px;overflow:hidden;position:relative;cursor:pointer}
 .gal-item:nth-child(1){grid-column:span 2;grid-row:span 2}
-.gal-art{position:absolute;inset:0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.gal-art{position:absolute;inset:0;width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .gal-item:hover .gal-art{transform:scale(1.07)}
 .gal-cap{
   position:absolute;left:0;right:0;bottom:0;padding:26px 16px 14px;color:#fff;
@@ -461,9 +471,7 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 .info-card b{font-size:15px;display:block;line-height:1.45}
 .info-card span{font-size:12.5px;color:var(--ink-soft)}
 .info-card.wide{grid-column:span 2}
-.contact-form{
-  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;
-}
+.contact-form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px}
 .contact-form .field label{color:var(--green)}
 .contact-form input,.contact-form select,.contact-form textarea{
   border:1px solid var(--line);background:var(--paper);color:var(--ink);
@@ -476,6 +484,21 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
   background:rgba(60,74,48,.1);color:var(--green);border:1px solid rgba(60,74,48,.3);
 }
 .cf-success.show{display:block;animation:panelIn .4s}
+
+/* map card */
+.map-card{
+  background:var(--green-x);border-radius:20px;overflow:hidden;position:relative;
+  box-shadow:var(--shadow);margin-bottom:26px;
+}
+.map-card svg{width:100%;height:auto;display:block}
+.pulse-dot{animation:pulseDot 2.4s ease-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes pulseDot{0%{opacity:.9;transform:scale(1)}70%{opacity:0;transform:scale(2.6)}100%{opacity:0;transform:scale(2.6)}}
+.map-legend{
+  position:absolute;left:24px;bottom:20px;background:rgba(24,28,22,.72);backdrop-filter:blur(4px);
+  border:1px solid rgba(217,181,103,.35);border-radius:12px;padding:14px 18px;color:#e9ecdc;font-size:12.5px;
+  max-width:300px;line-height:1.55;
+}
+.map-legend b{color:var(--gold-l);font-family:'Unbounded';font-size:12px;letter-spacing:.06em}
 
 /* faq */
 .faq{display:grid;gap:12px;max-width:820px}
@@ -493,15 +516,102 @@ h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .faq-a p{padding:0 22px 20px;font-size:14px;color:var(--ink-soft);max-width:680px}
 
-/* regions */
-.reg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+/* regions / points */
+.reg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .reg-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:transform .25s,border-color .25s}
 .reg-card:hover{transform:translateY(-4px);border-color:rgba(185,140,51,.5)}
 .reg-card b{font-size:14.5px;display:block}
 .reg-card span{font-size:12.5px;color:var(--ink-soft)}
 .reg-card .rc-tel{display:inline-block;margin-top:8px;font-weight:800;font-size:13px;color:var(--green);text-decoration:none}
-@media(max-width:860px){.reg-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.reg-grid{grid-template-columns:1fr}}
+
+/* ===== memory tab ===== */
+.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mem-card{
+  background:var(--green-x);color:#e9ecdc;border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;
+  transition:transform .3s,box-shadow .3s;
+}
+.mem-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.mem-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:6px;
+  background:repeating-linear-gradient(90deg,var(--gblack) 0 14px,var(--gorange) 14px 28px);
+  opacity:.85;
+}
+.mem-top{display:flex;justify-content:space-between;align-items:center;margin:8px 0 18px}
+.mem-avatar{
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
+  background:#2c3620;border:1.5px solid rgba(217,181,103,.55);
+  font-family:'Unbounded';font-weight:700;font-size:19px;color:var(--gold-l);
+}
+.mem-star{color:var(--gold-l);font-size:22px}
+.mem-card h3{font-size:15.5px;color:#fff;line-height:1.35}
+.mem-rank{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:7px 0 12px}
+.mem-card p{font-size:13px;opacity:.85}
+.mem-tag{
+  display:inline-block;margin-top:14px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold-l);border:1px solid rgba(217,181,103,.5);padding:5px 11px;border-radius:99px;
+}
+@media(max-width:960px){.mem-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.mem-grid{grid-template-columns:1fr}}
+
+/* candle */
+.candle-frame{
+  border-radius:18px;overflow:hidden;aspect-ratio:1/1.05;box-shadow:var(--shadow);position:relative;
+  background:radial-gradient(circle at 50% 30%,#2c3620 0%,var(--green-x) 70%);
+}
+.candle-frame svg{position:absolute;inset:0;width:100%;height:100%}
+.flame{transform-origin:50% 100%;transform-box:fill-box;animation:flicker 2.6s ease-in-out infinite}
+.flame-glow{animation:glow 2.6s ease-in-out infinite}
+@keyframes flicker{
+  0%,100%{transform:scaleY(1) scaleX(1)}
+  25%{transform:scaleY(1.08) scaleX(.94) translateX(.6px)}
+  55%{transform:scaleY(.93) scaleX(1.06)}
+  80%{transform:scaleY(1.05) scaleX(.95) translateX(-.6px)}
+}
+@keyframes glow{0%,100%{opacity:.55}50%{opacity:.85}}
+.candle-cap{
+  position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;text-align:center;color:#e9ecdc;
+  font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;
+  background:linear-gradient(transparent,rgba(16,20,12,.85));
+}
+
+/* volunteer */
+.vol-box{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:start;
+}
+.vol-box h3{font-size:20px;margin-bottom:14px}
+.need-list{list-style:none;display:grid;gap:12px;margin-top:18px}
+.need-list li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px}
+.vol-point{
+  background:var(--green-x);color:#e9ecdc;border-radius:16px;padding:28px;position:relative;overflow:hidden;
+}
+.vol-point::after{
+  content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;
+  border:1px solid rgba(217,181,103,.3);
+}
+.vol-point .vp-l{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);margin-bottom:10px}
+.vol-point b{font-size:16px;display:block;line-height:1.5}
+.vol-point p{font-size:13px;opacity:.8;margin-top:8px}
+@media(max-width:920px){.vol-box{grid-template-columns:1fr;padding:30px 24px}}
+
+/* phones */
+.phone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.phone-card{
+  background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:20px 22px;
+  transition:transform .25s,box-shadow .25s;
+}
+.phone-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.phone-card b{font-size:14px;display:block;line-height:1.4}
+.phone-card a{display:inline-block;margin-top:8px;font-family:'Unbounded';font-weight:600;font-size:15px;color:var(--green);text-decoration:none}
+.phone-card span{display:block;font-size:12px;color:var(--ink-soft);margin-top:4px}
+@media(max-width:900px){.phone-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.phone-grid{grid-template-columns:1fr}}
+
+.disclaimer{
+  margin-top:26px;font-size:13px;color:var(--ink-soft);background:var(--paper2);
+  border-left:4px solid var(--gold);padding:14px 18px;border-radius:0 10px 10px 0;max-width:820px;
+}
 
 /* ===== footer ===== */
 footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
@@ -526,7 +636,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
 /* divider */
 .divider{display:flex;align-items:center;gap:14px;margin:0 auto;max-width:1240px;padding:0 5vw}
 .divider .dline{flex:1;height:1px;background:var(--line)}
-.divider .dstar{color:var(--gold);font-size:15px}
+.divider .dribbon{width:70px}
 
 /* reduced motion */
 @media (prefers-reduced-motion: reduce){
@@ -541,7 +651,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
 <body>
 <div class="noise"></div>
 
-<!-- ===== SVG defs (emblem + icons) ===== -->
+<!-- ===== SVG defs ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="sym-emblem" viewBox="0 0 64 64">
@@ -550,7 +660,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <path d="M32 16l4.3 8.9 9.7 1.3-7.1 6.8 1.8 9.7L32 38.1l-8.7 4.6 1.8-9.7-7.1-6.8 9.7-1.3L32 16z" fill="#d9b567"/>
       <path d="M18 47c4 2.6 9 4.3 14 5.4 5-1.1 10-2.8 14-5.4" fill="none" stroke="#d9b567" stroke-width="1.6" stroke-linecap="round"/>
     </symbol>
-    <symbol id="i-scale" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2v20M5 6h14M12 4L6 6m6-2l6 2M6 6l-3 7a4 4 0 008 0L8 6m10 0l-3 7a4 4 0 008 0l-3-7M8 22h8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 2v20M5 6h14M12 4L6 6m6-2l6 2M6 6l-3 7a4 4 0 008 0L8 6m10 0l-3 7a4 4 0 008 0l-3-7M8 22h8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-med" viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a5 5 0 019-3 5 5 0 019 3c0 5.7-8 11-8 11z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 10h6M12 7v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-8 8c-1.4 0-2.8-.3-4-1l-5 1 1.3-4.4A8 8 0 1121 12z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 11h7M8.5 14h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
     <symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 12h18M12 11v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
@@ -559,6 +669,9 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 006 6L16 13l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M11 14l-2-2a2 2 0 013-3l2 2m-3 3l5 5a2 2 0 003-3l-5-5m-3-3l-1.5-1.5a2 2 0 00-3 3L8 11m8 0l2-2a2 2 0 00-3-3l-2 2" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3l2-5a2 2 0 012-1.5h8A2 2 0 0118 8l2 5v3M4 16h16M4 16v2h2v-2m12 0v2h2v-2" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="14" r="1" fill="currentColor"/><circle cx="16" cy="14" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-star5" viewBox="0 0 24 24"><path d="M12 2l2.6 5.4 6 .8-4.4 4.2 1.1 5.9L12 15.5l-5.3 2.8 1.1-5.9L3.4 8.2l6-.8L12 2z" fill="currentColor"/></symbol>
   </defs>
 </svg>
 
@@ -566,10 +679,11 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
 <div class="topbar">
   <div>Горячая линия поддержки: <b>8 800 200-34-12</b></div>
   <div class="tb-right">
-    <span>Работаем круглосуточно, звонок бесплатный</span>
+    <span>Адлерский район · г. Сочи · Краснодарский край</span>
     <span>Пятница, 2 октября 2026</span>
   </div>
 </div>
+<div class="gr-line" aria-hidden="true"></div>
 
 <!-- ===== header ===== -->
 <header>
@@ -578,9 +692,11 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <svg class="emblem"><use href="#sym-emblem"/></svg>
       <div>
         <div class="brand-name">СОЮЗ ВЕТЕРАНОВ СВО
-          <span class="tricolor"><i></i><i></i><i></i></span>
+          <span class="gribbon" style="width:40px;margin-left:10px" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
         </div>
-        <div class="brand-sub">Россия · поддержка · братство · память</div>
+        <div class="brand-sub">Адлерское районное отделение
+          <span class="brand-geo">г. Сочи · Краснодарский край</span>
+        </div>
       </div>
     </a>
     <a class="hotline-mini" href="tel:88002003412">
@@ -598,7 +714,10 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <button class="tab-btn" data-tab="about"><span class="tnum">02</span>О союзе</button>
       <button class="tab-btn" data-tab="support"><span class="tnum">03</span>Поддержка</button>
       <button class="tab-btn" data-tab="events"><span class="tnum">04</span>Мероприятия</button>
-      <button class="tab-btn" data-tab="contacts"><span class="tnum">05</span>Контакты</button>
+      <button class="tab-btn" data-tab="memory"><span class="tnum">05</span>Память и герои</button>
+      <button class="tab-btn" data-tab="volunteer"><span class="tnum">06</span>Волонтёрам</button>
+      <button class="tab-btn" data-tab="info"><span class="tnum">07</span>Полезное</button>
+      <button class="tab-btn" data-tab="contacts"><span class="tnum">08</span>Контакты</button>
     </nav>
   </div>
 </header>
@@ -609,21 +728,21 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="kicker">Общероссийская общественная организация</span>
+        <span class="kicker">Адлерское районное отделение · Сочи</span>
         <h1>
           <span class="lm"><span>Своих</span></span>
           <span class="lm"><span>не бросаем —</span></span>
           <span class="lm"><span style="color:var(--gold)">никогда.</span></span>
         </h1>
-        <p class="lead">Союз ветеранов СВО объединяет участников специальной военной операции и их семьи. Мы помогаем с реабилитацией, юридическими вопросами, трудоустройством и возвращением к мирной жизни — бесплатно и в каждом регионе страны.</p>
+        <p class="lead">Союз ветеранов СВО Адлерского района города Сочи объединяет участников специальной военной операции и их семьи. Мы помогаем с реабилитацией, юридическими вопросами, трудоустройством и возвращением к мирной жизни — бесплатно, рядом с домом, в каждом посёлке района.</p>
         <div class="btn-row">
           <button class="btn btn-gold" data-goto="support">Получить поддержку</button>
-          <button class="btn btn-ghost" data-goto="about">Узнать о союзе</button>
+          <button class="btn btn-ghost" data-goto="contacts">Как нас найти</button>
         </div>
         <div class="hero-chips">
-          <span class="chip"><b>89</b> региональных отделений</span>
+          <span class="chip"><span class="gribbon" style="width:26px;height:7px"><i></i><i></i><i></i><i></i><i></i></span>Адлерский район Сочи</span>
+          <span class="chip"><b>6</b> точек приёма в районе</span>
           <span class="chip"><b>24/7</b> горячая линия</span>
-          <span class="chip"><b>0 ₽</b> стоимость помощи</span>
         </div>
       </div>
       <div class="hero-visual">
@@ -645,36 +764,37 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
               <circle cx="250" cy="230" r="185"/>
               <circle cx="250" cy="230" r="220" stroke-dasharray="3 8"/>
             </g>
-            <g opacity=".35" stroke="#d9b567" stroke-width="1">
-              <path d="M0 470 L500 350"/><path d="M0 500 L500 380"/><path d="M0 530 L500 410"/>
+            <g opacity=".3" stroke="#d9b567" stroke-width="1">
+              <path d="M0 450 C 140 430 340 470 500 430"/>
+              <path d="M0 480 C 160 460 340 500 500 460"/>
             </g>
             <path d="M250 96l34 70 77 11-56 54 14 77-69-36-69 36 14-77-56-54 77-11 34-70z" fill="url(#hg2)"/>
             <path d="M250 128l24 49 54 8-39 38 10 54-49-26-49 26 10-54-39-38 54-8 24-49z" fill="#28311f"/>
             <g stroke="#d9b567" stroke-width="3" stroke-linecap="round" fill="none" opacity=".9">
               <path d="M140 400c30 26 70 42 110 48"/>
               <path d="M360 400c-30 26-70 42-110 48"/>
-              <path d="M155 385c24 20 52 33 95 40" opacity=".5"/>
-              <path d="M345 385c-24 20-52 33-95 40" opacity=".5"/>
             </g>
-            <text x="250" y="488" text-anchor="middle" font-family="Unbounded, sans-serif" font-size="19" font-weight="600" fill="#e9ecdc" letter-spacing="6">ВМЕСТЕ МЫ — СИЛА</text>
+            <text x="250" y="345" text-anchor="middle" font-family="Unbounded, sans-serif" font-size="15" font-weight="600" fill="#e9ecdc" letter-spacing="4">АДЛЕР · СОЧИ</text>
+            <text x="250" y="505" text-anchor="middle" font-family="Unbounded, sans-serif" font-size="17" font-weight="600" fill="#e9ecdc" letter-spacing="6">ВМЕСТЕ МЫ — СИЛА</text>
           </svg>
+          <div class="gr-line" aria-hidden="true"></div>
         </div>
         <svg class="hero-corner" viewBox="0 0 76 76" aria-hidden="true">
           <path d="M38 4l8.3 17 18.7 2.7-13.5 13.2 3.2 18.6L38 46.7 21.3 55.5l3.2-18.6L11 23.7 29.7 21 38 4z" fill="#b98c33"/>
         </svg>
         <div class="hero-badge">
-          <div class="hb-big" data-count="42500" data-suffix="+">0</div>
-          <div class="hb-sm">ветеранов уже состоят в реестре союза и получают поддержку</div>
+          <div class="hb-big" data-count="1240" data-suffix="+">0</div>
+          <div class="hb-sm">ветеранов Адлерского района уже состоят в реестре отделения</div>
         </div>
       </div>
     </div>
 
     <!-- stats -->
     <div class="stats rv" id="statsBand">
-      <div><div class="stat-num"><span data-count="42500">0</span><sup>+</sup></div><div class="stat-lab">ветеранов в реестре</div></div>
-      <div><div class="stat-num"><span data-count="89">0</span></div><div class="stat-lab">региональных отделений</div></div>
-      <div><div class="stat-num"><span data-count="18300">0</span><sup>+</sup></div><div class="stat-lab">решённых обращений</div></div>
-      <div><div class="stat-num"><span data-count="3400">0</span><sup>+</sup></div><div class="stat-lab">волонтёров и наставников</div></div>
+      <div><div class="stat-num"><span data-count="1240">0</span><sup>+</sup></div><div class="stat-lab">ветеранов в реестре района</div></div>
+      <div><div class="stat-num"><span data-count="6">0</span></div><div class="stat-lab">точек приёма в Адлере</div></div>
+      <div><div class="stat-num"><span data-count="2150">0</span><sup>+</sup></div><div class="stat-lab">решённых обращений</div></div>
+      <div><div class="stat-num"><span data-count="340">0</span></div><div class="stat-lab">волонтёров-адлерцев</div></div>
     </div>
   </div>
 
@@ -690,27 +810,27 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       </div>
       <div class="dir-grid">
         <div class="dir-card rv"><span class="dir-num">01</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-scale"/></svg></div><h3>Юридическая защита</h3><p>Бесплатные консультации по льготам, выплатам, статусу ветерана боевых действий и жилищным вопросам.</p></div>
-        <div class="dir-card rv" style="transition-delay:.08s"><span class="dir-num">02</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-med"/></svg></div><h3>Реабилитация и здоровье</h3><p>Направления в санатории, протезирование, высокотехнологичная медицинская помощь и сопровождение.</p></div>
-        <div class="dir-card rv" style="transition-delay:.16s"><span class="dir-num">03</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-chat"/></svg></div><h3>Психологическая помощь</h3><p>Индивидуальная и семейная работа с психологами, группы взаимопомощи, круглосуточная линия доверия.</p></div>
-        <div class="dir-card rv" style="transition-delay:.24s"><span class="dir-num">04</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-case"/></svg></div><h3>Трудоустройство</h3><p>Партнёрские программы с работодателями, переобучение, поддержка предпринимательских инициатив.</p></div>
+        <div class="dir-card rv" style="transition-delay:.08s"><span class="dir-num">02</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-med"/></svg></div><h3>Реабилитация и здоровье</h3><p>Направления в санатории Сочи, протезирование, восстановительное лечение и сопровождение.</p></div>
+        <div class="dir-card rv" style="transition-delay:.16s"><span class="dir-num">03</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-chat"/></svg></div><h3>Психологическая помощь</h3><p>Индивидуальная и семейная работа с психологами, группы взаимопомощи, линия доверия.</p></div>
+        <div class="dir-card rv" style="transition-delay:.24s"><span class="dir-num">04</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-case"/></svg></div><h3>Трудоустройство</h3><p>Партнёрские программы с работодателями Сочи, переобучение, поддержка своего дела.</p></div>
       </div>
     </section>
 
-    <div class="divider"><div class="dline"></div><span class="dstar">★</span><div class="dline"></div></div>
+    <div class="divider"><div class="dline"></div><span class="gribbon dribbon" style="width:80px;height:9px"><i></i><i></i><i></i><i></i><i></i></span><div class="dline"></div></div>
 
     <!-- news -->
     <section>
       <div class="sec-head">
         <div>
-          <span class="kicker">Новости союза</span>
-          <h2>Последние события</h2>
+          <span class="kicker">Новости отделения</span>
+          <h2>Что нового в Адлере</h2>
         </div>
         <button class="sec-link" data-goto="events">Календарь мероприятий <span>→</span></button>
       </div>
       <div class="news-grid">
-        <article class="news-card rv"><div class="news-top"></div><div class="news-body"><span class="news-date">28 сентября 2026</span><h3>Подписаны соглашения о трудоустройстве с 12 крупнейшими предприятиями</h3><p>Квоты на рабочие места для ветеранов СВО появятся в машиностроении, логистике и энергетике в 34 регионах страны.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
-        <article class="news-card rv" style="transition-delay:.1s"><div class="news-top"></div><div class="news-body"><span class="news-date">15 сентября 2026</span><h3>В Екатеринбурге открыт новый центр комплексной поддержки</h3><p>В центре работают юристы, психологи и специалисты по реабилитации. За первую неделю помощь получили более 200 человек.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
-        <article class="news-card rv" style="transition-delay:.2s"><div class="news-top"></div><div class="news-body"><span class="news-date">2 сентября 2026</span><h3>Линия психологической помощи переведена на круглосуточный режим</h3><p>Теперь получить поддержку дежурного психолога можно в любое время — по телефону и в онлайн-чате.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
+        <article class="news-card rv"><div class="news-top"></div><div class="news-body"><span class="news-date">28 сентября 2026</span><h3>Подписаны соглашения с санаториями Сочи о реабилитации ветеранов</h3><p>Ветераны Адлерского района смогут проходить восстановительное лечение в четырёх санаториях курорта по направлениям союза.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
+        <article class="news-card rv" style="transition-delay:.1s"><div class="news-top"></div><div class="news-body"><span class="news-date">15 сентября 2026</span><h3>Открыта новая точка приёма в Красной Поляне</h3><p>Теперь ветеранам горного кластера не нужно ехать в центр Адлера: приём ведут юрист и координатор по вторникам и пятницам.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
+        <article class="news-card rv" style="transition-delay:.2s"><div class="news-top"></div><div class="news-body"><span class="news-date">2 сентября 2026</span><h3>Адлерские волонтёры отправили 14-й гуманитарный конвой</h3><p>Более 4 тонн помощи собрали жители района за две недели. Сбор продолжает работать на улице Ленина, 42.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
       </div>
     </section>
 
@@ -718,8 +838,8 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <div class="cta-band rv">
         <div>
           <span class="kicker" style="color:var(--gold-l)">Нужна помощь?</span>
-          <h2>Позвоните нам — ответим в течение минуты</h2>
-          <div class="cta-sub">Бесплатно по всей России · анонимно · без выходных</div>
+          <h2>Позвоните или приходите на Ленина, 42 — примем без записи</h2>
+          <div class="cta-sub">Адлер · бесплатно · линия работает круглосуточно</div>
         </div>
         <div style="text-align:right">
           <a class="cta-phone" href="tel:88002003412">8 800 200-34-12</a>
@@ -755,17 +875,23 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
               <path d="M220 330c0-42 27-66 60-66s60 24 60 66v14h-120v-14z"/>
             </g>
             <path d="M200 70l10 21 23 3-17 16 4 23-20-11-20 11 4-23-17-16 23-3 10-21z" fill="#d9b567"/>
-            <text x="200" y="392" text-anchor="middle" font-family="Unbounded, sans-serif" font-size="14" font-weight="600" fill="#e9ecdc" letter-spacing="5">БРАТСТВО · ДОЛГ · ЧЕСТЬ</text>
+            <g>
+              <rect x="120" y="392" width="160" height="14" fill="#161512"/>
+              <rect x="138" y="392" width="18" height="14" fill="#e2761b"/>
+              <rect x="174" y="392" width="18" height="14" fill="#e2761b"/>
+              <rect x="210" y="392" width="18" height="14" fill="#e2761b"/>
+              <rect x="246" y="392" width="18" height="14" fill="#e2761b"/>
+            </g>
           </svg>
         </div>
         <div class="rv">
           <span class="kicker">Кто мы</span>
-          <h2>Созданы ветеранами — для ветеранов</h2>
-          <p class="lead" style="margin-top:18px">Союз ветеранов СВО России — общероссийская общественная организация, созданная в 2022 году по инициативе самих участников боевых действий. Наша цель — чтобы ни один ветеран и ни одна семья не остались один на один со своими вопросами.</p>
+          <h2>Созданы ветеранами — для ветеранов Адлера</h2>
+          <p class="lead" style="margin-top:18px">Адлерское районное отделение Союза ветеранов СВО создано в 2022 году по инициативе самих участников боевых действий — жителей Адлерского района Сочи. Наша цель — чтобы ни один ветеран и ни одна семья от Лазурного берега до Красной Поляны не остались один на один со своими вопросами.</p>
           <ul class="check-list">
             <li><span class="check-ico">✓</span><span><b>Адресная помощь каждому.</b> За каждым обращением закрепляется персональный координатор, который ведёт вопрос до результата.</span></li>
             <li><span class="check-ico">✓</span><span><b>Равный — равному.</b> Большинство наших сотрудников и наставников сами прошли службу и понимают ситуацию изнутри.</span></li>
-            <li><span class="check-ico">✓</span><span><b>Открытость.</b> Ежегодно публикуем отчёты о работе и расходовании средств, сотрудничает с фондом «Защитники Отечества».</span></li>
+            <li><span class="check-ico">✓</span><span><b>Рядом с домом.</b> Точки приёма работают в центре Адлера, Красной Поляне, Блинове и Молдовке.</span></li>
           </ul>
         </div>
       </div>
@@ -775,23 +901,23 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <div class="split" style="align-items:start">
         <div class="rv">
           <span class="kicker">История</span>
-          <h2>Путь союза: 2022 — 2026</h2>
+          <h2>Путь отделения: 2022 — 2026</h2>
           <div class="timeline" style="margin-top:30px">
-            <div class="tl-item"><div class="tl-year">2022</div><p>Инициативная группа ветеранов учреждает союз. Открыты первые пункты помощи в Москве, Ростове-на-Дону и Белгороде.</p></div>
-            <div class="tl-item"><div class="tl-year">2023</div><p>Сформированы 10 региональных отделений, запущена горячая линия и программа юридической помощи.</p></div>
-            <div class="tl-item"><div class="tl-year">2024</div><p>Старт федеральной программы реабилитации и санаторно-курортного лечения. Первые 5 000 ветеранов в реестре.</p></div>
-            <div class="tl-item"><div class="tl-year">2025</div><p>Открыто более 40 центров комплексной поддержки, запущены программы трудоустройства и переобучения.</p></div>
-            <div class="tl-item"><div class="tl-year">2026</div><p>Отделения работают во всех 89 регионах. В реестре союза — более 42 500 ветеранов и членов их семей.</p></div>
+            <div class="tl-item"><div class="tl-year">2022</div><p>Инициативная группа адлерских ветеранов учреждает районное отделение. Первый пункт помощи открыт на улице Ленина.</p></div>
+            <div class="tl-item"><div class="tl-year">2023</div><p>Запущена горячая линия и программа юридической помощи. Первые 150 ветеранов в реестре, сформирован волонтёрский актив.</p></div>
+            <div class="tl-item"><div class="tl-year">2024</div><p>Старт программы реабилитации совместно с санаториями Сочи. Первые группы семейной психологической поддержки.</p></div>
+            <div class="tl-item"><div class="tl-year">2025</div><p>Открыты точки приёма в Красной Поляне, Блинове и Молдовке. Проведён первый районный турнир «Кубок героев».</p></div>
+            <div class="tl-item"><div class="tl-year">2026</div><p>В реестре отделения — более 1 240 ветеранов и членов семей, 340 волонтёров, 14 гуманитарных конвоев.</p></div>
           </div>
         </div>
         <div class="rv">
           <span class="kicker">Команда</span>
-          <h2>Руководство союза</h2>
+          <h2>Руководство отделения</h2>
           <div class="team-grid" style="grid-template-columns:1fr 1fr;margin-top:26px">
-            <div class="team-card"><div class="avatar">АС</div><h3>Алексей Соколов</h3><div class="team-role">Председатель</div><p class="team-note">Ветеран боевых действий, Герой России</p></div>
-            <div class="team-card"><div class="avatar">ДМ</div><h3>Дмитрий Мартынов</h3><div class="team-role">Первый заместитель</div><p class="team-note">Курирует реабилитационные программы</p></div>
-            <div class="team-card"><div class="avatar">ОВ</div><h3>Ольга Ветрова</h3><div class="team-role">Работа с семьями</div><p class="team-note">Руководит семейными центрами поддержки</p></div>
-            <div class="team-card"><div class="avatar">СК</div><h3>Сергей Казаков</h3><div class="team-role">Региональная сеть</div><p class="team-note">Координирует 89 отделений по стране</p></div>
+            <div class="team-card"><div class="avatar">АС</div><h3>Алексей Соколов</h3><div class="team-role">Руководитель отделения</div><p class="team-note">Ветеран боевых действий, житель Адлера</p></div>
+            <div class="team-card"><div class="avatar">ДМ</div><h3>Дмитрий Мартынов</h3><div class="team-role">Реабилитация</div><p class="team-note">Курирует программы санаторного лечения</p></div>
+            <div class="team-card"><div class="avatar">ОВ</div><h3>Ольга Ветрова</h3><div class="team-role">Работа с семьями</div><p class="team-note">Ведёт семейные центры поддержки района</p></div>
+            <div class="team-card"><div class="avatar">СК</div><h3>Сергей Казаков</h3><div class="team-role">Точки приёма</div><p class="team-note">Координирует 6 точек приёма в районе</p></div>
           </div>
         </div>
       </div>
@@ -802,17 +928,17 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <div class="val-grid">
         <div class="val-card rv"><div class="vc-n">Ценность 01</div><h3>Братство</h3><p>Мы отвечаем за товарищей так же, как отвечали в строю. Взаимовыручка — основа всего, что мы делаем.</p></div>
         <div class="val-card rv" style="transition-delay:.08s"><div class="vc-n">Ценность 02</div><h3>Достоинство</h3><p>Помощь оказывается уважительно и адресно, без формальностей и бюрократических барьеров.</p></div>
-        <div class="val-card rv" style="transition-delay:.16s"><div class="vc-n">Ценность 03</div><h3>Память</h3><p>Мы храним память о подвигах и товарищах, поддерживаем музеи и мемориальные проекты по всей стране.</p></div>
-        <div class="val-card rv" style="transition-delay:.24s"><div class="vc-n">Ценность 04</div><h3>Служение</h3><p>Ветераны союза ведут патриотическую работу с молодёжью и участвуют в общественной жизни регионов.</p></div>
+        <div class="val-card rv" style="transition-delay:.16s"><div class="vc-n">Ценность 03</div><h3>Память</h3><p>Мы храним память о подвигах и товарищах, ухаживаем за мемориалами Адлерского района.</p></div>
+        <div class="val-card rv" style="transition-delay:.24s"><div class="vc-n">Ценность 04</div><h3>Служение</h3><p>Ветераны отделения ведут патриотическую работу с молодёжью Сочи и участвуют в жизни района.</p></div>
       </div>
     </section>
 
     <section style="padding-top:0">
       <div class="sec-head"><div><span class="kicker">Документы</span><h2>Официальные материалы</h2></div></div>
       <div class="doc-list">
-        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Устав общероссийской общественной организации</b><span>Утверждён учредительным съездом · 2,4 МБ</span></span><span class="doc-dl">↓</span></a>
-        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Годовой отчёт о деятельности за 2025 год</b><span>Результаты работы, финансирование, статистика · 6,1 МБ</span></span><span class="doc-dl">↓</span></a>
-        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Свидетельство о государственной регистрации</b><span>Министерство юстиции РФ · 1,1 МБ</span></span><span class="doc-dl">↓</span></a>
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Положение об Адлерском районном отделении</b><span>Утверждено краевым советом союза · 2,4 МБ</span></span><span class="doc-dl">↓</span></a>
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Отчёт о деятельности отделения за 2025 год</b><span>Результаты работы, статистика обращений · 6,1 МБ</span></span><span class="doc-dl">↓</span></a>
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Свидетельство о государственной регистрации</b><span>Главное управление Минюста по Краснодарскому краю · 1,1 МБ</span></span><span class="doc-dl">↓</span></a>
         <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Политика обработки персональных данных</b><span>Действующая редакция от 12.01.2026 · 0,6 МБ</span></span><span class="doc-dl">↓</span></a>
       </div>
     </section>
@@ -827,7 +953,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div>
           <span class="kicker">Программы помощи</span>
           <h2>Поддержка ветеранов и семей</h2>
-          <p class="lead">Все программы бесплатны. Обратиться может сам ветеран, член его семьи или законный представитель.</p>
+          <p class="lead">Все программы бесплатны. Обратиться может сам ветеран, член его семьи или законный представитель — в любую из 6 точек приёма Адлерского района.</p>
         </div>
       </div>
       <div class="prog-grid">
@@ -838,22 +964,22 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <ul class="prog-list"><li>Оформление статуса ветерана БД</li><li>Выплаты, страховки, льготы</li><li>Жилищные вопросы</li></ul>
         </div>
         <div class="prog-card rv" style="transition-delay:.07s">
-          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-med"/></svg></div><span class="prog-tag">По всей РФ</span></div>
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-med"/></svg></div><span class="prog-tag">Санатории Сочи</span></div>
           <h3>Медицинская реабилитация</h3>
-          <p>Восстановление здоровья после ранений: от диагностики до санаторного лечения.</p>
-          <ul class="prog-list"><li>Направления в санатории и центры</li><li>Протезирование и ортезы</li><li>Сопровождение в лечении</li></ul>
+          <p>Восстановление здоровья после ранений: от диагностики до санаторного лечения на курорте.</p>
+          <ul class="prog-list"><li>Направления в санатории Сочи</li><li>Протезирование и ортезы</li><li>Сопровождение в лечении</li></ul>
         </div>
         <div class="prog-card rv" style="transition-delay:.14s">
           <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-chat"/></svg></div><span class="prog-tag">24 / 7</span></div>
           <h3>Психологическая поддержка</h3>
           <p>Работаем с боевой психической травмой, адаптацией и семейными отношениями.</p>
-          <ul class="prog-list"><li>Индивидуальные консультации</li><li>Группы взаимопомощи</li><li>Круглосуточная линия доверия</li></ul>
+          <ul class="prog-list"><li>Индивидуальные консультации</li><li>Группы взаимопомощи в Адлере</li><li>Круглосуточная линия доверия</li></ul>
         </div>
         <div class="prog-card rv">
-          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-case"/></svg></div><span class="prog-tag">120+ партнёров</span></div>
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-case"/></svg></div><span class="prog-tag">Работодатели Сочи</span></div>
           <h3>Трудоустройство</h3>
           <p>Помогаем найти работу с достойной оплатой и условиями, учитывающими состояние здоровья.</p>
-          <ul class="prog-list"><li>База вакансий партнёров</li><li>Профессиональное переобучение</li><li>Помощь в открытии своего дела</li></ul>
+          <ul class="prog-list"><li>База вакансий партнёров района</li><li>Профессиональное переобучение</li><li>Помощь в открытии своего дела</li></ul>
         </div>
         <div class="prog-card rv" style="transition-delay:.07s">
           <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-home"/></svg></div><span class="prog-tag">Семьям</span></div>
@@ -862,10 +988,10 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <ul class="prog-list"><li>Адресная материальная помощь</li><li>Помощь с детьми: школа, отдых</li><li>Сопровождение семей героев</li></ul>
         </div>
         <div class="prog-card rv" style="transition-delay:.14s">
-          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-book"/></svg></div><span class="prog-tag">Гранты</span></div>
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-book"/></svg></div><span class="prog-tag">Кубок героев</span></div>
           <h3>Образование и спорт</h3>
-          <p>Открытие новых возможностей: учёба, спортивные секции «Кубок героев», наставничество.</p>
-          <ul class="prog-list"><li>Подготовка к поступлению</li><li>Адаптивный спорт</li><li>Программа «Наставник»</li></ul>
+          <p>Открытие новых возможностей: учёба, адаптивный спорт, программа наставничества.</p>
+          <ul class="prog-list"><li>Подготовка к поступлению</li><li>Секции адаптивного спорта</li><li>Программа «Наставник»</li></ul>
         </div>
       </div>
     </section>
@@ -873,7 +999,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     <section style="padding-top:0">
       <div class="sec-head"><div><span class="kicker">Как это работает</span><h2>Четыре шага до помощи</h2></div></div>
       <div class="steps">
-        <div class="step rv"><h3>Обращение</h3><p>Позвоните на горячую линию, напишите через форму или придите в центр поддержки вашего региона.</p></div>
+        <div class="step rv"><h3>Обращение</h3><p>Позвоните на горячую линию, напишите через форму или придите в точку приёма вашего посёлка.</p></div>
         <div class="step rv" style="transition-delay:.08s"><h3>Координатор</h3><p>В течение одного рабочего дня с вами связывается персональный координатор и уточняет детали.</p></div>
         <div class="step rv" style="transition-delay:.16s"><h3>План помощи</h3><p>Составляется индивидуальная программа: какие документы нужны, какие специалисты подключаются.</p></div>
         <div class="step rv" style="transition-delay:.24s"><h3>Результат</h3><p>Ведём вопрос до полного решения и остаёмся на связи — обращение можно дополнять и уточнять.</p></div>
@@ -924,8 +1050,8 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <div class="sec-head">
         <div>
           <span class="kicker">Календарь</span>
-          <h2>Ближайшие мероприятия</h2>
-          <p class="lead">Соревнования, форумы, встречи и памятные церемонии. Участие для ветеранов и семей всегда бесплатное.</p>
+          <h2>Ближайшие мероприятия района</h2>
+          <p class="lead">Соревнования, форумы, встречи и памятные церемонии в Адлерском районе. Участие для ветеранов и семей всегда бесплатное.</p>
         </div>
       </div>
       <div class="ev-list">
@@ -933,7 +1059,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <div class="ev-date"><div class="d">12</div><div class="m">октября</div></div>
           <div class="ev-info">
             <h3>Спортивный турнир «Кубок героев»</h3>
-            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Москва, ДС «Динамо»</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>10:00 — 18:00</span></div>
+            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Адлер, ДК «Олимп»</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>10:00 — 18:00</span></div>
             <span class="ev-tag">Спорт</span>
           </div>
           <button class="ev-btn" type="button">Записаться</button>
@@ -941,9 +1067,9 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div class="ev-row rv">
           <div class="ev-date"><div class="d">24</div><div class="m">октября</div></div>
           <div class="ev-info">
-            <h3>Выпуск программы реабилитации «Второе дыхание»</h3>
-            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Ростов-на-Дону, центр поддержки</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>14:00</span></div>
-            <span class="ev-tag">Реабилитация</span>
+            <h3>Сбор 15-го гуманитарного конвоя — день волонтёра</h3>
+            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Адлер, ул. Ленина, 42 (пункт сбора)</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>09:00 — 17:00</span></div>
+            <span class="ev-tag">Волонтёрство</span>
           </div>
           <button class="ev-btn" type="button">Записаться</button>
         </div>
@@ -951,7 +1077,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <div class="ev-date"><div class="d">07</div><div class="m">ноября</div></div>
           <div class="ev-info">
             <h3>Форум «Ветераны. Семья. Будущее»</h3>
-            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Санкт-Петербург, конгресс-холл</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>2 дня</span></div>
+            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Имеретинская низменность, конгресс-центр «Бархатные сезоны»</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>2 дня</span></div>
             <span class="ev-tag">Форум</span>
           </div>
           <button class="ev-btn" type="button">Записаться</button>
@@ -959,8 +1085,8 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div class="ev-row rv">
           <div class="ev-date"><div class="d">09</div><div class="m">декабря</div></div>
           <div class="ev-info">
-            <h3>Всероссийская акция памяти ко Дню Героев Отечества</h3>
-            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Все регионы страны</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>12:00 по местному времени</span></div>
+            <h3>Акция памяти ко Дню Героев Отечества у Вечного огня</h3>
+            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Адлер, мемориал в центре района</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>12:00</span></div>
             <span class="ev-tag">Память</span>
           </div>
           <button class="ev-btn" type="button">Записаться</button>
@@ -969,9 +1095,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     </section>
 
     <section style="padding-top:0">
-      <div class="sec-head">
-        <div><span class="kicker">Фотоархив</span><h2>Жизнь союза в кадрах</h2></div>
-      </div>
+      <div class="sec-head"><div><span class="kicker">Фотоархив</span><h2>Жизнь отделения в кадрах</h2></div></div>
       <div class="gal-grid">
         <div class="gal-item rv">
           <svg class="gal-art" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
@@ -980,7 +1104,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
             <circle cx="300" cy="200" r="170" fill="none" stroke="#d9b567" stroke-opacity=".15" stroke-dasharray="4 8"/>
             <path d="M300 110l24 49 54 8-39 38 10 54-49-26-49 26 10-54-39-38 54-8 24-49z" fill="#d9b567"/>
             <path d="M0 360h600M0 390h600" stroke="#d9b567" stroke-opacity=".25"/>
-            <text x="300" y="400" text-anchor="middle" font-family="Unbounded" font-size="15" fill="#e9ecdc" letter-spacing="4">«КУБОК ГЕРОЕВ» · МОСКВА</text>
+            <text x="300" y="400" text-anchor="middle" font-family="Unbounded" font-size="15" fill="#e9ecdc" letter-spacing="4">«КУБОК ГЕРОЕВ» · АДЛЕР</text>
           </svg>
           <div class="gal-cap">Турнир «Кубок героев», сентябрь 2026</div>
         </div>
@@ -990,7 +1114,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
             <path d="M150 40c-14 22-34 32-34 56a34 34 0 0068 0c0-24-20-34-34-56z" fill="#d9b567"/>
             <path d="M150 140c-6 0-10 4-10 10 0 14 4 22 10 30 6-8 10-16 10-30 0-6-4-10-10-10z" fill="#8f3126"/>
           </svg>
-          <div class="gal-cap">Акция памяти у Вечного огня</div>
+          <div class="gal-cap">Акция памяти у Вечного огня в Адлере</div>
         </div>
         <div class="gal-item rv" style="transition-delay:.14s">
           <svg class="gal-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
@@ -1004,11 +1128,11 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <div class="gal-item rv" style="transition-delay:.1s">
           <svg class="gal-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
             <rect width="300" height="200" fill="#26301f"/>
+            <path d="M0 150 C 80 90 120 160 300 80 L300 200 L0 200 Z" fill="#16202e"/>
             <g stroke="#d9b567" fill="none" stroke-width="3">
-              <path d="M70 130l40-40 30 25 50-55 40 40" stroke-linejoin="round"/>
-              <circle cx="230" cy="60" r="16" fill="#d9b567" stroke="none"/>
+              <path d="M40 120l40-30 30 20 50-45 45 35" stroke-linejoin="round"/>
             </g>
-            <path d="M40 160h220" stroke="#d9b567" stroke-opacity=".4"/>
+            <circle cx="245" cy="50" r="14" fill="#d9b567"/>
           </svg>
           <div class="gal-cap">Выпуск программы «Второе дыхание»</div>
         </div>
@@ -1017,9 +1141,250 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
             <rect width="300" height="200" fill="#3c4a30"/>
             <path d="M150 30l14 29 32 5-23 22 6 32-29-15-29 15 6-32-23-22 32-5 14-29z" fill="#d9b567"/>
             <path d="M80 130c20 16 45 26 70 30 25-4 50-14 70-30" stroke="#d9b567" fill="none" stroke-width="4" stroke-linecap="round"/>
-            <path d="M95 118c16 12 36 20 55 23" stroke="#d9b567" fill="none" stroke-width="2.5" opacity=".5"/>
           </svg>
-          <div class="gal-cap">Съезд союза, июнь 2026</div>
+          <div class="gal-cap">Слёт отделения, июнь 2026</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= ПАМЯТЬ И ГЕРОИ ================= -->
+<div class="panel" id="panel-memory">
+  <div class="wrap">
+    <section>
+      <div class="split">
+        <div class="rv">
+          <span class="kicker"><span class="gribbon" style="width:30px;height:7px;margin-right:2px"><i></i><i></i><i></i><i></i><i></i></span>Никто не забыт</span>
+          <h2>Память — наш долг</h2>
+          <p class="lead" style="margin-top:18px">Мы храним имена и истории героев Адлерского района: тех, кто вернулся, и тех, кто отдал жизнь за товарищей. Отделение ухаживает за мемориалами района, проводит памятные акции и помогает семьям сохранять память о своих близких.</p>
+          <ul class="check-list">
+            <li><span class="check-ico">✓</span><span><b>Стена памяти.</b> Собираем истории и фотографии героев района для районного мемориального стенда.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Вахта памяти.</b> Круглый год ухаживаем за памятными местами Адлера и возлагаем цветы в памятные даты.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Семьи героев.</b> Семьи погибших находятся под постоянным сопровождением отделения.</span></li>
+          </ul>
+          <div class="btn-row" style="margin-top:30px">
+            <button class="btn btn-gold" data-goto="contacts" data-topic="Память и герои">Сообщить о герое</button>
+          </div>
+        </div>
+        <div class="candle-frame rv">
+          <svg viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" aria-label="Свеча памяти">
+            <defs>
+              <radialGradient id="cg" cx="50%" cy="32%" r="55%">
+                <stop offset="0%" stop-color="#f2b64f" stop-opacity=".75"/>
+                <stop offset="100%" stop-color="#f2b64f" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle class="flame-glow" cx="200" cy="135" r="120" fill="url(#cg)"/>
+            <g stroke="#d9b567" stroke-opacity=".2" fill="none">
+              <circle cx="200" cy="140" r="150"/><circle cx="200" cy="140" r="180" stroke-dasharray="3 9"/>
+            </g>
+            <rect x="178" y="180" width="44" height="150" rx="8" fill="#efe6d0"/>
+            <rect x="178" y="180" width="12" height="150" rx="6" fill="#d9c9a4"/>
+            <path d="M178 196c6 8 12 10 22 10s16-2 22-10" fill="none" stroke="#c9b488" stroke-width="3"/>
+            <line x1="200" y1="180" x2="200" y2="164" stroke="#3a3a33" stroke-width="4" stroke-linecap="round"/>
+            <g class="flame">
+              <path d="M200 96c-16 22-26 34-26 52a26 26 0 0052 0c0-18-10-30-26-52z" fill="#e2761b"/>
+              <path d="M200 116c-9 12-14 20-14 30a14 14 0 0028 0c0-10-5-18-14-30z" fill="#f7d070"/>
+            </g>
+            <path d="M120 352h160" stroke="#d9b567" stroke-opacity=".5" stroke-width="2"/>
+            <text x="200" y="386" text-anchor="middle" font-family="Unbounded" font-size="13" font-weight="600" fill="#e9ecdc" letter-spacing="5">СВЕЧА ПАМЯТИ</text>
+          </svg>
+          <div class="candle-cap">В честь каждого героя Адлерского района</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Стена памяти</span>
+          <h2>Герои нашего района</h2>
+          <p class="lead">Имена на этом стенде — истории мужества земляков. Список пополняется по обращениям семей и сослуживцев.</p>
+        </div>
+      </div>
+      <div class="mem-grid">
+        <div class="mem-card rv">
+          <div class="mem-top"><div class="mem-avatar">АВ</div><span class="mem-star">★</span></div>
+          <h3>Андрей Волков</h3>
+          <div class="mem-rank">Сержант · командир отделения</div>
+          <p>Вывел группу из-под обстрела и обеспечил переправу подразделения. Уроженец Адлера, сегодня наставляет молодёжь района.</p>
+          <span class="mem-tag">Герой России</span>
+        </div>
+        <div class="mem-card rv" style="transition-delay:.07s">
+          <div class="mem-top"><div class="mem-avatar">ДК</div><span class="mem-star">★</span></div>
+          <h3>Денис Крылов</h3>
+          <div class="mem-rank">Младший сержант · сапёр</div>
+          <p>Ценой собственной жизни закрыл товарищей при разминировании. В его честь названа аллея в парке района.</p>
+          <span class="mem-tag">Орден Мужества · посмертно</span>
+        </div>
+        <div class="mem-card rv" style="transition-delay:.14s">
+          <div class="mem-top"><div class="mem-avatar">ИС</div><span class="mem-star">★</span></div>
+          <h3>Игорь Савин</h3>
+          <div class="mem-rank">Старший лейтенант · разведгруппа</div>
+          <p>Дважды награждён за успешные операции и спасение раненых. Живёт в Красной Поляне, ведёт секцию адаптивного спорта.</p>
+          <span class="mem-tag">Орден Мужества · дважды</span>
+        </div>
+        <div class="mem-card rv" style="transition-delay:.21s">
+          <div class="mem-top"><div class="mem-avatar">ТО</div><span class="mem-star">★</span></div>
+          <h3>Тимур Орлов</h3>
+          <div class="mem-rank">Рядовой · санитар-стрелок</div>
+          <p>Вынес с поля боя семь раненых товарищей. Погиб в 2024 году. Семья находится под сопровождением отделения.</p>
+          <span class="mem-tag">Медаль «За отвагу» · посмертно</span>
+        </div>
+      </div>
+      <p style="margin-top:22px;font-size:13px;color:var(--ink-soft)">Чтобы добавить историю героя на Стену памяти, обратитесь в отделение или оставьте обращение с темой «Память и герои».</p>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="sec-head"><div><span class="kicker">Календарь памяти</span><h2>Даты, которые мы храним</h2></div></div>
+      <div class="val-grid">
+        <div class="val-card rv"><div class="vc-n">15 февраля</div><h3>День памяти воинов-интернационалистов</h3><p>Встречи ветеранов всех поколений у мемориала в центре Адлера.</p></div>
+        <div class="val-card rv" style="transition-delay:.08s"><div class="vc-n">22 июня</div><h3>День памяти и скорби</h3><p>Акция «Свеча памяти», минута молчания, вахта у Вечного огня.</p></div>
+        <div class="val-card rv" style="transition-delay:.16s"><div class="vc-n">3 сентября</div><h3>День окончания Второй мировой войны</h3><p>Уроки мужества в школах Адлерского района с участием ветеранов.</p></div>
+        <div class="val-card rv" style="transition-delay:.24s"><div class="vc-n">9 декабря</div><h3>День Героев Отечества</h3><p>Главная районная акция памяти с участием семей героев.</p></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="sec-head"><div><span class="kicker">Мемориальные места</span><h2>Памятные места Адлерского района</h2></div></div>
+      <div class="reg-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="reg-card rv"><b>Вечный огонь у мемориала</b><span>Центр Адлера · место районных акций памяти, вахта отделения</span></div>
+        <div class="reg-card rv" style="transition-delay:.07s"><b>Аллея Памяти</b><span>Парк «Южные культуры» · деревья, высаженные в честь героев района</span></div>
+        <div class="reg-card rv" style="transition-delay:.14s"><b>Стела героям-землякам</b><span>Сквер у ДК «Олимп» · место сбора 9 декабря и 9 мая</span></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= ВОЛОНТЁРАМ ================= -->
+<div class="panel" id="panel-volunteer">
+  <div class="wrap">
+    <section>
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Как помочь</span>
+          <h2>Волонтёрам и неравнодушным</h2>
+          <p class="lead">Сила адлерского отделения — в его людях. 340 жителей района уже помогают как волонтёры. Присоединиться может каждый: опытом, временем, руками или делом.</p>
+        </div>
+        <button class="btn btn-gold" data-goto="contacts" data-topic="Волонтёрство">Стать волонтёром</button>
+      </div>
+      <div class="dir-grid">
+        <div class="dir-card rv"><span class="dir-num">01</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-hand"/></svg></div><h3>Наставник для ветерана</h3><p>Помогайте недавно вернувшимся бойцам освоиться: документы, бытовые вопросы, просто общение.</p></div>
+        <div class="dir-card rv" style="transition-delay:.08s"><span class="dir-num">02</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-home"/></svg></div><h3>Сбор гуманитарной помощи</h3><p>Работа на пункте сбора на Ленина, 42: приём, сортировка и упаковка посылок для конвоев.</p></div>
+        <div class="dir-card rv" style="transition-delay:.16s"><span class="dir-num">03</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-car"/></svg></div><h3>Автоволонтёрство</h3><p>Довезти ветерана до госпиталя, санатория или МФЦ — незаменимая помощь для маломобильных.</p></div>
+        <div class="dir-card rv" style="transition-delay:.24s"><span class="dir-num">04</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-book"/></svg></div><h3>Профессиональная помощь</h3><p>Юристы, медики, психологи, переводчики — ваш профессиональный опыт очень нужен отделению.</p></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="vol-box rv">
+        <div>
+          <span class="kicker">Что сейчас нужно</span>
+          <h3>Сбор для 15-го гуманитарного конвоя</h3>
+          <ul class="need-list check-list">
+            <li><span class="check-ico">✓</span><span><b>Медицинские изделия:</b> аптечки первой помощи, бинты, антисептики.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Тёплые вещи:</b> термобельё, перчатки, спальные мешки.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Письма и открытки:</b> детские рисунки и письма поддержки от школ района.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Продукты длительного хранения:</b> консервы, чай, кофе, мёд.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Инструменты и стройматериалы</b> для восстановления жилья семей.</span></li>
+          </ul>
+          <div class="hero-chips" style="margin-top:24px">
+            <span class="chip"><b>14</b> конвоев уже отправлено</span>
+            <span class="chip"><b>340</b> волонтёров в районе</span>
+            <span class="chip"><b>2 300+</b> писем от школьников</span>
+          </div>
+        </div>
+        <div class="vol-point">
+          <div class="vp-l">Пункт сбора · Адлер</div>
+          <b>г. Сочи, Адлерский район,<br>ул. Ленина, 42</b>
+          <p>Ежедневно с 09:00 до 19:00, без выходных. Координатор пункта — Марина Леонидовна.</p>
+          <a class="cta-phone" style="font-size:20px;margin-top:16px" href="tel:+78622401122">+7 (862) 240-11-22</a>
+          <p style="margin-top:14px">Перед передачей крупногабаритного груза позвоните — согласуем время приёмки.</p>
+          <div class="gr-line" style="margin-top:18px;border-radius:3px" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= ПОЛЕЗНОЕ ================= -->
+<div class="panel" id="panel-info">
+  <div class="wrap">
+    <section>
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Полезная информация</span>
+          <h2>Меры поддержки в 2026 году</h2>
+          <p class="lead">Ключевые федеральные и краевые меры для ветеранов СВО и их семей. Координатор отделения поможет оформить любую из них.</p>
+        </div>
+      </div>
+      <div class="prog-grid">
+        <div class="prog-card rv">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-star5"/></svg></div><span class="prog-tag">Федеральные</span></div>
+          <h3>Статус ветерана боевых действий</h3>
+          <p>Статус открывает доступ к основным гарантиям государства.</p>
+          <ul class="prog-list"><li>Ежемесячная денежная выплата (ЕДВ)</li><li>Льгота по ЖКХ и жилью</li><li>Налоговые послабления</li></ul>
+        </div>
+        <div class="prog-card rv" style="transition-delay:.07s">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-home"/></svg></div><span class="prog-tag">Краснодарский край</span></div>
+          <h3>Региональные меры Кубани</h3>
+          <p>Краснодарский край дополняет федеральные гарантии своими программами.</p>
+          <ul class="prog-list"><li>Санаторные путёвки курортов Сочи</li><li>Региональные выплаты и компенсации</li><li>Поддержка семей с детьми</li></ul>
+        </div>
+        <div class="prog-card rv" style="transition-delay:.14s">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-med"/></svg></div><span class="prog-tag">Здоровье</span></div>
+          <h3>Медицина и реабилитация</h3>
+          <p>Восстановление после ранений — приоритет номер один.</p>
+          <ul class="prog-list"><li>Высокотехнологичная медпомощь</li><li>Протезирование за счёт государства</li><li>Диспансеризация и санатории</li></ul>
+        </div>
+        <div class="prog-card rv">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-case"/></svg></div><span class="prog-tag">Работа и учёба</span></div>
+          <h3>Образование и труд</h3>
+          <p>Новые возможности для возвращения к мирной профессии.</p>
+          <ul class="prog-list"><li>Бесплатное переобучение</li><li>Квоты при поступлении в вузы</li><li>Кредит на своё дело под низкий процент</li></ul>
+        </div>
+        <div class="prog-card rv" style="transition-delay:.07s">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-pin"/></svg></div><span class="prog-tag">Жильё и земля</span></div>
+          <h3>Жилищные гарантии</h3>
+          <p>Вопросы жилья решаются с участием администрации Сочи.</p>
+          <ul class="prog-list"><li>Земельные участки в Краснодарском крае</li><li>Льготная ипотека</li><li>Содействие в ремонте жилья</li></ul>
+        </div>
+        <div class="prog-card rv" style="transition-delay:.14s">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-chat"/></svg></div><span class="prog-tag">Семьям</span></div>
+          <h3>Поддержка семей</h3>
+          <p>Гарантии для супругов, детей и родителей ветеранов.</p>
+          <ul class="prog-list"><li>Пенсии и выплаты по потере кормильца</li><li>Льготы на детский отдых и обучение</li><li>Адресная помощь отделения</li></ul>
+        </div>
+      </div>
+      <div class="disclaimer rv">Размеры выплат и перечень льгот регулярно обновляются и дополняются. Актуальные суммы и условия уточняйте у координатора отделения: <b>8 800 200-34-12</b>.</div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="split" style="align-items:start">
+        <div class="rv">
+          <span class="kicker">Чек-лист</span>
+          <h2>Документы для обращения</h2>
+          <p class="lead" style="margin-top:14px">Возьмите с собой на первый приём. Если чего-то нет — не страшно, координатор поможет восстановить.</p>
+          <ul class="check-list">
+            <li><span class="check-ico">1</span><span><b>Паспорт гражданина РФ</b>и СНИЛС заявителя.</span></li>
+            <li><span class="check-ico">2</span><span><b>Удостоверение ветерана боевых действий</b>или справка из военкомата (при наличии).</span></li>
+            <li><span class="check-ico">3</span><span><b>Военный билет или контракт</b>— для подтверждения периода службы.</span></li>
+            <li><span class="check-ico">4</span><span><b>Реквизиты счёта</b>для перечисления выплат.</span></li>
+            <li><span class="check-ico">5</span><span><b>Свидетельства о рождении детей</b>для семейных льгот.</span></li>
+            <li><span class="check-ico">6</span><span><b>Медицинские документы</b>при обращении по реабилитации.</span></li>
+          </ul>
+        </div>
+        <div class="rv">
+          <span class="kicker">Важные телефоны</span>
+          <h2>Куда ещё можно обратиться</h2>
+          <div class="phone-grid" style="grid-template-columns:1fr;margin-top:24px">
+            <div class="phone-card"><b>Военкомат Адлерского района</b><a href="tel:+78622402211">+7 (862) 240-22-11</a><span>Статус, справки, военные документы</span></div>
+            <div class="phone-card"><b>Отдел соцзащиты Адлерского района</b><a href="tel:+78622403344">+7 (862) 240-33-44</a><span>Льготы, выплаты, адресная помощь</span></div>
+            <div class="phone-card"><b>Социальный фонд (приём в Адлере)</b><a href="tel:+78622405566">+7 (862) 240-55-66</a><span>ЕДВ, пенсии, санаторные путёвки</span></div>
+            <div class="phone-card"><b>Городская больница № 8 г. Сочи</b><a href="tel:+78622407788">+7 (862) 240-77-88</a><span>Адлер · медицинская помощь и обследования</span></div>
+            <div class="phone-card"><b>Единая служба помощи</b><a href="tel:112">112</a><span>Экстренные ситуации, круглосуточно</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1033,27 +1398,76 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <div class="sec-head">
         <div>
           <span class="kicker">Связаться с нами</span>
-          <h2>Мы всегда на связи</h2>
-          <p class="lead">Выберите удобный способ: позвоните, напишите или приходите в центр поддержки вашего региона.</p>
+          <h2>Мы всегда рядом — в Адлере</h2>
+          <p class="lead">Позвоните, напишите или приходите в любую из шести точек приёма Адлерского района. Личный приём ветеранов — без записи.</p>
         </div>
       </div>
+
+      <!-- district map -->
+      <div class="map-card rv">
+        <svg viewBox="0 0 900 340" role="img" aria-label="Схема точек приёма Адлерского района">
+          <defs>
+            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1c2a38"/><stop offset="100%" stop-color="#121c26"/>
+            </linearGradient>
+          </defs>
+          <rect width="900" height="340" fill="#232c1c"/>
+          <!-- mountains -->
+          <path d="M620 60 L700 130 L760 90 L840 170 L900 120 L900 0 L560 0 Z" fill="#1c2417" opacity=".9"/>
+          <path d="M700 40 L740 75 M760 60 L790 90" stroke="#d9b567" stroke-opacity=".3" stroke-width="2"/>
+          <!-- sea -->
+          <path d="M0 340 L0 210 C 180 260 420 300 900 260 L900 340 Z" fill="url(#sea)"/>
+          <path d="M0 218 C 180 268 420 306 900 268" fill="none" stroke="#d9b567" stroke-opacity=".5" stroke-width="2"/>
+          <path d="M30 260 q30 8 60 0 M140 285 q30 8 60 0 M300 300 q30 8 60 0" stroke="#d9b567" stroke-opacity=".25" fill="none" stroke-width="2"/>
+          <text x="60" y="322" font-family="Manrope" font-size="12" fill="#7f97b2" letter-spacing="3">ЧЁРНОЕ МОРЕ</text>
+          <text x="735" y="46" font-family="Manrope" font-size="12" fill="#9aa48a" letter-spacing="3">ГОРЫ · КРАСНАЯ ПОЛЯНА</text>
+          <!-- roads -->
+          <path d="M240 236 C 380 220 520 190 690 120" fill="none" stroke="#d9b567" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 7"/>
+          <path d="M240 236 C 300 180 350 150 430 130" fill="none" stroke="#d9b567" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 7"/>
+          <path d="M240 236 C 280 200 300 170 330 150" fill="none" stroke="#d9b567" stroke-opacity=".25" stroke-width="2" stroke-dasharray="4 7"/>
+          <!-- points -->
+          <g>
+            <circle class="pulse-dot" cx="240" cy="236" r="10" fill="#d9b567"/>
+            <circle cx="240" cy="236" r="9" fill="#d9b567"/>
+            <text x="240" y="216" text-anchor="middle" font-family="Unbounded" font-size="13" font-weight="600" fill="#fff">Адлер · центр</text>
+            <text x="240" y="262" text-anchor="middle" font-family="Manrope" font-size="11" fill="#b9c1a9">ул. Ленина, 42</text>
+          </g>
+          <g>
+            <circle cx="690" cy="120" r="7" fill="#d9b567"/>
+            <text x="690" y="102" text-anchor="middle" font-family="Unbounded" font-size="12" font-weight="600" fill="#fff">Красная Поляна</text>
+          </g>
+          <g>
+            <circle cx="430" cy="130" r="7" fill="#d9b567"/>
+            <text x="430" y="112" text-anchor="middle" font-family="Unbounded" font-size="12" font-weight="600" fill="#fff">Блиново</text>
+          </g>
+          <g>
+            <circle cx="330" cy="150" r="7" fill="#d9b567"/>
+            <text x="318" y="170" text-anchor="middle" font-family="Unbounded" font-size="12" font-weight="600" fill="#fff">Молдовка</text>
+          </g>
+        </svg>
+        <div class="map-legend">
+          <b>АДЛЕРСКИЙ РАЙОН</b><br>
+          Городской округ Сочи, Краснодарский край. От берега Чёрного моря до гор Красной Поляны — 6 точек приёма для ветеранов и семей.
+        </div>
+      </div>
+
       <div class="contact-grid">
         <div>
           <div class="info-cards">
             <div class="info-card rv"><div class="ic-l">Горячая линия</div><b><a href="tel:88002003412" style="text-decoration:none">8 800 200-34-12</a></b><span>Бесплатно, круглосуточно</span></div>
-            <div class="info-card rv" style="transition-delay:.06s"><div class="ic-l">Электронная почта</div><b><a href="mailto:info@sv-svo.ru" style="text-decoration:none">info@sv-svo.ru</a></b><span>Ответим в течение суток</span></div>
-            <div class="info-card rv" style="transition-delay:.12s"><div class="ic-l">Центральный офис</div><b>Москва, ул. Тверская, 12, стр. 1</b><span>Пн–Пт: 09:00 — 19:00</span></div>
+            <div class="info-card rv" style="transition-delay:.06s"><div class="ic-l">Электронная почта</div><b><a href="mailto:adler@sv-svo.ru" style="text-decoration:none">adler@sv-svo.ru</a></b><span>Ответим в течение суток</span></div>
+            <div class="info-card rv" style="transition-delay:.12s"><div class="ic-l">Центральный офис</div><b>Сочи, Адлерский р-н, ул. Ленина, 42</b><span>Пн–Пт: 09:00 — 19:00, Сб: 10:00 — 15:00</span></div>
             <div class="info-card rv" style="transition-delay:.18s"><div class="ic-l">Для ветеранов</div><b>Личный приём — без записи</b><span>Возьмите паспорт и документы</span></div>
           </div>
           <div style="margin-top:26px" class="rv">
-            <span class="kicker">Региональные отделения</span>
+            <span class="kicker">Точки приёма в районе</span>
             <div class="reg-grid" style="margin-top:14px">
-              <div class="reg-card"><b>Центральный ФО</b><span>Координатор: Андрей К.</span><a class="rc-tel" href="tel:+74951002031">+7 (495) 100-20-31</a></div>
-              <div class="reg-card"><b>Южный ФО</b><span>Координатор: Марина Л.</span><a class="rc-tel" href="tel:+78632001145">+7 (863) 200-11-45</a></div>
-              <div class="reg-card"><b>Северо-Западный ФО</b><span>Координатор: Павел Д.</span><a class="rc-tel" href="tel:+78123005567">+7 (812) 300-55-67</a></div>
-              <div class="reg-card"><b>Приволжский ФО</b><span>Координатор: Ирина С.</span><a class="rc-tel" href="tel:+78314007789">+7 (831) 400-77-89</a></div>
-              <div class="reg-card"><b>Сибирский ФО</b><span>Координатор: Олег Т.</span><a class="rc-tel" href="tel:+73835009912">+7 (383) 500-99-12</a></div>
-              <div class="reg-card"><b>Дальневосточный ФО</b><span>Координатор: Виктор Н.</span><a class="rc-tel" href="tel:+74212003348">+7 (421) 200-33-48</a></div>
+              <div class="reg-card"><b>Адлер · центр</b><span>ул. Ленина, 42 · ежедневно</span><a class="rc-tel" href="tel:+78622401122">+7 (862) 240-11-22</a></div>
+              <div class="reg-card"><b>Красная Поляна</b><span>ул. Турчинского, 20 · вт, пт</span><a class="rc-tel" href="tel:+78622401244">+7 (862) 240-12-44</a></div>
+              <div class="reg-card"><b>Блиново</b><span>ул. Петрозаводская, 17 · ср, чт</span><a class="rc-tel" href="tel:+78622401366">+7 (862) 240-13-66</a></div>
+              <div class="reg-card"><b>Молдовка</b><span>ул. Тимирязева, 5 · пн, пт</span><a class="rc-tel" href="tel:+78622401488">+7 (862) 240-14-88</a></div>
+              <div class="reg-card"><b>Имеретинская низменность</b><span>Дом культуры · по записи</span><a class="rc-tel" href="tel:+78622401599">+7 (862) 240-15-99</a></div>
+              <div class="reg-card"><b>Выездной приём</b><span>Маломобильным ветеранам — на дом</span><a class="rc-tel" href="tel:88002003412">8 800 200-34-12</a></div>
             </div>
           </div>
         </div>
@@ -1071,6 +1485,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
                 <option>Вступление в союз</option>
                 <option>Вопрос по программам помощи</option>
                 <option>Волонтёрство</option>
+                <option>Память и герои</option>
                 <option>Сотрудничество и партнёрство</option>
                 <option>Благодарность или отзыв</option>
               </select>
@@ -1088,23 +1503,23 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       <div class="faq">
         <div class="faq-item rv">
           <button class="faq-q" type="button">Как вступить в союз ветеранов?<span class="fx">+</span></button>
-          <div class="faq-a"><p>Подайте заявление через форму на сайте, по телефону горячей линии или в региональном отделении. Понадобятся паспорт и удостоверение ветерана боевых действий (при наличии). Решение принимается в течение 10 рабочих дней, членство бесплатное.</p></div>
+          <div class="faq-a"><p>Подайте заявление через форму на сайте, по телефону горячей линии или в любой точке приёма Адлерского района. Понадобятся паспорт и удостоверение ветерана боевых действий (при наличии). Решение принимается в течение 10 рабочих дней, членство бесплатное.</p></div>
         </div>
         <div class="faq-item rv">
           <button class="faq-q" type="button">Помощь действительно бесплатная?<span class="fx">+</span></button>
-          <div class="faq-a"><p>Да, все программы союза полностью бесплатны для ветеранов СВО и членов их семей. Работа ведётся за счёт грантов, пожертвований и партнёрских программ — никаких взносов с обратившихся не взимается.</p></div>
+          <div class="faq-a"><p>Да, все программы отделения полностью бесплатны для ветеранов СВО и членов их семей. Работа ведётся за счёт грантов, пожертвований и партнёрских программ — никаких взносов с обратившихся не взимается.</p></div>
         </div>
         <div class="faq-item rv">
           <button class="faq-q" type="button">Может ли обратиться семья ветерана?<span class="fx">+</span></button>
           <div class="faq-a"><p>Конечно. Поддержку получают супруги, дети и родители ветеранов, в том числе семьи погибших героев. Для них действуют отдельные программы: адресная помощь, сопровождение, детский отдых и обучение.</p></div>
         </div>
         <div class="faq-item rv">
-          <button class="faq-q" type="button">Какие документы нужны для получения помощи?<span class="fx">+</span></button>
-          <div class="faq-a"><p>Для первичного обращения достаточно паспорта и контактных данных. Координатор подскажет, какие дополнительные документы понадобятся по конкретной ситуации, и поможет их собрать и оформить.</p></div>
+          <button class="faq-q" type="button">Живу в Красной Поляне — обязательно ехать в Адлер?<span class="fx">+</span></button>
+          <div class="faq-a"><p>Нет. В районе работают шесть точек приёма: в центре Адлера, Красной Поляне, Блинове, Молдовке и Имеретинской низменности. Маломобильным ветеранам координатор приедет на дом.</p></div>
         </div>
         <div class="faq-item rv">
-          <button class="faq-q" type="button">Как стать волонтёром союза?<span class="fx">+</span></button>
-          <div class="faq-a"><p>Заполните обращение с темой «Волонтёрство» или позвоните на горячую линию. Мы ищем наставников, юристов, медиков, психологов и просто неравнодушных людей. Для волонтёров проводится вводное обучение.</p></div>
+          <button class="faq-q" type="button">Как стать волонтёром отделения?<span class="fx">+</span></button>
+          <div class="faq-a"><p>Заполните обращение с темой «Волонтёрство» или позвоните на горячую линию. Мы ищем наставников, юристов, медиков, психологов, автоволонтёров и просто неравнодушных жителей района. Для новичков проводится вводное обучение.</p></div>
         </div>
       </div>
     </section>
@@ -1114,6 +1529,7 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
 
 <!-- ===== footer ===== -->
 <footer>
+  <div class="gr-line" aria-hidden="true"></div>
   <div class="wrap">
     <div class="foot-grid">
       <div>
@@ -1121,10 +1537,11 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <svg class="emblem" style="width:48px;height:48px"><use href="#sym-emblem"/></svg>
           <div>
             <div class="brand-name">СОЮЗ ВЕТЕРАНОВ СВО</div>
-            <div class="brand-sub" style="color:#8d967c">Россия</div>
+            <div class="brand-sub" style="color:#8d967c">Адлерское районное отделение · Сочи</div>
+            <span class="gribbon" style="width:56px;margin-top:10px"><i></i><i></i><i></i><i></i><i></i></span>
           </div>
         </div>
-        <p class="foot-desc">Общероссийская общественная организация поддержки ветеранов специальной военной операции и их семей. Своих не бросаем.</p>
+        <p class="foot-desc">Поддержка ветеранов специальной военной операции и их семей в Адлерском районе города Сочи Краснодарского края. Своих не бросаем.</p>
       </div>
       <div>
         <h4>Разделы</h4>
@@ -1133,6 +1550,9 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
           <li><button data-goto="about">О союзе</button></li>
           <li><button data-goto="support">Поддержка</button></li>
           <li><button data-goto="events">Мероприятия</button></li>
+          <li><button data-goto="memory">Память и герои</button></li>
+          <li><button data-goto="volunteer">Волонтёрам</button></li>
+          <li><button data-goto="info">Полезное</button></li>
           <li><button data-goto="contacts">Контакты</button></li>
         </ul>
       </div>
@@ -1140,22 +1560,24 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
         <h4>Помощь</h4>
         <ul class="foot-list">
           <li><button data-goto="support">Юридическая помощь</button></li>
-          <li><button data-goto="support">Реабилитация</button></li>
+          <li><button data-goto="support">Реабилитация в Сочи</button></li>
           <li><button data-goto="support">Психологическая поддержка</button></li>
           <li><button data-goto="support">Поддержка семей</button></li>
-          <li><button data-goto="contacts">Стать волонтёром</button></li>
+          <li><button data-goto="volunteer">Стать волонтёром</button></li>
+          <li><button data-goto="info">Льготы и выплаты</button></li>
         </ul>
       </div>
       <div>
         <h4>Контакты</h4>
         <a class="foot-phone" href="tel:88002003412">8 800 200-34-12</a>
-        <a class="foot-mail" href="mailto:info@sv-svo.ru">info@sv-svo.ru</a>
-        <p style="font-size:13px;margin-top:14px;opacity:.8">Москва, ул. Тверская, 12, стр. 1<br>Пн–Пт: 09:00 — 19:00 · линия 24/7</p>
+        <a class="foot-mail" href="mailto:adler@sv-svo.ru">adler@sv-svo.ru</a>
+        <p style="font-size:13px;margin-top:14px;opacity:.8">г. Сочи, Адлерский район,<br>ул. Ленина, 42 · Краснодарский край</p>
+        <p style="font-size:12px;margin-top:8px;opacity:.6">Пн–Пт: 09:00 — 19:00 · линия 24/7</p>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Союз ветеранов СВО России. Все права защищены.</span>
-      <span>ОГРН 1227700000000 · Демонстрационный макет сайта</span>
+      <span>© 2026 Союз ветеранов СВО России · Адлерское районное отделение</span>
+      <span>г. Сочи, Краснодарский край · Демонстрационный макет сайта</span>
     </div>
   </div>
 </footer>
@@ -1177,7 +1599,6 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     var left = btn.offsetLeft;
     indicator.style.width = btn.offsetWidth + "px";
     indicator.style.transform = "translateX(" + left + "px)";
-    // auto-scroll tab into view on mobile
     if(navEl.scrollWidth > navEl.clientWidth){
       var target = left - (navEl.clientWidth - btn.offsetWidth) / 2;
       navEl.scrollTo({left: Math.max(0, target), behavior: reduceMotion ? "auto" : "smooth"});
@@ -1195,13 +1616,11 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     var activeBtn = tabButtons.find(function(b){ return b.dataset.tab === name; });
     placeIndicator(activeBtn);
     requestAnimationFrame(function(){
-      // re-trigger reveal for newly visible elements
       document.querySelectorAll("#panel-" + name + " .rv:not(.in)").forEach(function(el){ revealObserver.observe(el); });
-      var counters = document.querySelectorAll("#panel-" + name + " [data-count]:not(.counted)");
-      if(counters.length) startCounters(document.getElementById("panel-" + name));
+      var scope = document.getElementById("panel-" + name);
+      if(scope) startCounters(scope);
     });
-    var header = document.querySelector("header");
-    window.scrollTo({ top: header.offsetHeight + (window.scrollY > 0 ? header.getBoundingClientRect().top + window.scrollY : 0) > window.scrollY ? window.scrollY : 0, behavior:"auto"});
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   }
   window.switchTab = switchTab;
 
@@ -1209,7 +1628,13 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     btn.addEventListener("click", function(){ switchTab(btn.dataset.tab); });
   });
   document.querySelectorAll("[data-goto]").forEach(function(el){
-    el.addEventListener("click", function(){ switchTab(el.dataset.goto); });
+    el.addEventListener("click", function(){
+      switchTab(el.dataset.goto);
+      if(el.dataset.topic){
+        var sel = document.getElementById("cf-topic");
+        if(sel){ sel.value = el.dataset.topic; }
+      }
+    });
   });
   window.addEventListener("resize", function(){
     var activeBtn = tabButtons.find(function(b){ return b.dataset.tab === currentTab; });
@@ -1232,15 +1657,12 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
   document.querySelectorAll(".rv").forEach(function(el){ revealObserver.observe(el); });
 
   /* ---------- counters ---------- */
-  function formatNum(n){
-    return Math.round(n).toLocaleString("ru-RU");
-  }
+  function formatNum(n){ return Math.round(n).toLocaleString("ru-RU"); }
   function animateCount(el){
     var target = parseInt(el.dataset.count, 10);
     var suffix = el.dataset.suffix || "";
     if(reduceMotion){ el.textContent = formatNum(target) + suffix; el.classList.add("counted"); return; }
-    var duration = 1600;
-    var start = null;
+    var duration = 1600, start = null;
     function tick(ts){
       if(!start) start = ts;
       var progress = Math.min(1, (ts - start) / duration);
@@ -1264,7 +1686,6 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
   }, { threshold: 0.35 });
   var statsBand = document.getElementById("statsBand");
   if(statsBand) statsObserver.observe(statsBand);
-  // hero badge counter (independent)
   var badgeObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){
@@ -1291,7 +1712,6 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     var a = item.querySelector(".faq-a");
     q.addEventListener("click", function(){
       var isOpen = item.classList.contains("open");
-      // close others
       document.querySelectorAll(".faq-item.open").forEach(function(other){
         if(other !== item){
           other.classList.remove("open");
@@ -1308,6 +1728,8 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
     var form = document.getElementById(formId);
     var success = document.getElementById(successId);
     if(!form) return;
+    var btn = form.querySelector("button[type=submit]");
+    var originalLabel = btn.textContent;
     form.addEventListener("submit", function(e){
       e.preventDefault();
       var valid = true;
@@ -1320,12 +1742,12 @@ footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
       });
       if(!valid) return;
       success.classList.add("show");
-      form.querySelector("button[type=submit]").textContent = "Отправлено ✓";
-      form.querySelector("button[type=submit]").style.background = "#5a7042";
+      btn.textContent = "Отправлено ✓";
+      btn.style.background = "#5a7042";
       setTimeout(function(){
         form.reset();
-        form.querySelector("button[type=submit]").textContent = formId === "reqForm" ? "Отправить заявку" : "Отправить обращение";
-        form.querySelector("button[type=submit]").style.background = "";
+        btn.textContent = originalLabel;
+        btn.style.background = "";
         success.classList.remove("show");
       }, 6000);
     });
