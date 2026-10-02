@@ -3,1570 +3,1336 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>СОЧИ EMPIRE — Content & Elite Tours</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/latin-wght-normal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/unbounded:vf@latest/latin-wght-normal.css">
+<title>Союз ветеранов СВО России — поддержка, братство, память</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope/800.css">
 <style>
-  :root {
-    --bg: #faf8f5;
-    --bg-2: #ffffff;
-    --bg-3: #f5f0e8;
-    --text: #1a1a1a;
-    --text-muted: #6b6b6b;
-    --accent: #c9a227;
-    --accent-2: #d64578;
-    --accent-3: #6d28d9;
-    --border: rgba(26, 26, 26, 0.08);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-  .font-display { font-family: 'Unbounded', sans-serif; letter-spacing: -0.02em; }
-  .gradient-text {
-    background: linear-gradient(135deg, #c9a227 0%, #d64578 50%, #6d28d9 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .gradient-border {
-    position: relative;
-    background: var(--bg-2);
-    border-radius: 24px;
-    border: 1px solid var(--border);
-  }
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(201,162,39,0.4), rgba(214,69,120,0.2), rgba(109,40,217,0.4));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-  .glow {
-    box-shadow: 0 10px 40px rgba(201,162,39,0.15), 0 20px 80px rgba(214,69,120,0.08);
-  }
-  .hero-bg {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, #faf8f5 0%, #f5f0e8 100%);
-  }
-  .hero-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at top, rgba(201,162,39,0.08), transparent 60%);
-    pointer-events: none;
-  }
-  .choice-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 32px;
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-  }
-  .choice-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-  }
-  .choice-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
-    z-index: 2;
-  }
-  .choice-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .choice-card:hover .choice-img {
-    transform: scale(1.08);
-  }
-  .choice-content {
-    position: relative;
-    z-index: 3;
-    padding: 2.5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: white;
-    min-height: 500px;
-  }
-  .choice-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    width: fit-content;
-  }
-  .choice-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 28px;
-    border-radius: 999px;
-    background: white;
-    color: #1a1a1a;
-    font-weight: 500;
-    font-size: 14px;
-    margin-top: 1.5rem;
-    transition: all 0.3s;
-    width: fit-content;
-  }
-  .choice-card:hover .choice-btn {
-    background: #1a1a1a;
-    color: white;
-    transform: translateX(4px);
-  }
-  .package-card {
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  .package-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  }
-  .package-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.08;
-    transition: opacity 0.5s;
-    z-index: 0;
-  }
-  .package-card:hover .package-img {
-    opacity: 0.15;
-  }
-  .package-content {
-    position: relative;
-    z-index: 1;
-  }
-  .hit-badge {
-    background: linear-gradient(135deg, #c9a227, #d64578);
-    color: white;
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(201,162,39,0.4); }
-    50% { box-shadow: 0 0 40px rgba(214,69,120,0.5); }
-  }
-  .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .eco-item {
-    transition: all 0.4s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .eco-item:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  }
-  .eco-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.15;
-    transition: opacity 0.4s;
-  }
-  .eco-item:hover .eco-img {
-    opacity: 0.25;
-  }
-  .eco-content {
-    position: relative;
-    z-index: 1;
-  }
-  .nav-link {
-    position: relative;
-    transition: color 0.3s;
-  }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #c9a227, #d64578);
-    transition: width 0.3s;
-  }
-  .nav-link:hover::after { width: 100%; }
-  .btn-primary {
-    background: linear-gradient(135deg, #c9a227, #d64578);
-    color: white;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #d64578, #6d28d9);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .btn-primary:hover::before { opacity: 1; }
-  .btn-primary span { position: relative; z-index: 1; }
-  .check-icon {
-    color: #c9a227;
-    flex-shrink: 0;
-    font-weight: bold;
-  }
-  .marquee {
-    animation: marquee 30s linear infinite;
-  }
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .stat-number {
-    background: linear-gradient(180deg, #1a1a1a 0%, #6b6b6b 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .grid-bg {
-    background-image: 
-      linear-gradient(rgba(26,26,26,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(26,26,26,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  details[open] summary .chevron { transform: rotate(180deg); }
-  summary .chevron { transition: transform 0.3s; }
-  summary { list-style: none; }
-  summary::-webkit-details-marker { display: none; }
-  .modal-backdrop {
-    background: rgba(250,248,245,0.85);
-    backdrop-filter: blur(10px);
-  }
-  .gallery-item {
-    overflow: hidden;
-    position: relative;
-    border-radius: 16px;
-  }
-  .gallery-item img {
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .gallery-item:hover img {
-    transform: scale(1.1);
-  }
-  .process-card {
-    position: relative;
-    overflow: hidden;
-  }
-  .process-card .process-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-  .process-card:hover .process-img {
-    opacity: 0.15;
-  }
-  .process-content {
-    position: relative;
-    z-index: 1;
-  }
-  .tours-hero {
-    position: relative;
-    overflow: hidden;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-  }
-  .tours-hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.7) 60%, rgba(26,26,26,0.95) 100%);
-    z-index: 1;
-  }
-  .tours-hero-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-  }
-  .utp-card {
-    transition: all 0.4s ease;
-  }
-  .utp-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  }
-  .upsell-card {
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .upsell-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(201,162,39,0.4);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  }
-  .floating-emoji {
-    animation: float 4s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(26,26,26,0.1), transparent);
-  }
-  .back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: white;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 40;
-    transition: all 0.3s;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  }
-  .back-to-top:hover {
-    transform: translateY(-4px);
-    background: #1a1a1a;
-    color: white;
-  }
+:root{
+  --paper:#f4f1e8;
+  --paper2:#ece8db;
+  --card:#fbf9f2;
+  --ink:#181c16;
+  --ink-soft:#4a5142;
+  --green:#3c4a30;
+  --green-d:#28311f;
+  --green-x:#1e2618;
+  --gold:#b98c33;
+  --gold-l:#d9b567;
+  --red:#8f3126;
+  --line:rgba(24,28,22,.16);
+  --shadow:0 18px 44px -18px rgba(24,28,22,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+::selection{background:var(--gold);color:var(--green-x)}
+h1,h2,h3,.disp{font-family:'Unbounded',sans-serif;font-weight:600;line-height:1.15}
+button{font-family:inherit;cursor:pointer}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+
+/* ===== noise overlay ===== */
+.noise{
+  position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===== top bar ===== */
+.topbar{
+  background:var(--green-x);color:#cfd6c2;font-size:13px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:9px 5vw;position:relative;z-index:5;
+}
+.topbar b{color:var(--gold-l);font-weight:700;letter-spacing:.02em}
+.topbar .tb-right{display:flex;gap:22px;white-space:nowrap}
+.topbar .tb-right span{opacity:.85}
+@media(max-width:720px){.topbar .tb-right span:nth-child(2){display:none}}
+
+/* ===== header ===== */
+header{
+  background:var(--paper);border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+.head-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:16px 5vw 14px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.emblem{width:56px;height:56px;flex:none;filter:drop-shadow(0 4px 10px rgba(24,28,22,.25))}
+.brand-name{font-family:'Unbounded';font-weight:700;font-size:16px;letter-spacing:.02em;line-height:1.25}
+.brand-sub{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
+.tricolor{display:inline-flex;width:34px;height:5px;border-radius:2px;overflow:hidden;margin-left:10px;vertical-align:middle}
+.tricolor i{flex:1}
+.tricolor i:nth-child(1){background:#f2f2ef}.tricolor i:nth-child(2){background:#2b4a8c}.tricolor i:nth-child(3){background:#a63a32}
+.hotline-mini{
+  display:flex;align-items:center;gap:12px;background:var(--green);color:#eef0e4;
+  padding:10px 18px;border-radius:12px;text-decoration:none;transition:transform .25s,background .25s;
+}
+.hotline-mini:hover{transform:translateY(-2px);background:var(--green-d)}
+.hotline-mini .hm-num{font-family:'Unbounded';font-weight:600;font-size:14px}
+.hotline-mini .hm-lab{font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.75}
+@media(max-width:900px){.hotline-mini{display:none}}
+
+/* ===== tab nav ===== */
+.tabnav-wrap{border-top:1px solid var(--line);background:var(--paper)}
+.tabnav{
+  display:flex;gap:4px;position:relative;padding:8px 5vw;
+  overflow-x:auto;scrollbar-width:none;
+}
+.tabnav::-webkit-scrollbar{display:none}
+.tab-btn{
+  position:relative;z-index:2;background:none;border:none;
+  padding:12px 20px;border-radius:10px;
+  font-weight:700;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-soft);white-space:nowrap;
+  display:flex;align-items:center;gap:9px;
+  transition:color .3s;
+}
+.tab-btn .tnum{font-family:'Unbounded';font-size:10px;font-weight:500;color:var(--gold);opacity:.9}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.is-active{color:var(--gold-l)}
+.tab-indicator{
+  position:absolute;top:8px;left:0;height:calc(100% - 16px);
+  background:var(--green);border-radius:10px;z-index:1;
+  transition:transform .45s cubic-bezier(.65,.05,.2,1),width .45s cubic-bezier(.65,.05,.2,1);
+  box-shadow:inset 0 0 0 1px rgba(217,181,103,.25);
+}
+
+/* ===== panels ===== */
+.panel{display:none}
+.panel.active{display:block;animation:panelIn .55s cubic-bezier(.3,.7,.3,1)}
+@keyframes panelIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 5vw}
+section{padding:64px 0}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:18px;
+}
+.kicker::before{content:"";width:34px;height:2px;background:var(--gold)}
+h1{font-size:clamp(30px,4.6vw,56px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.01em}
+.lead{font-size:17px;color:var(--ink-soft);max-width:640px}
+
+/* line-mask reveal */
+.lm{display:block;overflow:hidden}
+.lm>span{display:block;transform:translateY(115%);animation:lmUp .9s cubic-bezier(.2,.7,.2,1) forwards}
+.lm:nth-child(2)>span{animation-delay:.12s}
+.lm:nth-child(3)>span{animation-delay:.24s}
+@keyframes lmUp{to{transform:none}}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ===== hero ===== */
+.hero{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+  padding:64px 0 72px;
+}
+.hero p.lead{margin:22px 0 32px}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 28px;border-radius:12px;border:1.5px solid transparent;
+  font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;
+  transition:transform .25s,box-shadow .25s,background .25s,color .25s;
+}
+.btn-gold{background:var(--gold);color:var(--green-x)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 28px -12px rgba(185,140,51,.6)}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-3px)}
+.hero-chips{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}
+.chip{
+  font-size:12px;font-weight:700;padding:8px 14px;border-radius:99px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+}
+.chip b{color:var(--green)}
+
+/* hero visual */
+.hero-visual{position:relative}
+.hero-frame{
+  position:relative;border-radius:18px;overflow:hidden;
+  background:linear-gradient(160deg,var(--green-d) 0%,var(--green) 55%,#4d5c3c 100%);
+  aspect-ratio:5/5.4;box-shadow:var(--shadow);
+}
+.hero-frame::after{
+  content:"";position:absolute;inset:14px;border:1px solid rgba(217,181,103,.4);border-radius:12px;pointer-events:none;
+}
+.hero-art{position:absolute;inset:0;animation:kenburns 22s ease-in-out infinite alternate;transform-origin:60% 40%}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+.hero-badge{
+  position:absolute;left:-22px;bottom:34px;background:var(--card);border-radius:14px;
+  padding:16px 22px;box-shadow:var(--shadow);border-left:4px solid var(--gold);max-width:250px;
+}
+.hero-badge .hb-big{font-family:'Unbounded';font-weight:700;font-size:26px;color:var(--green)}
+.hero-badge .hb-sm{font-size:12.5px;color:var(--ink-soft);line-height:1.45}
+.hero-corner{position:absolute;top:-14px;right:-14px;width:76px;height:76px}
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;gap:44px;padding-top:44px}
+  .hero-badge{left:12px}
+}
+
+/* ===== stats band ===== */
+.stats{
+  background:var(--green-x);color:#e8ebdc;border-radius:20px;
+  padding:46px 44px;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;
+  position:relative;overflow:hidden;
+}
+.stats::before{
+  content:"";position:absolute;inset:0;opacity:.07;pointer-events:none;
+  background-image:repeating-linear-gradient(135deg,transparent 0 22px,var(--gold-l) 22px 23px);
+}
+.stat-num{font-family:'Unbounded';font-weight:700;font-size:clamp(28px,3.4vw,46px);color:var(--gold-l)}
+.stat-num sup{font-size:.5em;color:var(--gold)}
+.stat-lab{font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.8;margin-top:8px}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr);padding:36px 28px}}
+
+/* ===== section head ===== */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:42px;flex-wrap:wrap}
+.sec-head .lead{margin-top:14px}
+.sec-link{
+  font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--green);text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  border-bottom:2px solid var(--gold);padding-bottom:4px;transition:gap .25s;white-space:nowrap;
+}
+.sec-link:hover{gap:14px}
+
+/* ===== direction cards ===== */
+.dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.dir-card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;
+  position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;
+}
+.dir-card::before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--gold),transparent 70%);opacity:0;transition:opacity .3s;
+}
+.dir-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(185,140,51,.5)}
+.dir-card:hover::before{opacity:1}
+.dir-ico{
+  width:52px;height:52px;border-radius:13px;background:var(--green);color:var(--gold-l);
+  display:grid;place-items:center;margin-bottom:18px;
+}
+.dir-card h3{font-size:15px;margin-bottom:10px;line-height:1.35}
+.dir-card p{font-size:13.5px;color:var(--ink-soft)}
+.dir-num{position:absolute;top:18px;right:20px;font-family:'Unbounded';font-weight:500;font-size:13px;color:var(--gold);opacity:.55}
+@media(max-width:960px){.dir-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.dir-grid{grid-template-columns:1fr}}
+
+/* ===== news ===== */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news-card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;
+}
+.news-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.news-top{height:8px;background:linear-gradient(90deg,var(--green),var(--gold))}
+.news-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.news-date{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.news-card h3{font-size:16px;line-height:1.4}
+.news-card p{font-size:14px;color:var(--ink-soft);flex:1}
+.news-more{font-weight:800;font-size:13px;color:var(--green);text-decoration:none;letter-spacing:.04em}
+@media(max-width:900px){.news-grid{grid-template-columns:1fr}}
+
+/* ===== CTA band ===== */
+.cta-band{
+  background:var(--green-x);border-radius:20px;color:#eef0e2;
+  display:flex;justify-content:space-between;align-items:center;gap:30px;
+  padding:44px 48px;position:relative;overflow:hidden;flex-wrap:wrap;
+}
+.cta-band::before{
+  content:"★";position:absolute;right:-40px;top:-70px;font-size:340px;color:rgba(217,181,103,.06);line-height:1;
+}
+.cta-band h2{color:#fff;max-width:560px}
+.cta-phone{font-family:'Unbounded';font-weight:700;font-size:clamp(22px,3vw,34px);color:var(--gold-l);text-decoration:none;display:block;margin-top:10px}
+.cta-sub{font-size:13px;opacity:.7;margin-top:6px}
+
+/* ===== about ===== */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:920px){.split{grid-template-columns:1fr}}
+.split-art{
+  border-radius:18px;overflow:hidden;aspect-ratio:1/1.05;box-shadow:var(--shadow);position:relative;
+  background:linear-gradient(150deg,#2b3524,#46543a 60%,#5a6a48);
+}
+.split-art svg{position:absolute;inset:0;width:100%;height:100%}
+.check-list{list-style:none;margin-top:26px;display:grid;gap:14px}
+.check-list li{display:flex;gap:14px;align-items:flex-start;font-size:15px}
+.check-list li b{display:block}
+.check-ico{
+  flex:none;width:26px;height:26px;border-radius:8px;background:var(--gold);color:var(--green-x);
+  display:grid;place-items:center;font-weight:800;font-size:14px;margin-top:2px;
+}
+
+/* timeline */
+.timeline{position:relative;margin-top:16px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),rgba(185,140,51,.15))}
+.tl-item{position:relative;padding-bottom:34px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-31px;top:7px;width:12px;height:12px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 4px rgba(185,140,51,.2);
+}
+.tl-year{font-family:'Unbounded';font-weight:700;font-size:20px;color:var(--green)}
+.tl-item p{font-size:14.5px;color:var(--ink-soft);max-width:560px;margin-top:6px}
+
+/* values */
+.val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.val-card{
+  background:var(--green);color:#e9ecdc;border-radius:16px;padding:28px 24px;
+  transition:transform .3s,background .3s;
+}
+.val-card:hover{transform:translateY(-6px);background:var(--green-d)}
+.val-card .vc-n{font-family:'Unbounded';font-weight:500;color:var(--gold-l);font-size:13px;margin-bottom:14px}
+.val-card h3{font-size:16px;color:#fff;margin-bottom:10px}
+.val-card p{font-size:13.5px;opacity:.85}
+@media(max-width:960px){.val-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.val-grid{grid-template-columns:1fr}}
+
+/* team */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.team-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 22px;text-align:center;transition:transform .3s,box-shadow .3s}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.avatar{
+  width:78px;height:78px;border-radius:50%;margin:0 auto 16px;
+  background:radial-gradient(circle at 30% 25%,var(--gold-l),var(--gold) 60%,#8a6620);
+  color:var(--green-x);font-family:'Unbounded';font-weight:700;font-size:22px;
+  display:grid;place-items:center;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35);
+}
+.team-card h3{font-size:14.5px;line-height:1.4}
+.team-role{font-size:12.5px;color:var(--gold);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
+.team-note{font-size:13px;color:var(--ink-soft);margin-top:10px}
+@media(max-width:960px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* docs */
+.doc-list{display:grid;gap:12px;max-width:760px}
+.doc-row{
+  display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:16px 20px;text-decoration:none;transition:transform .25s,border-color .25s;
+}
+.doc-row:hover{transform:translateX(6px);border-color:var(--gold)}
+.doc-ico{flex:none;width:40px;height:40px;border-radius:10px;background:var(--paper2);display:grid;place-items:center;color:var(--red);font-family:'Unbounded';font-size:10px;font-weight:700}
+.doc-row b{display:block;font-size:14.5px}
+.doc-row span{font-size:12.5px;color:var(--ink-soft)}
+.doc-dl{margin-left:auto;color:var(--gold);font-size:18px}
+
+/* ===== support programs ===== */
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prog-card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px 26px;
+  display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;
+  transition:transform .3s,box-shadow .3s;
+}
+.prog-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.prog-card::after{content:"";position:absolute;bottom:0;left:0;height:3px;width:0;background:var(--gold);transition:width .4s}
+.prog-card:hover::after{width:100%}
+.prog-top{display:flex;align-items:center;justify-content:space-between}
+.prog-ico{width:50px;height:50px;border-radius:12px;background:var(--green);color:var(--gold-l);display:grid;place-items:center}
+.prog-tag{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(185,140,51,.4);padding:5px 10px;border-radius:99px}
+.prog-card h3{font-size:16px}
+.prog-card p{font-size:14px;color:var(--ink-soft);flex:1}
+.prog-list{list-style:none;display:grid;gap:6px;font-size:13px}
+.prog-list li{padding-left:20px;position:relative;color:var(--ink-soft)}
+.prog-list li::before{content:"—";position:absolute;left:0;color:var(--gold);font-weight:800}
+@media(max-width:960px){.prog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.prog-grid{grid-template-columns:1fr}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+.step{
+  background:var(--paper2);border-radius:16px;padding:28px 22px;position:relative;
+}
+.step::before{
+  counter-increment:step;content:"0" counter(step);
+  font-family:'Unbounded';font-weight:700;font-size:34px;color:var(--gold);display:block;margin-bottom:14px;
+}
+.step h3{font-size:14.5px;margin-bottom:8px}
+.step p{font-size:13px;color:var(--ink-soft)}
+@media(max-width:920px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* form */
+.req-box{
+  background:var(--green-x);border-radius:20px;padding:46px;color:#e9ecdc;
+  display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:center;overflow:hidden;position:relative;
+}
+.req-box::before{
+  content:"";position:absolute;left:-80px;bottom:-80px;width:280px;height:280px;border-radius:50%;
+  border:1px solid rgba(217,181,103,.25);
+}
+.req-box::after{
+  content:"";position:absolute;left:-40px;bottom:-40px;width:280px;height:280px;border-radius:50%;
+  border:1px solid rgba(217,181,103,.15);
+}
+.req-box h2{color:#fff}
+.req-box .lead{color:rgba(233,236,220,.8);margin-top:14px}
+.req-info{list-style:none;display:grid;gap:12px;margin-top:26px;font-size:14px}
+.req-info li{display:flex;gap:12px;align-items:center}
+.req-info .ri-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-l);flex:none}
+.form{display:grid;gap:14px;position:relative;z-index:2}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field label{display:block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l);margin-bottom:7px}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 16px;border-radius:10px;border:1px solid rgba(233,236,220,.25);
+  background:rgba(255,255,255,.07);color:#fff;font-family:inherit;font-size:14.5px;
+  transition:border-color .25s,background .25s;
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(233,236,220,.45)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold-l);background:rgba(255,255,255,.12)}
+.field select option{color:var(--ink)}
+.form .btn{justify-content:center;margin-top:6px}
+.form-note{font-size:11.5px;opacity:.55;text-align:center}
+.form-success{
+  display:none;background:rgba(217,181,103,.12);border:1px solid var(--gold-l);border-radius:12px;
+  padding:16px 18px;font-size:14px;color:var(--gold-l);align-items:center;gap:12px;
+}
+.form-success.show{display:flex;animation:panelIn .4s}
+@media(max-width:920px){.req-box{grid-template-columns:1fr;padding:34px 26px}}
+@media(max-width:560px){.form-row{grid-template-columns:1fr}}
+
+/* ===== events ===== */
+.ev-list{display:grid;gap:16px}
+.ev-row{
+  display:grid;grid-template-columns:110px 1fr auto;gap:26px;align-items:center;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;
+  transition:transform .3s,box-shadow .3s,border-color .3s;
+}
+.ev-row:hover{transform:translateX(8px);box-shadow:var(--shadow);border-color:rgba(185,140,51,.5)}
+.ev-date{
+  text-align:center;background:var(--green);color:#e9ecdc;border-radius:12px;padding:14px 8px;
+}
+.ev-date .d{font-family:'Unbounded';font-weight:700;font-size:26px;color:var(--gold-l);line-height:1}
+.ev-date .m{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
+.ev-info h3{font-size:16.5px;margin-bottom:8px}
+.ev-meta{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--ink-soft)}
+.ev-meta span{display:inline-flex;align-items:center;gap:7px}
+.ev-tag{
+  display:inline-block;margin-top:10px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);background:rgba(60,74,48,.12);padding:5px 12px;border-radius:99px;
+}
+.ev-btn{
+  border:1.5px solid var(--green);background:transparent;color:var(--green);
+  padding:12px 22px;border-radius:10px;font-weight:800;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  transition:all .25s;white-space:nowrap;
+}
+.ev-btn:hover{background:var(--green);color:#fff}
+.ev-btn.joined{background:var(--gold);border-color:var(--gold);color:var(--green-x);cursor:default}
+@media(max-width:760px){.ev-row{grid-template-columns:1fr;gap:16px}.ev-date{width:110px}}
+
+/* gallery */
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+.gal-item{
+  border-radius:14px;overflow:hidden;position:relative;cursor:pointer;
+}
+.gal-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gal-art{position:absolute;inset:0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.gal-item:hover .gal-art{transform:scale(1.07)}
+.gal-cap{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 16px 14px;color:#fff;
+  font-size:12.5px;font-weight:700;letter-spacing:.04em;
+  background:linear-gradient(transparent,rgba(20,26,16,.85));
+}
+@media(max-width:820px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== contacts ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:26px;align-items:start}
+@media(max-width:920px){.contact-grid{grid-template-columns:1fr}}
+.info-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.info-card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;
+  transition:transform .25s,border-color .25s;
+}
+.info-card:hover{transform:translateY(-4px);border-color:rgba(185,140,51,.5)}
+.info-card .ic-l{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.info-card b{font-size:15px;display:block;line-height:1.45}
+.info-card span{font-size:12.5px;color:var(--ink-soft)}
+.info-card.wide{grid-column:span 2}
+.contact-form{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;
+}
+.contact-form .field label{color:var(--green)}
+.contact-form input,.contact-form select,.contact-form textarea{
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);
+}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(24,28,22,.4)}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--gold);background:#fff}
+.contact-form .btn{width:100%}
+.cf-success{
+  display:none;margin-top:14px;padding:14px 16px;border-radius:10px;font-size:13.5px;font-weight:700;
+  background:rgba(60,74,48,.1);color:var(--green);border:1px solid rgba(60,74,48,.3);
+}
+.cf-success.show{display:block;animation:panelIn .4s}
+
+/* faq */
+.faq{display:grid;gap:12px;max-width:820px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.faq-q{
+  width:100%;background:none;border:none;text-align:left;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:19px 22px;font-weight:800;font-size:14.5px;color:var(--ink);
+}
+.faq-q .fx{
+  flex:none;width:28px;height:28px;border-radius:8px;background:var(--paper2);display:grid;place-items:center;
+  color:var(--gold);font-size:17px;transition:transform .35s,background .35s;
+}
+.faq-item.open .fx{transform:rotate(45deg);background:var(--gold);color:var(--green-x)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 22px 20px;font-size:14px;color:var(--ink-soft);max-width:680px}
+
+/* regions */
+.reg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.reg-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:transform .25s,border-color .25s}
+.reg-card:hover{transform:translateY(-4px);border-color:rgba(185,140,51,.5)}
+.reg-card b{font-size:14.5px;display:block}
+.reg-card span{font-size:12.5px;color:var(--ink-soft)}
+.reg-card .rc-tel{display:inline-block;margin-top:8px;font-weight:800;font-size:13px;color:var(--green);text-decoration:none}
+@media(max-width:860px){.reg-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.reg-grid{grid-template-columns:1fr}}
+
+/* ===== footer ===== */
+footer{background:var(--green-x);color:#b9c1a9;margin-top:70px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding:60px 0 44px}
+.foot-grid h4{font-family:'Unbounded';font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:18px}
+.foot-brand{display:flex;gap:14px;align-items:flex-start}
+.foot-brand .brand-name{color:#fff;font-size:15px}
+.foot-desc{font-size:13.5px;margin-top:16px;max-width:300px;opacity:.85}
+.foot-list{list-style:none;display:grid;gap:11px;font-size:14px}
+.foot-list button{background:none;border:none;color:#b9c1a9;font-size:14px;padding:0;transition:color .25s;text-align:left}
+.foot-list button:hover,.foot-list a:hover{color:var(--gold-l)}
+.foot-list a{color:inherit;text-decoration:none}
+.foot-phone{font-family:'Unbounded';font-weight:700;font-size:21px;color:var(--gold-l);text-decoration:none;display:block;margin-bottom:10px}
+.foot-mail{color:#dfe4d2;text-decoration:none;font-size:14px;border-bottom:1px solid rgba(217,181,103,.4);padding-bottom:2px}
+.foot-bottom{
+  border-top:1px solid rgba(233,236,220,.12);padding:20px 0;display:flex;justify-content:space-between;gap:16px;
+  font-size:12.5px;flex-wrap:wrap;opacity:.7;
+}
+@media(max-width:920px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+
+/* divider */
+.divider{display:flex;align-items:center;gap:14px;margin:0 auto;max-width:1240px;padding:0 5vw}
+.divider .dline{flex:1;height:1px;background:var(--line)}
+.divider .dstar{color:var(--gold);font-size:15px}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+  .hero-art{animation:none}
+  .lm>span{transform:none;animation:none}
+  .rv{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
+<div class="noise"></div>
 
-<!-- NAVIGATION -->
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/70 border-b border-black/5">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-pink-500 flex items-center justify-center font-display font-bold text-white">С</div>
-      <div class="font-display text-sm tracking-widest">
-        <div class="text-black">СОЧИ</div>
-        <div class="text-amber-600 text-[10px]">EMPIRE</div>
+<!-- ===== SVG defs (emblem + icons) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sym-emblem" viewBox="0 0 64 64">
+      <path d="M32 3 56 11v20c0 14-10 24-24 30C18 55 8 45 8 31V11L32 3z" fill="#3c4a30" stroke="#d9b567" stroke-width="2"/>
+      <path d="M32 8 51 14.5V31c0 11-7.8 19.4-19 24.6C20.8 50.4 13 42 13 31V14.5L32 8z" fill="#28311f"/>
+      <path d="M32 16l4.3 8.9 9.7 1.3-7.1 6.8 1.8 9.7L32 38.1l-8.7 4.6 1.8-9.7-7.1-6.8 9.7-1.3L32 16z" fill="#d9b567"/>
+      <path d="M18 47c4 2.6 9 4.3 14 5.4 5-1.1 10-2.8 14-5.4" fill="none" stroke="#d9b567" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2v20M5 6h14M12 4L6 6m6-2l6 2M6 6l-3 7a4 4 0 008 0L8 6m10 0l-3 7a4 4 0 008 0l-3-7M8 22h8" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-med" viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a5 5 0 019-3 5 5 0 019 3c0 5.7-8 11-8 11z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 10h6M12 7v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-8 8c-1.4 0-2.8-.3-4-1l-5 1 1.3-4.4A8 8 0 1121 12z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 11h7M8.5 14h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 12h18M12 11v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 012-2h14v16H6a2 2 0 00-2 2V5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M20 15H6a2 2 0 00-2 2M9 7h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a12 12 0 006 6L16 13l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===== top bar ===== -->
+<div class="topbar">
+  <div>Горячая линия поддержки: <b>8 800 200-34-12</b></div>
+  <div class="tb-right">
+    <span>Работаем круглосуточно, звонок бесплатный</span>
+    <span>Пятница, 2 октября 2026</span>
+  </div>
+</div>
+
+<!-- ===== header ===== -->
+<header>
+  <div class="head-inner">
+    <a class="brand" href="#" onclick="switchTab('home');return false;">
+      <svg class="emblem"><use href="#sym-emblem"/></svg>
+      <div>
+        <div class="brand-name">СОЮЗ ВЕТЕРАНОВ СВО
+          <span class="tricolor"><i></i><i></i><i></i></span>
+        </div>
+        <div class="brand-sub">Россия · поддержка · братство · память</div>
       </div>
     </a>
-    <div class="hidden md:flex items-center gap-7 text-sm">
-      <a href="#content-empire" class="nav-link text-black/70 hover:text-black">Content Empire</a>
-      <a href="#elite-tours" class="nav-link text-black/70 hover:text-black">Elite Tours</a>
-      <a href="#gallery" class="nav-link text-black/70 hover:text-black">Галерея</a>
-      <a href="#faq" class="nav-link text-black/70 hover:text-black">FAQ</a>
-    </div>
-    <a href="#top" class="btn-primary px-5 py-2.5 rounded-full text-sm font-medium">
-      <span>К выбору</span>
+    <a class="hotline-mini" href="tel:88002003412">
+      <svg width="20" height="20" fill="none"><use href="#i-phone"/></svg>
+      <div>
+        <div class="hm-lab">Горячая линия 24/7</div>
+        <div class="hm-num">8 800 200-34-12</div>
+      </div>
     </a>
   </div>
-</nav>
+  <div class="tabnav-wrap">
+    <nav class="tabnav" id="tabnav">
+      <div class="tab-indicator" id="tabInd"></div>
+      <button class="tab-btn is-active" data-tab="home"><span class="tnum">01</span>Главная</button>
+      <button class="tab-btn" data-tab="about"><span class="tnum">02</span>О союзе</button>
+      <button class="tab-btn" data-tab="support"><span class="tnum">03</span>Поддержка</button>
+      <button class="tab-btn" data-tab="events"><span class="tnum">04</span>Мероприятия</button>
+      <button class="tab-btn" data-tab="contacts"><span class="tnum">05</span>Контакты</button>
+    </nav>
+  </div>
+</header>
 
-<!-- HERO / CHOICE -->
-<section id="top" class="hero-bg min-h-screen flex items-center relative pt-24 pb-16">
-  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
-    <div class="text-center mb-16 fade-in">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 bg-white/80 backdrop-blur mb-8">
-        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-        <span class="text-xs tracking-widest text-black/70">СОЧИ · АДЛЕР · КРАСНАЯ ПОЛЯНА</span>
-      </div>
-      
-      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6">
-        <span class="block">СОЧИ</span>
-        <span class="block gradient-text">EMPIRE</span>
-      </h1>
-      
-      <p class="text-lg md:text-xl text-black/60 max-w-2xl mx-auto leading-relaxed">
-        Выберите свой опыт — от премиум-контента до эксклюзивных вечеров
-      </p>
-    </div>
-    
-    <div class="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-      <!-- Choice 1: Content Empire -->
-      <a href="#content-empire" class="choice-card fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f59dbef9-3351-4a15-b2f6-385620fa8ed0.png" class="choice-img" alt="Content Empire">
-        <div class="choice-content">
-          <div class="choice-badge">📸 ФОТО · ВИДЕО · КОНТЕНТ</div>
-          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight">
-            СОЧИ<br>
-            <span class="bg-gradient-to-r from-amber-300 to-pink-300 bg-clip-text text-transparent">CONTENT</span><br>
-            EMPIRE
-          </h2>
-          <p class="text-white/80 text-sm md:text-base max-w-md leading-relaxed">
-            Фотосессии, видеопродакшн, экосистема контента. От 5 900 ₽ до 75 000 ₽.
-          </p>
-          <div class="flex items-center gap-6 mt-6 text-xs text-white/70">
-            <div>
-              <div class="font-display text-xl font-bold text-white">6</div>
-              <div>ПАКЕТОВ</div>
-            </div>
-            <div>
-              <div class="font-display text-xl font-bold text-white">500+</div>
-              <div>КЛИЕНТОВ</div>
-            </div>
-            <div>
-              <div class="font-display text-xl font-bold text-white">4.9★</div>
-              <div>РЕЙТИНГ</div>
-            </div>
-          </div>
-          <div class="choice-btn">
-            Выбрать пакет <span>→</span>
-          </div>
+<main>
+<!-- ================= ГЛАВНАЯ ================= -->
+<div class="panel active" id="panel-home">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <span class="kicker">Общероссийская общественная организация</span>
+        <h1>
+          <span class="lm"><span>Своих</span></span>
+          <span class="lm"><span>не бросаем —</span></span>
+          <span class="lm"><span style="color:var(--gold)">никогда.</span></span>
+        </h1>
+        <p class="lead">Союз ветеранов СВО объединяет участников специальной военной операции и их семьи. Мы помогаем с реабилитацией, юридическими вопросами, трудоустройством и возвращением к мирной жизни — бесплатно и в каждом регионе страны.</p>
+        <div class="btn-row">
+          <button class="btn btn-gold" data-goto="support">Получить поддержку</button>
+          <button class="btn btn-ghost" data-goto="about">Узнать о союзе</button>
         </div>
-      </a>
-      
-      <!-- Choice 2: Elite Tours -->
-      <a href="#elite-tours" class="choice-card fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="choice-img" alt="Elite Tours">
-        <div class="choice-content">
-          <div class="choice-badge">🍸 ТУРЫ · ВЕЧЕРИНКИ · VIP</div>
-          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight">
-            СОЧИ<br>
-            <span class="bg-gradient-to-r from-amber-300 to-pink-300 bg-clip-text text-transparent">ELITE</span><br>
-            TOURS
-          </h2>
-          <p class="text-white/80 text-sm md:text-base max-w-md leading-relaxed">
-            Бар-хоппинг, SUP-фотосессии, закрытые вечеринки. От 7 900 ₽ до 120 000 ₽.
-          </p>
-          <div class="flex items-center gap-6 mt-6 text-xs text-white/70">
-            <div>
-              <div class="font-display text-xl font-bold text-white">4</div>
-              <div>ТУРА</div>
-            </div>
-            <div>
-              <div class="font-display text-xl font-bold text-white">15+</div>
-              <div>ЗАВЕДЕНИЙ</div>
-            </div>
-            <div>
-              <div class="font-display text-xl font-bold text-white">NEW</div>
-              <div>2026</div>
-            </div>
-          </div>
-          <div class="choice-btn">
-            Забронировать тур <span>→</span>
-          </div>
+        <div class="hero-chips">
+          <span class="chip"><b>89</b> региональных отделений</span>
+          <span class="chip"><b>24/7</b> горячая линия</span>
+          <span class="chip"><b>0 ₽</b> стоимость помощи</span>
         </div>
-      </a>
-    </div>
-    
-    <!-- Scroll indicator -->
-    <div class="flex justify-center mt-16 fade-in">
-      <div class="flex flex-col items-center gap-2">
-        <div class="text-[10px] tracking-widest text-black/40">ИЛИ ПРОКРУТИТЕ ВНИЗ</div>
-        <div class="w-px h-12 bg-gradient-to-b from-black/30 to-transparent"></div>
       </div>
+      <div class="hero-visual">
+        <div class="hero-frame">
+          <svg class="hero-art" viewBox="0 0 500 540" preserveAspectRatio="xMidYMid slice" aria-label="Эмблема союза">
+            <defs>
+              <radialGradient id="hg1" cx="50%" cy="35%" r="70%">
+                <stop offset="0%" stop-color="#5d6e48"/>
+                <stop offset="100%" stop-color="#242e1c" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d9b567"/>
+                <stop offset="100%" stop-color="#8a6620"/>
+              </linearGradient>
+            </defs>
+            <rect width="500" height="540" fill="url(#hg1)"/>
+            <g stroke="#d9b567" stroke-opacity=".18" fill="none">
+              <circle cx="250" cy="230" r="150"/>
+              <circle cx="250" cy="230" r="185"/>
+              <circle cx="250" cy="230" r="220" stroke-dasharray="3 8"/>
+            </g>
+            <g opacity=".35" stroke="#d9b567" stroke-width="1">
+              <path d="M0 470 L500 350"/><path d="M0 500 L500 380"/><path d="M0 530 L500 410"/>
+            </g>
+            <path d="M250 96l34 70 77 11-56 54 14 77-69-36-69 36 14-77-56-54 77-11 34-70z" fill="url(#hg2)"/>
+            <path d="M250 128l24 49 54 8-39 38 10 54-49-26-49 26 10-54-39-38 54-8 24-49z" fill="#28311f"/>
+            <g stroke="#d9b567" stroke-width="3" stroke-linecap="round" fill="none" opacity=".9">
+              <path d="M140 400c30 26 70 42 110 48"/>
+              <path d="M360 400c-30 26-70 42-110 48"/>
+              <path d="M155 385c24 20 52 33 95 40" opacity=".5"/>
+              <path d="M345 385c-24 20-52 33-95 40" opacity=".5"/>
+            </g>
+            <text x="250" y="488" text-anchor="middle" font-family="Unbounded, sans-serif" font-size="19" font-weight="600" fill="#e9ecdc" letter-spacing="6">ВМЕСТЕ МЫ — СИЛА</text>
+          </svg>
+        </div>
+        <svg class="hero-corner" viewBox="0 0 76 76" aria-hidden="true">
+          <path d="M38 4l8.3 17 18.7 2.7-13.5 13.2 3.2 18.6L38 46.7 21.3 55.5l3.2-18.6L11 23.7 29.7 21 38 4z" fill="#b98c33"/>
+        </svg>
+        <div class="hero-badge">
+          <div class="hb-big" data-count="42500" data-suffix="+">0</div>
+          <div class="hb-sm">ветеранов уже состоят в реестре союза и получают поддержку</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- stats -->
+    <div class="stats rv" id="statsBand">
+      <div><div class="stat-num"><span data-count="42500">0</span><sup>+</sup></div><div class="stat-lab">ветеранов в реестре</div></div>
+      <div><div class="stat-num"><span data-count="89">0</span></div><div class="stat-lab">региональных отделений</div></div>
+      <div><div class="stat-num"><span data-count="18300">0</span><sup>+</sup></div><div class="stat-lab">решённых обращений</div></div>
+      <div><div class="stat-num"><span data-count="3400">0</span><sup>+</sup></div><div class="stat-lab">волонтёров и наставников</div></div>
     </div>
   </div>
-</section>
 
-<!-- MARQUEE -->
-<section class="border-y border-black/5 py-6 overflow-hidden bg-white">
-  <div class="flex marquee whitespace-nowrap">
-    <div class="flex items-center gap-12 px-6 text-black/40 font-display text-sm tracking-widest">
-      <span>📸 ФОТОСТУДИЯ</span><span>✦</span>
-      <span>🎥 ВИДЕОПРОДАКШН</span><span>✦</span>
-      <span>🌐 АГЕНТСТВО ФОТОГРАФОВ</span><span>✦</span>
-      <span>🎓 ОНЛАЙН-ШКОЛА</span><span>✦</span>
-      <span>💼 B2B КОНТЕНТ</span><span>✦</span>
-      <span>🛍 E-COMMERCE</span><span>✦</span>
-      <span>🏖 EVENT-ПЛОЩАДКА</span><span>✦</span>
-      <span>🍸 ELITE TOURS</span><span>✦</span>
-    </div>
-    <div class="flex items-center gap-12 px-6 text-black/40 font-display text-sm tracking-widest">
-      <span>📸 ФОТОСТУДИЯ</span><span>✦</span>
-      <span>🎥 ВИДЕОПРОДАКШН</span><span>✦</span>
-      <span>🌐 АГЕНТСТВО ФОТОГРАФОВ</span><span>✦</span>
-      <span>🎓 ОНЛАЙН-ШКОЛА</span><span>✦</span>
-      <span>💼 B2B КОНТЕНТ</span><span>✦</span>
-      <span>🛍 E-COMMERCE</span><span>✦</span>
-      <span>🏖 EVENT-ПЛОЩАДКА</span><span>✦</span>
-      <span>🍸 ELITE TOURS</span><span>✦</span>
-    </div>
-  </div>
-</section>
-
-<!-- ========================================= -->
-<!-- CONTENT EMPIRE SECTION -->
-<!-- ========================================= -->
-<section id="content-empire" class="py-24 px-6 bg-gradient-to-b from-white to-[#faf8f5]">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 fade-in">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-700 text-xs tracking-widest mb-6">
-        <span>📸</span>
-        <span>РАЗДЕЛ 01</span>
-      </div>
-      <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">
-        СОЧИ <span class="gradient-text">CONTENT EMPIRE</span>
-      </h2>
-      <p class="text-black/60 max-w-2xl mx-auto text-lg">
-        Экосистема контента премиум-класса: фотостудия, видеопродакшн, агентство, онлайн-школа и B2B-решения.
-      </p>
-    </div>
-    
-    <!-- Gallery -->
-    <div id="gallery" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-      <div class="gallery-item aspect-[3/4] fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f59dbef9-3351-4a15-b2f6-385620fa8ed0.png" class="w-full h-full object-cover" alt="">
-      </div>
-      <div class="gallery-item aspect-[3/4] fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="w-full h-full object-cover" alt="">
-      </div>
-      <div class="gallery-item aspect-[3/4] fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="w-full h-full object-cover" alt="">
-      </div>
-      <div class="gallery-item aspect-[3/4] fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/12098158e-9af2-4bfd-b58e-ee1dd75d7335.png" class="w-full h-full object-cover" alt="">
-      </div>
-    </div>
-    
-    <!-- Ecosystem -->
-    <div class="mb-20">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 fade-in">
+  <div class="wrap">
+    <section>
+      <div class="sec-head">
         <div>
-          <div class="text-amber-600 text-sm tracking-widest mb-4">// ЭКОСИСТЕМА</div>
-          <h3 class="font-display text-3xl md:text-5xl font-bold leading-tight">
-            Больше, чем<br>
-            <span class="gradient-text">фотостудия</span>
-          </h3>
+          <span class="kicker">Наша работа</span>
+          <h2>Приоритетные направления</h2>
+          <p class="lead">Каждый ветеран и член его семьи может рассчитывать на системную помощь — от первого звонка до полного решения вопроса.</p>
         </div>
-        <p class="text-black/60 max-w-md mt-6 md:mt-0">
-          Единая платформа для создания контента любого уровня — от туристических снимков до корпоративных продакшнов.
-        </p>
+        <button class="sec-link" data-goto="support">Все программы <span>→</span></button>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="eco-item gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f59dbef9-3351-4a15-b2f6-385620fa8ed0.png" class="eco-img" alt="">
-          <div class="eco-content">
-            <div class="text-4xl mb-6">📸</div>
-            <h4 class="font-display text-xl font-bold mb-2">Фотостудия</h4>
-            <p class="text-black/60 text-sm leading-relaxed">Премиум-класс с профессиональным светом. 7 локаций в Сочи.</p>
-            <div class="mt-6 text-amber-600 text-xs tracking-widest">PREMIUM STUDIO →</div>
-          </div>
-        </div>
-        
-        <div class="eco-item gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1a6bb1b25-c39f-4fa0-a9e9-e26c87b08ed8.png" class="eco-img" alt="">
-          <div class="eco-content">
-            <div class="text-4xl mb-6">🎥</div>
-            <h4 class="font-display text-xl font-bold mb-2">Видеопродакшн</h4>
-            <p class="text-black/60 text-sm leading-relaxed">Reels, TikTok, YouTube Shorts, клипы и полнометражные фильмы.</p>
-            <div class="mt-6 text-amber-600 text-xs tracking-widest">FULL PRODUCTION →</div>
-          </div>
-        </div>
-        
-        <div class="eco-item gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="eco-img" alt="">
-          <div class="eco-content">
-            <div class="text-4xl mb-6">🌐</div>
-            <h4 class="font-display text-xl font-bold mb-2">Агентство</h4>
-            <p class="text-black/60 text-sm leading-relaxed">Сеть из 20+ фотографов по всему побережью Чёрного моря.</p>
-            <div class="mt-6 text-amber-600 text-xs tracking-widest">NETWORK →</div>
-          </div>
-        </div>
-        
-        <div class="eco-item gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1cf9419b4-a2fa-434f-ba42-fac3cb38bca1.png" class="eco-img" alt="">
-          <div class="eco-content">
-            <div class="text-4xl mb-6">🎓</div>
-            <h4 class="font-display text-xl font-bold mb-2">Онлайн-школа</h4>
-            <p class="text-black/60 text-sm leading-relaxed">Курсы по мобильной фотографии, обработке и ведению Instagram.</p>
-            <div class="mt-6 text-amber-600 text-xs tracking-widest">LEARN →</div>
-          </div>
-        </div>
-        
-        <div class="eco-item gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1db2d3ce9-ba63-495c-a42a-5388fe4ce971.png" class="eco-img" alt="">
-          <div class="eco-content">
-            <div class="text-4xl mb-6">💼</div>
-            <h4 class="font-display text-xl font-bold mb-2">B2B Контент</h4>
-            <p class="text-black/60 text-sm leading-relaxed">Комплексное ведение визуала для отелей, ресторанов, салонов.</p>
-            <div class="mt-6 text-amber-600 text-xs tracking-widest">BUSINESS →</div>
-          </div>
-        </div>
-        
-        <div class="eco-item gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="eco-img" alt="">
-          <div class="eco-content">
-            <div class="text-4xl mb-6">🛍</div>
-            <h4 class="font-display text-xl font-bold mb-2">E-commerce</h4>
-            <p class="text-black/60 text-sm leading-relaxed">Пресеты, гайды, LUTs и образовательные материалы.</p>
-            <div class="mt-6 text-amber-600 text-xs tracking-widest">SHOP →</div>
-          </div>
-        </div>
-        
-        <div class="eco-item gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/12098158e-9af2-4bfd-b58e-ee1dd75d7335.png" class="eco-img" alt="">
-          <div class="eco-content">
-            <div class="text-4xl mb-6">🏖</div>
-            <h4 class="font-display text-xl font-bold mb-2">Event-площадка</h4>
-            <p class="text-black/60 text-sm leading-relaxed">Съёмка мероприятий, свадеб, корпоративов под ключ.</p>
-            <div class="mt-6 text-amber-600 text-xs tracking-widest">EVENTS →</div>
-          </div>
-        </div>
-        
-        <a href="#elite-tours" class="eco-item gradient-border p-8 flex flex-col justify-center items-center text-center fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.08), rgba(214,69,120,0.08));">
-          <div class="eco-content">
-            <div class="font-display text-5xl font-bold gradient-text mb-2">🍸</div>
-            <div class="text-black/70 text-sm">Elite Tours<br><span class="text-amber-600 text-xs">ПЕРЕЙТИ →</span></div>
-          </div>
-        </a>
+      <div class="dir-grid">
+        <div class="dir-card rv"><span class="dir-num">01</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-scale"/></svg></div><h3>Юридическая защита</h3><p>Бесплатные консультации по льготам, выплатам, статусу ветерана боевых действий и жилищным вопросам.</p></div>
+        <div class="dir-card rv" style="transition-delay:.08s"><span class="dir-num">02</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-med"/></svg></div><h3>Реабилитация и здоровье</h3><p>Направления в санатории, протезирование, высокотехнологичная медицинская помощь и сопровождение.</p></div>
+        <div class="dir-card rv" style="transition-delay:.16s"><span class="dir-num">03</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-chat"/></svg></div><h3>Психологическая помощь</h3><p>Индивидуальная и семейная работа с психологами, группы взаимопомощи, круглосуточная линия доверия.</p></div>
+        <div class="dir-card rv" style="transition-delay:.24s"><span class="dir-num">04</span><div class="dir-ico"><svg width="26" height="26"><use href="#i-case"/></svg></div><h3>Трудоустройство</h3><p>Партнёрские программы с работодателями, переобучение, поддержка предпринимательских инициатив.</p></div>
       </div>
-    </div>
-    
-    <!-- Packages -->
-    <div>
-      <div class="text-center mb-16 fade-in">
-        <div class="text-amber-600 text-sm tracking-widest mb-4">// ПАКЕТЫ</div>
-        <h3 class="font-display text-3xl md:text-5xl font-bold mb-6">
-          Выберите свой <span class="gradient-text">уровень</span>
-        </h3>
-      </div>
-      
-      <!-- Package 1: INSTANT -->
-      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="package-img" alt="">
-        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
-          <div>
-            <div class="text-xs tracking-widest text-black/40 mb-2">ПАКЕТ 01</div>
-            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">INSTANT</h4>
-            <p class="text-black/60 text-sm">Быстрый старт для туристов</p>
-            <div class="mt-6 flex items-baseline gap-2">
-              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">5 900</span>
-              <span class="text-black/60">₽</span>
-            </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">45 минут съёмки</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">1 локация</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">25 фото в ретуши</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">3 Reels (до 15 сек)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Готовность за 48 часов</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Сириус, набережная Адлера</span></div>
-          </div>
-          
-          <div class="md:text-right">
-            <div class="text-xs text-black/40 mb-2 tracking-widest">ФОРМАТ</div>
-            <div class="text-sm text-black/80 mb-4">Индивидуально / пара</div>
-            <button onclick="openModal('INSTANT', '5 900')" class="w-full md:w-auto px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
-              Выбрать →
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Package 2: STANDARD PLUS (HIT) -->
-      <div class="package-card gradient-border p-8 md:p-10 mb-6 glow fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.06), rgba(214,69,120,0.03), #ffffff);">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="package-img" alt="" style="opacity: 0.12;">
-        <div class="absolute top-6 right-6 hit-badge px-4 py-1.5 rounded-full text-xs font-bold tracking-widest z-10">⭐ ХИТ</div>
-        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
-          <div>
-            <div class="text-xs tracking-widest text-amber-600 mb-2">ПАКЕТ 02</div>
-            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">STANDARD PLUS</h4>
-            <p class="text-black/60 text-sm">Полный пакет с видео</p>
-            <div class="mt-6 flex items-baseline gap-2">
-              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">12 900</span>
-              <span class="text-black/60">₽</span>
-            </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">2,5 часа съёмки</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">3-4 локации (включая закат)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">80+ фото в журнальной ретуши</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">10 Reels / TikTok видео</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Видео-клип 30-60 сек</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Трансфер на авто фотографа</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Помощь с позированием</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Пресеты + гайд по Instagram</span></div>
-          </div>
-          
-          <div class="md:text-right">
-            <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
-            <div class="text-sm text-black/80 mb-4">Отпуск 5-7 дней,<br>максимальный охват</div>
-            <button onclick="openModal('STANDARD PLUS', '12 900')" class="btn-primary w-full md:w-auto px-6 py-3 rounded-full text-sm font-medium">
-              <span>Выбрать ⭐</span>
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Package 3: PREMIUM EXPERIENCE -->
-      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1a6bb1b25-c39f-4fa0-a9e9-e26c87b08ed8.png" class="package-img" alt="">
-        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
-          <div>
-            <div class="text-xs tracking-widest text-black/40 mb-2">ПАКЕТ 03</div>
-            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">PREMIUM<br>EXPERIENCE</h4>
-            <p class="text-black/60 text-sm">Полный день с командой</p>
-            <div class="mt-6 flex items-baseline gap-2">
-              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">29 900</span>
-              <span class="text-black/60">₽</span>
-            </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фотограф + видеограф + ассистент</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">4-5 часов съёмки</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">5+ локаций (Красная Поляна)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">150+ фото в ретуши</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">15 Reels + 5 TikTok</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Highlight video 2-3 мин</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">💄 Визажист + стилист</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🚁 Аэросъёмка (дрон)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">📖 Фотокнига 30 стр.</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🖼 Холст 60x90 см</span></div>
-          </div>
-          
-          <div class="md:text-right">
-            <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
-            <div class="text-sm text-black/80 mb-4">Блогеры, знаменательные даты, премиум-сегмент</div>
-            <button onclick="openModal('PREMIUM EXPERIENCE', '29 900')" class="w-full md:w-auto px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
-              Выбрать →
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Package 4: LUXURY ULTIMATE -->
-      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.04), #ffffff);">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="package-img" alt="" style="opacity: 0.12;">
-        <div class="absolute top-6 right-6 px-4 py-1.5 rounded-full border border-amber-500/40 text-xs font-bold text-amber-700 tracking-widest z-10">💎 LUXURY</div>
-        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
-          <div>
-            <div class="text-xs tracking-widest text-amber-600 mb-2">ПАКЕТ 04</div>
-            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">LUXURY<br>ULTIMATE</h4>
-            <p class="text-black/60 text-sm">Эксклюзивный продакшн</p>
-            <div class="mt-6 flex items-baseline gap-2">
-              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">75 000</span>
-              <span class="text-black/60">₽</span>
-            </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">2 фотографа + 2 видеографа + режиссёр</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">8-10 часов (полный день)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Неограниченно локаций</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">300+ фото в ретуши</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">30+ видео (Reels, TikTok, Shorts)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фильм о дне 5-10 мин</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">💎 Полный стилист + визажист</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🚗 Mercedes G-Class / кабриолет</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🚁 Вертолётная прогулка 30 мин</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">⛵ Яхта 3 часа</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🏔 Съёмка на горнолыжном курорте</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🌊 Underwater photography</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">📖 Фотокнига 50 стр. (кожа)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🖼 3 холста + SSD 1TB</span></div>
-          </div>
-          
-          <div class="md:text-right">
-            <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
-            <div class="text-sm text-black/80 mb-4">Свадьбы, юбилеи,<br>инфлюенсеры 500K+,<br>корпоративы топ-уровня</div>
-            <button onclick="openModal('LUXURY ULTIMATE', '75 000')" class="w-full md:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-bold">
-              💎 Запросить
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Business & Influencer row -->
-      <div class="grid md:grid-cols-2 gap-6" id="business">
-        <div class="package-card gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1db2d3ce9-ba63-495c-a42a-5388fe4ce971.png" class="package-img" alt="">
-          <div class="package-content">
-            <div class="flex items-start justify-between mb-6">
-              <div>
-                <div class="text-xs tracking-widest text-black/40 mb-2">ПАКЕТ 05 · B2B</div>
-                <h4 class="font-display text-2xl md:text-3xl font-bold mb-2">BUSINESS PRO</h4>
-                <p class="text-black/60 text-sm">Контент-агентство для бизнеса</p>
-              </div>
-              <div class="text-2xl">💼</div>
-            </div>
-            <div class="flex items-baseline gap-2 mb-6">
-              <span class="text-xs text-black/40">от</span>
-              <span class="font-display text-4xl font-bold gradient-text">50 000</span>
-              <span class="text-black/60">₽</span>
-            </div>
-            
-            <div class="space-y-2 mb-6">
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">100+ фото для сайта и соцсетей</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">20 видео (Reels для бизнеса)</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Съёмка меню / интерьера / команды</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Контент-план на 3 месяца</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">30 текстов + хештеги</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Таргет + аналитика (1 месяц)</span></div>
-            </div>
-            
-            <div class="pt-6 border-t border-black/5">
-              <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
-              <div class="text-sm text-black/80 mb-4">Отели, рестораны, салоны красоты</div>
-              <button onclick="openModal('BUSINESS PRO', 'от 50 000')" class="w-full px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
-                Обсудить проект →
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="package-card gradient-border p-8 fade-in">
-          <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1cf9419b4-a2fa-434f-ba42-fac3cb38bca1.png" class="package-img" alt="">
-          <div class="package-content">
-            <div class="flex items-start justify-between mb-6">
-              <div>
-                <div class="text-xs tracking-widest text-pink-600 mb-2">ПАКЕТ 06 · BLOGGERS</div>
-                <h4 class="font-display text-2xl md:text-3xl font-bold mb-2">INFLUENCER PRO</h4>
-                <p class="text-black/60 text-sm">Специально для блогеров</p>
-              </div>
-              <div class="text-2xl">🎬</div>
-            </div>
-            <div class="flex items-baseline gap-2 mb-6">
-              <span class="font-display text-4xl font-bold gradient-text">45 000</span>
-              <span class="text-black/60">₽</span>
-            </div>
-            
-            <div class="space-y-2 mb-6">
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">6-8 часов съёмки, 5-7 локаций</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">200+ фото в ретуши</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">30 Reels/TikTok (контент на 30 дней)</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">5 YouTube Shorts</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Vlog + Highlight + BTS</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Контент-план + анализ аккаунта</span></div>
-              <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">10 пресетов под стиль блогера</span></div>
-            </div>
-            
-            <div class="pt-6 border-t border-black/5">
-              <div class="text-xs text-black/40 mb-2 tracking-widest">ИДЕАЛЬНО ДЛЯ</div>
-              <div class="text-sm text-black/80 mb-4">Блогеры 10K-500K подписчиков</div>
-              <button onclick="openModal('INFLUENCER PRO', '45 000')" class="w-full px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm font-medium">
-                Стать клиентом →
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- DIVIDER BETWEEN SECTIONS -->
-<div class="divider max-w-7xl mx-auto"></div>
+    <div class="divider"><div class="dline"></div><span class="dstar">★</span><div class="dline"></div></div>
 
-<!-- ========================================= -->
-<!-- ELITE TOURS SECTION -->
-<!-- ========================================= -->
-<section id="elite-tours" class="relative">
-  <div class="tours-hero">
-    <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="tours-hero-img" alt="Elite Tours">
-    
-    <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full">
-      <div class="max-w-4xl">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur mb-8 fade-in">
-          <span class="w-2 h-2 rounded-full bg-amber-300 animate-pulse"></span>
-          <span class="text-xs tracking-widest text-white/90">НОВОЕ НАПРАВЛЕНИЕ · 2026</span>
+    <!-- news -->
+    <section>
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Новости союза</span>
+          <h2>Последние события</h2>
         </div>
-        
-        <h2 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8 fade-in text-white">
-          <span class="block">СОЧИ</span>
-          <span class="block bg-gradient-to-r from-amber-300 to-pink-300 bg-clip-text text-transparent">ELITE</span>
-          <span class="block">TOURS</span>
-        </h2>
-        
-        <p class="text-lg md:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed fade-in">
-          Не просто бар-хоппинг. Иммерсивный опыт с профессиональным контентом, закрытым комьюнити успешных людей и эффектом «роскошной жизни» за один вечер.
-        </p>
-        
-        <div class="flex flex-wrap gap-4 fade-in">
-          <a href="#tour-packages" class="btn-primary px-8 py-4 rounded-full font-medium">
-            <span>Выбрать тур →</span>
-          </a>
-          <a href="#upsell" class="px-8 py-4 rounded-full border border-white/30 bg-white/10 backdrop-blur hover:bg-white/20 transition font-medium text-white">
-            Доп. услуги
-          </a>
-        </div>
+        <button class="sec-link" data-goto="events">Календарь мероприятий <span>→</span></button>
       </div>
-    </div>
-  </div>
-  
-  <!-- UTP -->
-  <div class="py-20 px-6 bg-white border-b border-black/5">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12 fade-in">
-        <div class="text-amber-600 text-sm tracking-widest mb-4">// УТП</div>
-        <h3 class="font-display text-3xl md:text-4xl font-bold mb-4">
-          Что делает нас <span class="gradient-text">уникальными</span>
-        </h3>
+      <div class="news-grid">
+        <article class="news-card rv"><div class="news-top"></div><div class="news-body"><span class="news-date">28 сентября 2026</span><h3>Подписаны соглашения о трудоустройстве с 12 крупнейшими предприятиями</h3><p>Квоты на рабочие места для ветеранов СВО появятся в машиностроении, логистике и энергетике в 34 регионах страны.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
+        <article class="news-card rv" style="transition-delay:.1s"><div class="news-top"></div><div class="news-body"><span class="news-date">15 сентября 2026</span><h3>В Екатеринбурге открыт новый центр комплексной поддержки</h3><p>В центре работают юристы, психологи и специалисты по реабилитации. За первую неделю помощь получили более 200 человек.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
+        <article class="news-card rv" style="transition-delay:.2s"><div class="news-top"></div><div class="news-body"><span class="news-date">2 сентября 2026</span><h3>Линия психологической помощи переведена на круглосуточный режим</h3><p>Теперь получить поддержку дежурного психолога можно в любое время — по телефону и в онлайн-чате.</p><a class="news-more" href="#" onclick="return false">Читать далее →</a></div></article>
       </div>
-      
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="utp-card gradient-border p-6 fade-in">
-          <div class="text-3xl mb-4 floating-emoji">📸</div>
-          <h4 class="font-display font-bold mb-2">Контент для соцсетей</h4>
-          <p class="text-black/60 text-sm">Профессиональные фото и видео во время тура</p>
-        </div>
-        <div class="utp-card gradient-border p-6 fade-in">
-          <div class="text-3xl mb-4 floating-emoji" style="animation-delay: 0.5s">👥</div>
-          <h4 class="font-display font-bold mb-2">Закрытое комьюнити</h4>
-          <p class="text-black/60 text-sm">Нетворкинг с успешными людьми Сочи</p>
-        </div>
-        <div class="utp-card gradient-border p-6 fade-in">
-          <div class="text-3xl mb-4 floating-emoji" style="animation-delay: 1s">🔑</div>
-          <h4 class="font-display font-bold mb-2">Эксклюзивный доступ</h4>
-          <p class="text-black/60 text-sm">Топовые заведения, закрытые зоны, VIP</p>
-        </div>
-        <div class="utp-card gradient-border p-6 fade-in">
-          <div class="text-3xl mb-4 floating-emoji" style="animation-delay: 1.5s">💎</div>
-          <h4 class="font-display font-bold mb-2">Эффект роскоши</h4>
-          <p class="text-black/60 text-sm">Ощущение luxury-жизни за один вечер</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Tour Packages -->
-  <div id="tour-packages" class="py-32 px-6 relative grid-bg bg-gradient-to-b from-[#faf8f5] to-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-20 fade-in">
-        <div class="text-amber-600 text-sm tracking-widest mb-4">// ТУРЫ</div>
-        <h3 class="font-display text-4xl md:text-6xl font-bold mb-6">
-          Пакеты <span class="gradient-text">Elite Tours</span>
-        </h3>
-        <p class="text-black/60 max-w-2xl mx-auto">
-          От камерного бара до закрытой вечеринки на яхте. Выберите уровень вашего вечера.
-        </p>
-      </div>
-      
-      <!-- Tour Package 1: START -->
-      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="package-img" alt="">
-        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
-          <div>
-            <div class="text-xs tracking-widest text-black/40 mb-2">ТУР 01</div>
-            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">START</h4>
-            <p class="text-black/60 text-sm">Базовый опыт с фото-контентом</p>
-            <div class="mt-6 flex items-baseline gap-2">
-              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">7 900</span>
-              <span class="text-black/60">₽</span>
-            </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">4-5 топовых заведений</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Welcome drink в каждом</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фотограф 3 часа (30-50 фото)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Трансфер между локациями</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Хостес-сопровождение</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Доступ в закрытые зоны</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Игры и нетворкинг</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Группа до 15 человек</span></div>
-          </div>
-          
-          <div class="md:text-right">
-            <div class="text-xs text-black/40 mb-2 tracking-widest">ДЛИТЕЛЬНОСТЬ</div>
-            <div class="text-sm text-black/80 mb-4">4-5 часов</div>
-            <button onclick="openModal('TOUR: START', '7 900')" class="w-full md:w-auto px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
-              Забронировать →
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Tour Package 2: VIP (HIT) -->
-      <div class="package-card gradient-border p-8 md:p-10 mb-6 glow fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.06), rgba(214,69,120,0.03), #ffffff);">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f59dbef9-3351-4a15-b2f6-385620fa8ed0.png" class="package-img" alt="" style="opacity: 0.12;">
-        <div class="absolute top-6 right-6 hit-badge px-4 py-1.5 rounded-full text-xs font-bold tracking-widest z-10">⭐ ХИТ ПРОДАЖ</div>
-        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
-          <div>
-            <div class="text-xs tracking-widest text-amber-600 mb-2">ТУР 02</div>
-            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">VIP</h4>
-            <p class="text-black/60 text-sm">Полный пакет с SUP-фотосессией</p>
-            <div class="mt-6 flex items-baseline gap-2">
-              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">15 900</span>
-              <span class="text-black/60">₽</span>
-            </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Всё из пакета START</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🏄 SUP-фотосессия на закате 45 мин</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">50+ фото в ретуши</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🍾 Шампанское / авторские коктейли</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фруктовая тарелка</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Приоритетная посадка</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">📱 3-5 Reels до 30 сек</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Монтаж в день тура</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Скидка 15% на следующий тур</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Закрытый чат + мерч</span></div>
-          </div>
-          
-          <div class="md:text-right">
-            <div class="text-xs text-black/40 mb-2 tracking-widest">ДЛИТЕЛЬНОСТЬ</div>
-            <div class="text-sm text-black/80 mb-4">6-7 часов<br><span class="text-amber-600 text-xs">до 8 человек</span></div>
-            <button onclick="openModal('TOUR: VIP', '15 900')" class="btn-primary w-full md:w-auto px-6 py-3 rounded-full text-sm font-medium">
-              <span>Забронировать ⭐</span>
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Tour Package 3: PLATINUM -->
-      <div class="package-card gradient-border p-8 md:p-10 mb-6 fade-in" style="background: linear-gradient(135deg, rgba(201,162,39,0.04), #ffffff);">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="package-img" alt="" style="opacity: 0.12;">
-        <div class="absolute top-6 right-6 px-4 py-1.5 rounded-full border border-amber-500/40 text-xs font-bold text-amber-700 tracking-widest z-10">💎 PLATINUM</div>
-        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
-          <div>
-            <div class="text-xs tracking-widest text-amber-600 mb-2">ТУР 03</div>
-            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">PLATINUM</h4>
-            <p class="text-black/60 text-sm">Закрытая тусовка для избранных</p>
-            <div class="mt-6 flex items-baseline gap-2">
-              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">35 000</span>
-              <span class="text-black/60">₽</span>
-            </div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Всё из пакета VIP</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🏖 Private party (VIP-зона / лофт)</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Персональный бармен</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🎷 DJ или живой саксофонист</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">📸 2 фотографа + видеограф</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">150+ фото + highlight video</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🚗 Premium трансфер Mercedes V-Class</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🍽 Ужин от шефа + wine pairing</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">🥂 Top shelf без ограничений</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">💎 Личный менеджер 24/7</span></div>
-          </div>
-          
-          <div class="md:text-right">
-            <div class="text-xs text-black/40 mb-2 tracking-widest">ДЛИТЕЛЬНОСТЬ</div>
-            <div class="text-sm text-black/80 mb-4">8-10 часов<br><span class="text-amber-600 text-xs">до 6 человек</span></div>
-            <button onclick="openModal('TOUR: PLATINUM', '35 000')" class="w-full md:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-bold">
-              💎 Забронировать
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Tour Package 4: CORPORATE -->
-      <div class="package-card gradient-border p-8 md:p-10 fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1db2d3ce9-ba63-495c-a42a-5388fe4ce971.png" class="package-img" alt="">
-        <div class="package-content grid md:grid-cols-[1fr_2fr_1fr] gap-8 items-start">
-          <div>
-            <div class="text-xs tracking-widest text-pink-600 mb-2">ТУР 04 · B2B</div>
-            <h4 class="font-display text-3xl md:text-4xl font-bold mb-2">CORPORATE</h4>
-            <p class="text-black/60 text-sm">Для компаний и тимбилдингов</p>
-            <div class="mt-6 flex items-baseline gap-2">
-              <span class="text-xs text-black/40">от</span>
-              <span class="font-display text-4xl md:text-5xl font-bold gradient-text">120 000</span>
-              <span class="text-black/60">₽</span>
-            </div>
-            <div class="text-xs text-black/50 mt-2">от 15 000 ₽/чел · мин. 8 человек</div>
-          </div>
-          
-          <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Индивидуальный сценарий</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Брендирование мероприятия</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Командные игры и квесты</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Фотозона с логотипом</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Нетворкинг с предпринимателями</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Презентация продукта</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Team building активности</span></div>
-            <div class="flex gap-3"><span class="check-icon">✓</span><span class="text-sm text-black/80">Полный фото/видео отчёт</span></div>
-          </div>
-          
-          <div class="md:text-right">
-            <div class="text-xs text-black/40 mb-2 tracking-widest">ФОРМАТ</div>
-            <div class="text-sm text-black/80 mb-4">Индивидуально<br>под ваш бренд</div>
-            <button onclick="openModal('TOUR: CORPORATE', 'от 120 000')" class="w-full md:w-auto px-6 py-3 rounded-full border border-black/10 hover:bg-black hover:text-white transition text-sm font-medium">
-              Обсудить проект →
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- UPSELL -->
-  <div id="upsell" class="py-32 px-6 relative bg-white border-t border-black/5">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 fade-in">
-        <div class="text-amber-600 text-sm tracking-widest mb-4">// UPSELL</div>
-        <h3 class="font-display text-4xl md:text-6xl font-bold mb-6">
-          Дополнительные <span class="gradient-text">услуги</span>
-        </h3>
-        <p class="text-black/60 max-w-2xl mx-auto">
-          Усильте свой опыт эксклюзивными опциями: от вертолётных прогулок до спорткаров и частных фотосессий.
-        </p>
-      </div>
-      
-      <!-- Content packages -->
-      <div class="mb-12 fade-in">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white">📹</div>
-          <h4 class="font-display text-2xl font-bold">Контент-пакеты</h4>
-        </div>
-        <div class="grid md:grid-cols-3 gap-4">
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="flex items-start justify-between mb-4">
-              <div class="text-2xl">📹</div>
-              <div class="text-xs text-amber-600 tracking-widest">REELS</div>
-            </div>
-            <h5 class="font-display font-bold text-lg mb-2">Reels Pack</h5>
-            <p class="text-black/60 text-sm mb-4">5 профессиональных видео для соцсетей</p>
-            <div class="flex items-baseline gap-1">
-              <span class="font-display text-2xl font-bold gradient-text">3 000</span>
-              <span class="text-black/60 text-sm">₽</span>
-            </div>
-          </div>
-          
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="flex items-start justify-between mb-4">
-              <div class="text-2xl">⚡</div>
-              <div class="text-xs text-amber-600 tracking-widest">SAME DAY</div>
-            </div>
-            <h5 class="font-display font-bold text-lg mb-2">Same Day Edit</h5>
-            <p class="text-black/60 text-sm mb-4">Видео в день тура — выложите пока эмоции свежие</p>
-            <div class="flex items-baseline gap-1">
-              <span class="font-display text-2xl font-bold gradient-text">7 000</span>
-              <span class="text-black/60 text-sm">₽</span>
-            </div>
-          </div>
-          
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="flex items-start justify-between mb-4">
-              <div class="text-2xl">📱</div>
-              <div class="text-xs text-amber-600 tracking-widest">CONTENT DAY</div>
-            </div>
-            <h5 class="font-display font-bold text-lg mb-2">Content Day</h5>
-            <p class="text-black/60 text-sm mb-4">Отдельная съёмка — полный день контента</p>
-            <div class="flex items-baseline gap-1">
-              <span class="font-display text-2xl font-bold gradient-text">10 000</span>
-              <span class="text-black/60 text-sm">₽</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Premium experiences -->
-      <div class="mb-12 fade-in">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-pink-500 flex items-center justify-center text-white">💎</div>
-          <h4 class="font-display text-2xl font-bold">Премиум-опыты</h4>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="text-3xl mb-3">🚁</div>
-            <h5 class="font-display font-bold mb-2">Вертолёт</h5>
-            <p class="text-black/60 text-sm mb-4">Прогулка над побережьем с съёмкой</p>
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs text-black/40">от</span>
-              <span class="font-display text-xl font-bold gradient-text">25 000</span>
-              <span class="text-black/60 text-xs">₽</span>
-            </div>
-          </div>
-          
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="text-3xl mb-3">🛥</div>
-            <h5 class="font-display font-bold mb-2">Яхтинг</h5>
-            <p class="text-black/60 text-sm mb-4">2 часа на яхте с капитаном и командой</p>
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs text-black/40">от</span>
-              <span class="font-display text-xl font-bold gradient-text">40 000</span>
-              <span class="text-black/60 text-xs">₽</span>
-            </div>
-          </div>
-          
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="text-3xl mb-3">🏎</div>
-            <h5 class="font-display font-bold mb-2">Спорткар тур</h5>
-            <p class="text-black/60 text-sm mb-4">Ferrari, Lamborghini — съёмка включена</p>
-            <div class="flex items-baseline gap-1">
-              <span class="font-display text-xl font-bold gradient-text">15 000</span>
-              <span class="text-black/60 text-xs">₽/час</span>
-            </div>
-          </div>
-          
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="text-3xl mb-3">🎰</div>
-            <h5 class="font-display font-bold mb-2">VIP казино</h5>
-            <p class="text-black/60 text-sm mb-4">Личный хост, стартовые фишки, напитки</p>
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs text-black/40">от</span>
-              <span class="font-display text-xl font-bold gradient-text">20 000</span>
-              <span class="text-black/60 text-xs">₽</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Photoshoots -->
-      <div class="fade-in">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white">📸</div>
-          <h4 class="font-display text-2xl font-bold">Фотосессии</h4>
-        </div>
-        <div class="grid md:grid-cols-3 gap-4">
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="flex items-start justify-between mb-4">
-              <div class="text-2xl">🌅</div>
-              <div class="text-xs text-amber-600 tracking-widest">SUNSET</div>
-            </div>
-            <h5 class="font-display font-bold text-lg mb-2">Sunset Beach Session</h5>
-            <p class="text-black/60 text-sm mb-4">Закатная съёмка на лучшем пляже Сочи</p>
-            <div class="flex items-baseline gap-1">
-              <span class="font-display text-2xl font-bold gradient-text">8 000</span>
-              <span class="text-black/60 text-sm">₽</span>
-            </div>
-          </div>
-          
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="flex items-start justify-between mb-4">
-              <div class="text-2xl">🏙</div>
-              <div class="text-xs text-amber-600 tracking-widest">URBAN</div>
-            </div>
-            <h5 class="font-display font-bold text-lg mb-2">Urban Fashion Shoot</h5>
-            <p class="text-black/60 text-sm mb-4">Городская fashion-съёмка в стиле Vogue</p>
-            <div class="flex items-baseline gap-1">
-              <span class="font-display text-2xl font-bold gradient-text">6 000</span>
-              <span class="text-black/60 text-sm">₽</span>
-            </div>
-          </div>
-          
-          <div class="upsell-card gradient-border p-6 fade-in">
-            <div class="flex items-start justify-between mb-4">
-              <div class="text-2xl">💃</div>
-              <div class="text-xs text-amber-600 tracking-widest">PORTRAIT</div>
-            </div>
-            <h5 class="font-display font-bold text-lg mb-2">Individual Portrait</h5>
-            <p class="text-black/60 text-sm mb-4">Персональный портрет для соцсетей и бизнеса</p>
-            <div class="flex items-baseline gap-1">
-              <span class="font-display text-2xl font-bold gradient-text">5 000</span>
-              <span class="text-black/60 text-sm">₽</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- PROCESS -->
-<section class="py-32 px-6 relative bg-gradient-to-b from-white to-[#faf8f5]">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-20 fade-in">
-      <div class="text-amber-600 text-sm tracking-widest mb-4">// ПРОЦЕСС</div>
-      <h2 class="font-display text-4xl md:text-6xl font-bold">
-        Как мы <span class="gradient-text">работаем</span>
-      </h2>
-    </div>
-    
-    <div class="grid md:grid-cols-4 gap-8">
-      <div class="process-card gradient-border p-8 fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1f0dd1427-1a37-41bb-a777-df9885b2b7a9.png" class="process-img" alt="">
-        <div class="process-content">
-          <div class="font-display text-6xl font-bold gradient-text mb-4">01</div>
-          <h3 class="font-display text-xl font-bold mb-3">Бриф</h3>
-          <p class="text-black/60 text-sm leading-relaxed">Обсуждаем ваши цели, стиль, локации. Подбираем пакет под задачи.</p>
+    <section style="padding-top:0">
+      <div class="cta-band rv">
+        <div>
+          <span class="kicker" style="color:var(--gold-l)">Нужна помощь?</span>
+          <h2>Позвоните нам — ответим в течение минуты</h2>
+          <div class="cta-sub">Бесплатно по всей России · анонимно · без выходных</div>
+        </div>
+        <div style="text-align:right">
+          <a class="cta-phone" href="tel:88002003412">8 800 200-34-12</a>
+          <button class="btn btn-gold" data-goto="contacts" style="margin-top:16px">Оставить обращение</button>
         </div>
       </div>
-      <div class="process-card gradient-border p-8 fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1a6bb1b25-c39f-4fa0-a9e9-e26c87b08ed8.png" class="process-img" alt="">
-        <div class="process-content">
-          <div class="font-display text-6xl font-bold gradient-text mb-4">02</div>
-          <h3 class="font-display text-xl font-bold mb-3">Подготовка</h3>
-          <p class="text-black/60 text-sm leading-relaxed">Собираем команду, согласовываем мудборд, планируем логистику.</p>
-        </div>
-      </div>
-      <div class="process-card gradient-border p-8 fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/1e6215077-560f-4a9a-a711-f8a042ea0ab0.png" class="process-img" alt="">
-        <div class="process-content">
-          <div class="font-display text-6xl font-bold gradient-text mb-4">03</div>
-          <h3 class="font-display text-xl font-bold mb-3">Съёмка</h3>
-          <p class="text-black/60 text-sm leading-relaxed">Работаем по таймингу. Помогаем с позированием и образами.</p>
-        </div>
-      </div>
-      <div class="process-card gradient-border p-8 fade-in">
-        <img src="https://image.qwenlm.ai/public_source/0bba3e41-1102-4cab-9de3-f1d94f021f70/12098158e-9af2-4bfd-b58e-ee1dd75d7335.png" class="process-img" alt="">
-        <div class="process-content">
-          <div class="font-display text-6xl font-bold gradient-text mb-4">04</div>
-          <h3 class="font-display text-xl font-bold mb-3">Результат</h3>
-          <p class="text-black/60 text-sm leading-relaxed">Ретушь, монтаж, доставка материалов в онлайн-галерее.</p>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
+</div>
 
-<!-- FAQ -->
-<section id="faq" class="py-32 px-6 relative bg-white border-t border-black/5">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-16 fade-in">
-      <div class="text-amber-600 text-sm tracking-widest mb-4">// FAQ</div>
-      <h2 class="font-display text-4xl md:text-5xl font-bold">
-        Частые <span class="gradient-text">вопросы</span>
-      </h2>
-    </div>
-    
-    <div class="space-y-3">
-      <details class="gradient-border p-6 fade-in">
-        <summary class="flex justify-between items-center cursor-pointer">
-          <span class="font-display font-bold text-lg">Как быстро я получу готовые материалы?</span>
-          <span class="chevron text-amber-600">▼</span>
-        </summary>
-        <p class="mt-4 text-black/70 leading-relaxed">Пакет INSTANT — 48 часов. STANDARD PLUS — 5-7 дней. PREMIUM и выше — 10-14 дней из-за объёма работы.</p>
-      </details>
-      
-      <details class="gradient-border p-6 fade-in">
-        <summary class="flex justify-between items-center cursor-pointer">
-          <span class="font-display font-bold text-lg">Можно ли комбинировать пакеты?</span>
-          <span class="chevron text-amber-600">▼</span>
-        </summary>
-        <p class="mt-4 text-black/70 leading-relaxed">Да, мы соберём индивидуальное решение под ваши задачи. Напишите нам — обсудим детали и сделаем персональное предложение.</p>
-      </details>
-      
-      <details class="gradient-border p-6 fade-in">
-        <summary class="flex justify-between items-center cursor-pointer">
-          <span class="font-display font-bold text-lg">Работаете ли вы за пределами Сочи?</span>
-          <span class="chevron text-amber-600">▼</span>
-        </summary>
-        <p class="mt-4 text-black/70 leading-relaxed">Да, у нас сеть фотографов по всему побережью: Адлер, Сириус, Красная Поляна, а также выездные съёмки по России и миру.</p>
-      </details>
-      
-      <details class="gradient-border p-6 fade-in">
-        <summary class="flex justify-between items-center cursor-pointer">
-          <span class="font-display font-bold text-lg">Нужно ли мне готовить образ самостоятельно?</span>
-          <span class="chevron text-amber-600">▼</span>
-        </summary>
-        <p class="mt-4 text-black/70 leading-relaxed">В пакетах INSTANT и STANDARD PLUS мы помогаем с рекомендациями. В PREMIUM и выше — работают профессиональный стилист и визажист.</p>
-      </details>
-      
-      <details class="gradient-border p-6 fade-in">
-        <summary class="flex justify-between items-center cursor-pointer">
-          <span class="font-display font-bold text-lg">Как происходит оплата?</span>
-          <span class="chevron text-amber-600">▼</span>
-        </summary>
-        <p class="mt-4 text-black/70 leading-relaxed">50% предоплата для бронирования даты, 50% в день съёмки. Для BUSINESS PRO — поэтапная оплата по договору.</p>
-      </details>
-      
-      <details class="gradient-border p-6 fade-in">
-        <summary class="flex justify-between items-center cursor-pointer">
-          <span class="font-display font-bold text-lg">Можно ли прийти на Elite Tours одному?</span>
-          <span class="chevron text-amber-600">▼</span>
-        </summary>
-        <p class="mt-4 text-black/70 leading-relaxed">Конечно! Пакеты START и VIP — групповые, вы познакомитесь с интересными людьми. PLATINUM — приватный формат для вашей компании.</p>
-      </details>
-    </div>
-  </div>
-</section>
+<!-- ================= О СОЮЗЕ ================= -->
+<div class="panel" id="panel-about">
+  <div class="wrap">
+    <section>
+      <div class="split">
+        <div class="split-art rv">
+          <svg viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" aria-label="Братство ветеранов">
+            <defs>
+              <linearGradient id="ag1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#3d4b2f"/><stop offset="100%" stop-color="#202a17"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="420" fill="url(#ag1)"/>
+            <g stroke="#d9b567" stroke-opacity=".2" fill="none">
+              <circle cx="200" cy="160" r="90"/><circle cx="200" cy="160" r="120" stroke-dasharray="4 7"/>
+            </g>
+            <g fill="#d9b567">
+              <circle cx="120" cy="190" r="34"/><circle cx="200" cy="160" r="40"/><circle cx="280" cy="190" r="34"/>
+            </g>
+            <g fill="#28311f">
+              <path d="M60 330c0-42 27-66 60-66s60 24 60 66v14H60v-14z"/>
+              <path d="M140 320c0-50 27-78 60-78s60 28 60 78v24H140v-24z"/>
+              <path d="M220 330c0-42 27-66 60-66s60 24 60 66v14h-120v-14z"/>
+            </g>
+            <path d="M200 70l10 21 23 3-17 16 4 23-20-11-20 11 4-23-17-16 23-3 10-21z" fill="#d9b567"/>
+            <text x="200" y="392" text-anchor="middle" font-family="Unbounded, sans-serif" font-size="14" font-weight="600" fill="#e9ecdc" letter-spacing="5">БРАТСТВО · ДОЛГ · ЧЕСТЬ</text>
+          </svg>
+        </div>
+        <div class="rv">
+          <span class="kicker">Кто мы</span>
+          <h2>Созданы ветеранами — для ветеранов</h2>
+          <p class="lead" style="margin-top:18px">Союз ветеранов СВО России — общероссийская общественная организация, созданная в 2022 году по инициативе самих участников боевых действий. Наша цель — чтобы ни один ветеран и ни одна семья не остались один на один со своими вопросами.</p>
+          <ul class="check-list">
+            <li><span class="check-ico">✓</span><span><b>Адресная помощь каждому.</b> За каждым обращением закрепляется персональный координатор, который ведёт вопрос до результата.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Равный — равному.</b> Большинство наших сотрудников и наставников сами прошли службу и понимают ситуацию изнутри.</span></li>
+            <li><span class="check-ico">✓</span><span><b>Открытость.</b> Ежегодно публикуем отчёты о работе и расходовании средств, сотрудничает с фондом «Защитники Отечества».</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<!-- CTA -->
-<section class="py-32 px-6 relative bg-gradient-to-b from-[#faf8f5] to-white">
-  <div class="max-w-4xl mx-auto text-center fade-in">
-    <h2 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-      Готовы создать<br>
-      <span class="gradient-text">свой опыт?</span>
-    </h2>
-    <p class="text-black/60 text-lg mb-10 max-w-xl mx-auto">
-      Оставьте заявку — мы свяжемся в течение 15 минут и подберём идеальный пакет под ваш запрос.
-    </p>
-    <div class="flex flex-wrap gap-4 justify-center">
-      <button onclick="openModal('Консультация', '')" class="btn-primary px-10 py-4 rounded-full font-medium">
-        <span>Оставить заявку →</span>
-      </button>
-      <a href="https://t.me/" class="px-10 py-4 rounded-full border border-black/10 hover:bg-black hover:text-white transition font-medium">
-        Telegram
-      </a>
-      <a href="https://wa.me/" class="px-10 py-4 rounded-full border border-black/10 hover:bg-black hover:text-white transition font-medium">
-        WhatsApp
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="border-t border-black/5 py-16 px-6 bg-white">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-4 gap-12 mb-12">
-      <div class="md:col-span-2">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-pink-500 flex items-center justify-center font-display font-bold text-white">С</div>
-          <div class="font-display text-sm tracking-widest">
-            <div class="text-black">СОЧИ</div>
-            <div class="text-amber-600 text-[10px]">EMPIRE</div>
+    <section style="padding-top:0">
+      <div class="split" style="align-items:start">
+        <div class="rv">
+          <span class="kicker">История</span>
+          <h2>Путь союза: 2022 — 2026</h2>
+          <div class="timeline" style="margin-top:30px">
+            <div class="tl-item"><div class="tl-year">2022</div><p>Инициативная группа ветеранов учреждает союз. Открыты первые пункты помощи в Москве, Ростове-на-Дону и Белгороде.</p></div>
+            <div class="tl-item"><div class="tl-year">2023</div><p>Сформированы 10 региональных отделений, запущена горячая линия и программа юридической помощи.</p></div>
+            <div class="tl-item"><div class="tl-year">2024</div><p>Старт федеральной программы реабилитации и санаторно-курортного лечения. Первые 5 000 ветеранов в реестре.</p></div>
+            <div class="tl-item"><div class="tl-year">2025</div><p>Открыто более 40 центров комплексной поддержки, запущены программы трудоустройства и переобучения.</p></div>
+            <div class="tl-item"><div class="tl-year">2026</div><p>Отделения работают во всех 89 регионах. В реестре союза — более 42 500 ветеранов и членов их семей.</p></div>
           </div>
         </div>
-        <p class="text-black/60 text-sm leading-relaxed max-w-md">
-          Экосистема контента и премиум-туров на побережье Чёрного моря. Фото, видео, продакшн, Elite Tours и стратегия для бизнеса и блогеров.
-        </p>
+        <div class="rv">
+          <span class="kicker">Команда</span>
+          <h2>Руководство союза</h2>
+          <div class="team-grid" style="grid-template-columns:1fr 1fr;margin-top:26px">
+            <div class="team-card"><div class="avatar">АС</div><h3>Алексей Соколов</h3><div class="team-role">Председатель</div><p class="team-note">Ветеран боевых действий, Герой России</p></div>
+            <div class="team-card"><div class="avatar">ДМ</div><h3>Дмитрий Мартынов</h3><div class="team-role">Первый заместитель</div><p class="team-note">Курирует реабилитационные программы</p></div>
+            <div class="team-card"><div class="avatar">ОВ</div><h3>Ольга Ветрова</h3><div class="team-role">Работа с семьями</div><p class="team-note">Руководит семейными центрами поддержки</p></div>
+            <div class="team-card"><div class="avatar">СК</div><h3>Сергей Казаков</h3><div class="team-role">Региональная сеть</div><p class="team-note">Координирует 89 отделений по стране</p></div>
+          </div>
+        </div>
       </div>
-      
+    </section>
+
+    <section style="padding-top:0">
+      <div class="sec-head"><div><span class="kicker">Наши ценности</span><h2>На чём стоит союз</h2></div></div>
+      <div class="val-grid">
+        <div class="val-card rv"><div class="vc-n">Ценность 01</div><h3>Братство</h3><p>Мы отвечаем за товарищей так же, как отвечали в строю. Взаимовыручка — основа всего, что мы делаем.</p></div>
+        <div class="val-card rv" style="transition-delay:.08s"><div class="vc-n">Ценность 02</div><h3>Достоинство</h3><p>Помощь оказывается уважительно и адресно, без формальностей и бюрократических барьеров.</p></div>
+        <div class="val-card rv" style="transition-delay:.16s"><div class="vc-n">Ценность 03</div><h3>Память</h3><p>Мы храним память о подвигах и товарищах, поддерживаем музеи и мемориальные проекты по всей стране.</p></div>
+        <div class="val-card rv" style="transition-delay:.24s"><div class="vc-n">Ценность 04</div><h3>Служение</h3><p>Ветераны союза ведут патриотическую работу с молодёжью и участвуют в общественной жизни регионов.</p></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="sec-head"><div><span class="kicker">Документы</span><h2>Официальные материалы</h2></div></div>
+      <div class="doc-list">
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Устав общероссийской общественной организации</b><span>Утверждён учредительным съездом · 2,4 МБ</span></span><span class="doc-dl">↓</span></a>
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Годовой отчёт о деятельности за 2025 год</b><span>Результаты работы, финансирование, статистика · 6,1 МБ</span></span><span class="doc-dl">↓</span></a>
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Свидетельство о государственной регистрации</b><span>Министерство юстиции РФ · 1,1 МБ</span></span><span class="doc-dl">↓</span></a>
+        <a class="doc-row rv" href="#" onclick="return false"><span class="doc-ico">PDF</span><span><b>Политика обработки персональных данных</b><span>Действующая редакция от 12.01.2026 · 0,6 МБ</span></span><span class="doc-dl">↓</span></a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= ПОДДЕРЖКА ================= -->
+<div class="panel" id="panel-support">
+  <div class="wrap">
+    <section>
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Программы помощи</span>
+          <h2>Поддержка ветеранов и семей</h2>
+          <p class="lead">Все программы бесплатны. Обратиться может сам ветеран, член его семьи или законный представитель.</p>
+        </div>
+      </div>
+      <div class="prog-grid">
+        <div class="prog-card rv">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-scale"/></svg></div><span class="prog-tag">Бесплатно</span></div>
+          <h3>Юридическая помощь</h3>
+          <p>Защищаем права ветеранов на всех уровнях — от консультаций до представительства в судах.</p>
+          <ul class="prog-list"><li>Оформление статуса ветерана БД</li><li>Выплаты, страховки, льготы</li><li>Жилищные вопросы</li></ul>
+        </div>
+        <div class="prog-card rv" style="transition-delay:.07s">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-med"/></svg></div><span class="prog-tag">По всей РФ</span></div>
+          <h3>Медицинская реабилитация</h3>
+          <p>Восстановление здоровья после ранений: от диагностики до санаторного лечения.</p>
+          <ul class="prog-list"><li>Направления в санатории и центры</li><li>Протезирование и ортезы</li><li>Сопровождение в лечении</li></ul>
+        </div>
+        <div class="prog-card rv" style="transition-delay:.14s">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-chat"/></svg></div><span class="prog-tag">24 / 7</span></div>
+          <h3>Психологическая поддержка</h3>
+          <p>Работаем с боевой психической травмой, адаптацией и семейными отношениями.</p>
+          <ul class="prog-list"><li>Индивидуальные консультации</li><li>Группы взаимопомощи</li><li>Круглосуточная линия доверия</li></ul>
+        </div>
+        <div class="prog-card rv">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-case"/></svg></div><span class="prog-tag">120+ партнёров</span></div>
+          <h3>Трудоустройство</h3>
+          <p>Помогаем найти работу с достойной оплатой и условиями, учитывающими состояние здоровья.</p>
+          <ul class="prog-list"><li>База вакансий партнёров</li><li>Профессиональное переобучение</li><li>Помощь в открытии своего дела</li></ul>
+        </div>
+        <div class="prog-card rv" style="transition-delay:.07s">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-home"/></svg></div><span class="prog-tag">Семьям</span></div>
+          <h3>Поддержка семей</h3>
+          <p>Семьи ветеранов — под нашей постоянной заботой, в том числе семьи погибших героев.</p>
+          <ul class="prog-list"><li>Адресная материальная помощь</li><li>Помощь с детьми: школа, отдых</li><li>Сопровождение семей героев</li></ul>
+        </div>
+        <div class="prog-card rv" style="transition-delay:.14s">
+          <div class="prog-top"><div class="prog-ico"><svg width="25" height="25"><use href="#i-book"/></svg></div><span class="prog-tag">Гранты</span></div>
+          <h3>Образование и спорт</h3>
+          <p>Открытие новых возможностей: учёба, спортивные секции «Кубок героев», наставничество.</p>
+          <ul class="prog-list"><li>Подготовка к поступлению</li><li>Адаптивный спорт</li><li>Программа «Наставник»</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="sec-head"><div><span class="kicker">Как это работает</span><h2>Четыре шага до помощи</h2></div></div>
+      <div class="steps">
+        <div class="step rv"><h3>Обращение</h3><p>Позвоните на горячую линию, напишите через форму или придите в центр поддержки вашего региона.</p></div>
+        <div class="step rv" style="transition-delay:.08s"><h3>Координатор</h3><p>В течение одного рабочего дня с вами связывается персональный координатор и уточняет детали.</p></div>
+        <div class="step rv" style="transition-delay:.16s"><h3>План помощи</h3><p>Составляется индивидуальная программа: какие документы нужны, какие специалисты подключаются.</p></div>
+        <div class="step rv" style="transition-delay:.24s"><h3>Результат</h3><p>Ведём вопрос до полного решения и остаёмся на связи — обращение можно дополнять и уточнять.</p></div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="req-box rv">
+        <div>
+          <span class="kicker" style="color:var(--gold-l)">Оставить заявку</span>
+          <h2>Расскажите, какая помощь нужна</h2>
+          <p class="lead">Заполните короткую форму — координатор свяжется с вами в течение рабочего дня. Если вопрос срочный, звоните сразу: <b style="color:var(--gold-l)">8 800 200-34-12</b>.</p>
+          <ul class="req-info">
+            <li><span class="ri-dot"></span>Все обращения конфиденциальны</li>
+            <li><span class="ri-dot"></span>Помощь оказывается бесплатно</li>
+            <li><span class="ri-dot"></span>Можно обратиться за родственника</li>
+          </ul>
+        </div>
+        <form class="form" id="reqForm" novalidate>
+          <div class="form-row">
+            <div class="field"><label for="rf-name">Ваше имя *</label><input id="rf-name" type="text" placeholder="Иван Петрович" required></div>
+            <div class="field"><label for="rf-phone">Телефон *</label><input id="rf-phone" type="tel" placeholder="+7 (___) ___-__-__" required></div>
+          </div>
+          <div class="field"><label for="rf-dir">Направление помощи</label>
+            <select id="rf-dir">
+              <option>Юридическая помощь</option>
+              <option>Медицинская реабилитация</option>
+              <option>Психологическая поддержка</option>
+              <option>Трудоустройство</option>
+              <option>Поддержка семьи</option>
+              <option>Другой вопрос</option>
+            </select>
+          </div>
+          <div class="field"><label for="rf-msg">Кратко опишите ситуацию</label><textarea id="rf-msg" rows="3" placeholder="Например: нужна помощь с оформлением статуса ветерана боевых действий…"></textarea></div>
+          <button class="btn btn-gold" type="submit">Отправить заявку</button>
+          <div class="form-success" id="reqSuccess">✓ Заявка принята. Координатор свяжется с вами в ближайшее время.</div>
+          <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= МЕРОПРИЯТИЯ ================= -->
+<div class="panel" id="panel-events">
+  <div class="wrap">
+    <section>
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Календарь</span>
+          <h2>Ближайшие мероприятия</h2>
+          <p class="lead">Соревнования, форумы, встречи и памятные церемонии. Участие для ветеранов и семей всегда бесплатное.</p>
+        </div>
+      </div>
+      <div class="ev-list">
+        <div class="ev-row rv">
+          <div class="ev-date"><div class="d">12</div><div class="m">октября</div></div>
+          <div class="ev-info">
+            <h3>Спортивный турнир «Кубок героев»</h3>
+            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Москва, ДС «Динамо»</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>10:00 — 18:00</span></div>
+            <span class="ev-tag">Спорт</span>
+          </div>
+          <button class="ev-btn" type="button">Записаться</button>
+        </div>
+        <div class="ev-row rv">
+          <div class="ev-date"><div class="d">24</div><div class="m">октября</div></div>
+          <div class="ev-info">
+            <h3>Выпуск программы реабилитации «Второе дыхание»</h3>
+            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Ростов-на-Дону, центр поддержки</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>14:00</span></div>
+            <span class="ev-tag">Реабилитация</span>
+          </div>
+          <button class="ev-btn" type="button">Записаться</button>
+        </div>
+        <div class="ev-row rv">
+          <div class="ev-date"><div class="d">07</div><div class="m">ноября</div></div>
+          <div class="ev-info">
+            <h3>Форум «Ветераны. Семья. Будущее»</h3>
+            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Санкт-Петербург, конгресс-холл</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>2 дня</span></div>
+            <span class="ev-tag">Форум</span>
+          </div>
+          <button class="ev-btn" type="button">Записаться</button>
+        </div>
+        <div class="ev-row rv">
+          <div class="ev-date"><div class="d">09</div><div class="m">декабря</div></div>
+          <div class="ev-info">
+            <h3>Всероссийская акция памяти ко Дню Героев Отечества</h3>
+            <div class="ev-meta"><span><svg width="15" height="15"><use href="#i-pin"/></svg>Все регионы страны</span><span><svg width="15" height="15"><use href="#i-clock"/></svg>12:00 по местному времени</span></div>
+            <span class="ev-tag">Память</span>
+          </div>
+          <button class="ev-btn" type="button">Записаться</button>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="sec-head">
+        <div><span class="kicker">Фотоархив</span><h2>Жизнь союза в кадрах</h2></div>
+      </div>
+      <div class="gal-grid">
+        <div class="gal-item rv">
+          <svg class="gal-art" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="420" fill="#2b3524"/>
+            <circle cx="300" cy="200" r="130" fill="none" stroke="#d9b567" stroke-opacity=".3"/>
+            <circle cx="300" cy="200" r="170" fill="none" stroke="#d9b567" stroke-opacity=".15" stroke-dasharray="4 8"/>
+            <path d="M300 110l24 49 54 8-39 38 10 54-49-26-49 26 10-54-39-38 54-8 24-49z" fill="#d9b567"/>
+            <path d="M0 360h600M0 390h600" stroke="#d9b567" stroke-opacity=".25"/>
+            <text x="300" y="400" text-anchor="middle" font-family="Unbounded" font-size="15" fill="#e9ecdc" letter-spacing="4">«КУБОК ГЕРОЕВ» · МОСКВА</text>
+          </svg>
+          <div class="gal-cap">Турнир «Кубок героев», сентябрь 2026</div>
+        </div>
+        <div class="gal-item rv" style="transition-delay:.07s">
+          <svg class="gal-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="200" fill="#4a3b22"/>
+            <path d="M150 40c-14 22-34 32-34 56a34 34 0 0068 0c0-24-20-34-34-56z" fill="#d9b567"/>
+            <path d="M150 140c-6 0-10 4-10 10 0 14 4 22 10 30 6-8 10-16 10-30 0-6-4-10-10-10z" fill="#8f3126"/>
+          </svg>
+          <div class="gal-cap">Акция памяти у Вечного огня</div>
+        </div>
+        <div class="gal-item rv" style="transition-delay:.14s">
+          <svg class="gal-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="200" fill="#33402a"/>
+            <circle cx="110" cy="90" r="28" fill="#d9b567"/><circle cx="190" cy="90" r="28" fill="#d9b567"/>
+            <path d="M60 175c0-30 20-46 50-46s50 16 50 46v5H60v-5z" fill="#1e2618"/>
+            <path d="M140 175c0-30 20-46 50-46s50 16 50 46v5h-100v-5z" fill="#1e2618"/>
+          </svg>
+          <div class="gal-cap">Встреча наставников и новичков</div>
+        </div>
+        <div class="gal-item rv" style="transition-delay:.1s">
+          <svg class="gal-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="200" fill="#26301f"/>
+            <g stroke="#d9b567" fill="none" stroke-width="3">
+              <path d="M70 130l40-40 30 25 50-55 40 40" stroke-linejoin="round"/>
+              <circle cx="230" cy="60" r="16" fill="#d9b567" stroke="none"/>
+            </g>
+            <path d="M40 160h220" stroke="#d9b567" stroke-opacity=".4"/>
+          </svg>
+          <div class="gal-cap">Выпуск программы «Второе дыхание»</div>
+        </div>
+        <div class="gal-item rv" style="transition-delay:.18s">
+          <svg class="gal-art" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="200" fill="#3c4a30"/>
+            <path d="M150 30l14 29 32 5-23 22 6 32-29-15-29 15 6-32-23-22 32-5 14-29z" fill="#d9b567"/>
+            <path d="M80 130c20 16 45 26 70 30 25-4 50-14 70-30" stroke="#d9b567" fill="none" stroke-width="4" stroke-linecap="round"/>
+            <path d="M95 118c16 12 36 20 55 23" stroke="#d9b567" fill="none" stroke-width="2.5" opacity=".5"/>
+          </svg>
+          <div class="gal-cap">Съезд союза, июнь 2026</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= КОНТАКТЫ ================= -->
+<div class="panel" id="panel-contacts">
+  <div class="wrap">
+    <section>
+      <div class="sec-head">
+        <div>
+          <span class="kicker">Связаться с нами</span>
+          <h2>Мы всегда на связи</h2>
+          <p class="lead">Выберите удобный способ: позвоните, напишите или приходите в центр поддержки вашего региона.</p>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <div class="info-cards">
+            <div class="info-card rv"><div class="ic-l">Горячая линия</div><b><a href="tel:88002003412" style="text-decoration:none">8 800 200-34-12</a></b><span>Бесплатно, круглосуточно</span></div>
+            <div class="info-card rv" style="transition-delay:.06s"><div class="ic-l">Электронная почта</div><b><a href="mailto:info@sv-svo.ru" style="text-decoration:none">info@sv-svo.ru</a></b><span>Ответим в течение суток</span></div>
+            <div class="info-card rv" style="transition-delay:.12s"><div class="ic-l">Центральный офис</div><b>Москва, ул. Тверская, 12, стр. 1</b><span>Пн–Пт: 09:00 — 19:00</span></div>
+            <div class="info-card rv" style="transition-delay:.18s"><div class="ic-l">Для ветеранов</div><b>Личный приём — без записи</b><span>Возьмите паспорт и документы</span></div>
+          </div>
+          <div style="margin-top:26px" class="rv">
+            <span class="kicker">Региональные отделения</span>
+            <div class="reg-grid" style="margin-top:14px">
+              <div class="reg-card"><b>Центральный ФО</b><span>Координатор: Андрей К.</span><a class="rc-tel" href="tel:+74951002031">+7 (495) 100-20-31</a></div>
+              <div class="reg-card"><b>Южный ФО</b><span>Координатор: Марина Л.</span><a class="rc-tel" href="tel:+78632001145">+7 (863) 200-11-45</a></div>
+              <div class="reg-card"><b>Северо-Западный ФО</b><span>Координатор: Павел Д.</span><a class="rc-tel" href="tel:+78123005567">+7 (812) 300-55-67</a></div>
+              <div class="reg-card"><b>Приволжский ФО</b><span>Координатор: Ирина С.</span><a class="rc-tel" href="tel:+78314007789">+7 (831) 400-77-89</a></div>
+              <div class="reg-card"><b>Сибирский ФО</b><span>Координатор: Олег Т.</span><a class="rc-tel" href="tel:+73835009912">+7 (383) 500-99-12</a></div>
+              <div class="reg-card"><b>Дальневосточный ФО</b><span>Координатор: Виктор Н.</span><a class="rc-tel" href="tel:+74212003348">+7 (421) 200-33-48</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form rv">
+          <span class="kicker">Обращение</span>
+          <h3 style="font-size:19px;margin:10px 0 22px">Напишите нам</h3>
+          <form class="form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="field"><label for="cf-name">Имя *</label><input id="cf-name" type="text" placeholder="Как к вам обращаться" required></div>
+              <div class="field"><label for="cf-phone">Телефон или e-mail *</label><input id="cf-phone" type="text" placeholder="Для обратной связи" required></div>
+            </div>
+            <div class="field"><label for="cf-topic">Тема обращения</label>
+              <select id="cf-topic">
+                <option>Вступление в союз</option>
+                <option>Вопрос по программам помощи</option>
+                <option>Волонтёрство</option>
+                <option>Сотрудничество и партнёрство</option>
+                <option>Благодарность или отзыв</option>
+              </select>
+            </div>
+            <div class="field"><label for="cf-msg">Сообщение *</label><textarea id="cf-msg" rows="5" placeholder="Опишите ваш вопрос подробнее…" required></textarea></div>
+            <button class="btn btn-gold" type="submit">Отправить обращение</button>
+            <div class="cf-success" id="cfSuccess">✓ Спасибо! Ваше обращение зарегистрировано. Мы ответим в течение одного рабочего дня.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="sec-head"><div><span class="kicker">Частые вопросы</span><h2>Ответы на вопросы</h2></div></div>
+      <div class="faq">
+        <div class="faq-item rv">
+          <button class="faq-q" type="button">Как вступить в союз ветеранов?<span class="fx">+</span></button>
+          <div class="faq-a"><p>Подайте заявление через форму на сайте, по телефону горячей линии или в региональном отделении. Понадобятся паспорт и удостоверение ветерана боевых действий (при наличии). Решение принимается в течение 10 рабочих дней, членство бесплатное.</p></div>
+        </div>
+        <div class="faq-item rv">
+          <button class="faq-q" type="button">Помощь действительно бесплатная?<span class="fx">+</span></button>
+          <div class="faq-a"><p>Да, все программы союза полностью бесплатны для ветеранов СВО и членов их семей. Работа ведётся за счёт грантов, пожертвований и партнёрских программ — никаких взносов с обратившихся не взимается.</p></div>
+        </div>
+        <div class="faq-item rv">
+          <button class="faq-q" type="button">Может ли обратиться семья ветерана?<span class="fx">+</span></button>
+          <div class="faq-a"><p>Конечно. Поддержку получают супруги, дети и родители ветеранов, в том числе семьи погибших героев. Для них действуют отдельные программы: адресная помощь, сопровождение, детский отдых и обучение.</p></div>
+        </div>
+        <div class="faq-item rv">
+          <button class="faq-q" type="button">Какие документы нужны для получения помощи?<span class="fx">+</span></button>
+          <div class="faq-a"><p>Для первичного обращения достаточно паспорта и контактных данных. Координатор подскажет, какие дополнительные документы понадобятся по конкретной ситуации, и поможет их собрать и оформить.</p></div>
+        </div>
+        <div class="faq-item rv">
+          <button class="faq-q" type="button">Как стать волонтёром союза?<span class="fx">+</span></button>
+          <div class="faq-a"><p>Заполните обращение с темой «Волонтёрство» или позвоните на горячую линию. Мы ищем наставников, юристов, медиков, психологов и просто неравнодушных людей. Для волонтёров проводится вводное обучение.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</main>
+
+<!-- ===== footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
       <div>
-        <div class="text-xs tracking-widest text-black/40 mb-4">УСЛУГИ</div>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#content-empire" class="text-black/70 hover:text-black">Content Empire</a></li>
-          <li><a href="#elite-tours" class="text-black/70 hover:text-black">Elite Tours</a></li>
-          <li><a href="#business" class="text-black/70 hover:text-black">Для бизнеса</a></li>
-          <li><a href="#upsell" class="text-black/70 hover:text-black">Доп. услуги</a></li>
-          <li><a href="#faq" class="text-black/70 hover:text-black">FAQ</a></li>
+        <div class="foot-brand">
+          <svg class="emblem" style="width:48px;height:48px"><use href="#sym-emblem"/></svg>
+          <div>
+            <div class="brand-name">СОЮЗ ВЕТЕРАНОВ СВО</div>
+            <div class="brand-sub" style="color:#8d967c">Россия</div>
+          </div>
+        </div>
+        <p class="foot-desc">Общероссийская общественная организация поддержки ветеранов специальной военной операции и их семей. Своих не бросаем.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul class="foot-list">
+          <li><button data-goto="home">Главная</button></li>
+          <li><button data-goto="about">О союзе</button></li>
+          <li><button data-goto="support">Поддержка</button></li>
+          <li><button data-goto="events">Мероприятия</button></li>
+          <li><button data-goto="contacts">Контакты</button></li>
         </ul>
       </div>
-      
       <div>
-        <div class="text-xs tracking-widest text-black/40 mb-4">КОНТАКТЫ</div>
-        <ul class="space-y-2 text-sm">
-          <li class="text-black/70">Сочи, ул. Приморская, 1</li>
-          <li><a href="tel:+78620000000" class="text-black/70 hover:text-black">+7 (862) 000-00-00</a></li>
-          <li><a href="mailto:hello@sochi-empire.ru" class="text-black/70 hover:text-black">hello@sochi-empire.ru</a></li>
-          <li class="flex gap-3 pt-2">
-            <a href="#" class="w-9 h-9 rounded-full border border-black/10 hover:border-amber-500 flex items-center justify-center text-xs">IG</a>
-            <a href="#" class="w-9 h-9 rounded-full border border-black/10 hover:border-amber-500 flex items-center justify-center text-xs">TG</a>
-            <a href="#" class="w-9 h-9 rounded-full border border-black/10 hover:border-amber-500 flex items-center justify-center text-xs">YT</a>
-            <a href="#" class="w-9 h-9 rounded-full border border-black/10 hover:border-amber-500 flex items-center justify-center text-xs">VK</a>
-          </li>
+        <h4>Помощь</h4>
+        <ul class="foot-list">
+          <li><button data-goto="support">Юридическая помощь</button></li>
+          <li><button data-goto="support">Реабилитация</button></li>
+          <li><button data-goto="support">Психологическая поддержка</button></li>
+          <li><button data-goto="support">Поддержка семей</button></li>
+          <li><button data-goto="contacts">Стать волонтёром</button></li>
         </ul>
       </div>
-    </div>
-    
-    <div class="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between gap-4 text-xs text-black/40">
-      <div>© 2026 СОЧИ EMPIRE. Все права защищены.</div>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-black/70">Политика конфиденциальности</a>
-        <a href="#" class="hover:text-black/70">Оферта</a>
+      <div>
+        <h4>Контакты</h4>
+        <a class="foot-phone" href="tel:88002003412">8 800 200-34-12</a>
+        <a class="foot-mail" href="mailto:info@sv-svo.ru">info@sv-svo.ru</a>
+        <p style="font-size:13px;margin-top:14px;opacity:.8">Москва, ул. Тверская, 12, стр. 1<br>Пн–Пт: 09:00 — 19:00 · линия 24/7</p>
       </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Союз ветеранов СВО России. Все права защищены.</span>
+      <span>ОГРН 1227700000000 · Демонстрационный макет сайта</span>
     </div>
   </div>
 </footer>
 
-<!-- Back to top -->
-<a href="#top" class="back-to-top" title="Наверх">↑</a>
-
-<!-- MODAL -->
-<div id="modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4 modal-backdrop">
-  <div class="gradient-border p-8 md:p-10 max-w-lg w-full relative">
-    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full border border-black/10 hover:bg-black hover:text-white flex items-center justify-center transition">✕</button>
-    
-    <div class="mb-6">
-      <div class="text-xs tracking-widest text-amber-600 mb-2">ЗАЯВКА</div>
-      <h3 class="font-display text-2xl md:text-3xl font-bold">
-        <span class="gradient-text" id="modalPackage">—</span>
-      </h3>
-      <div class="text-black/60 text-sm mt-1" id="modalPrice"></div>
-    </div>
-    
-    <form onsubmit="submitForm(event)" class="space-y-4">
-      <div>
-        <label class="text-xs tracking-widest text-black/50 mb-2 block">ИМЯ</label>
-        <input required type="text" class="w-full bg-[#faf8f5] border border-black/10 rounded-xl px-4 py-3 focus:border-amber-500 focus:outline-none transition">
-      </div>
-      <div>
-        <label class="text-xs tracking-widest text-black/50 mb-2 block">ТЕЛЕФОН / TELEGRAM</label>
-        <input required type="text" class="w-full bg-[#faf8f5] border border-black/10 rounded-xl px-4 py-3 focus:border-amber-500 focus:outline-none transition">
-      </div>
-      <div>
-        <label class="text-xs tracking-widest text-black/50 mb-2 block">КОММЕНТАРИЙ</label>
-        <textarea rows="3" class="w-full bg-[#faf8f5] border border-black/10 rounded-xl px-4 py-3 focus:border-amber-500 focus:outline-none transition resize-none"></textarea>
-      </div>
-      <button type="submit" class="btn-primary w-full py-4 rounded-full font-medium">
-        <span>Отправить заявку →</span>
-      </button>
-      <div class="text-xs text-black/40 text-center">
-        Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-      </div>
-    </form>
-    
-    <div id="successMessage" class="hidden text-center py-8">
-      <div class="text-5xl mb-4">✨</div>
-      <h3 class="font-display text-2xl font-bold mb-2">Заявка отправлена!</h3>
-      <p class="text-black/60">Мы свяжемся с вами в течение 15 минут</p>
-    </div>
-  </div>
-</div>
-
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- tabs ---------- */
+  var tabButtons = Array.prototype.slice.call(document.querySelectorAll(".tab-btn"));
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
+  var indicator = document.getElementById("tabInd");
+  var navEl = document.getElementById("tabnav");
+  var currentTab = "home";
+
+  function placeIndicator(btn){
+    if(!btn) return;
+    var left = btn.offsetLeft;
+    indicator.style.width = btn.offsetWidth + "px";
+    indicator.style.transform = "translateX(" + left + "px)";
+    // auto-scroll tab into view on mobile
+    if(navEl.scrollWidth > navEl.clientWidth){
+      var target = left - (navEl.clientWidth - btn.offsetWidth) / 2;
+      navEl.scrollTo({left: Math.max(0, target), behavior: reduceMotion ? "auto" : "smooth"});
+    }
+  }
+
+  function switchTab(name){
+    currentTab = name;
+    tabButtons.forEach(function(b){ b.classList.toggle("is-active", b.dataset.tab === name); });
+    panels.forEach(function(p){
+      var show = p.id === "panel-" + name;
+      if(show){ p.classList.remove("active"); void p.offsetWidth; p.classList.add("active"); }
+      else { p.classList.remove("active"); }
+    });
+    var activeBtn = tabButtons.find(function(b){ return b.dataset.tab === name; });
+    placeIndicator(activeBtn);
+    requestAnimationFrame(function(){
+      // re-trigger reveal for newly visible elements
+      document.querySelectorAll("#panel-" + name + " .rv:not(.in)").forEach(function(el){ revealObserver.observe(el); });
+      var counters = document.querySelectorAll("#panel-" + name + " [data-count]:not(.counted)");
+      if(counters.length) startCounters(document.getElementById("panel-" + name));
+    });
+    var header = document.querySelector("header");
+    window.scrollTo({ top: header.offsetHeight + (window.scrollY > 0 ? header.getBoundingClientRect().top + window.scrollY : 0) > window.scrollY ? window.scrollY : 0, behavior:"auto"});
+  }
+  window.switchTab = switchTab;
+
+  tabButtons.forEach(function(btn){
+    btn.addEventListener("click", function(){ switchTab(btn.dataset.tab); });
+  });
+  document.querySelectorAll("[data-goto]").forEach(function(el){
+    el.addEventListener("click", function(){ switchTab(el.dataset.goto); });
+  });
+  window.addEventListener("resize", function(){
+    var activeBtn = tabButtons.find(function(b){ return b.dataset.tab === currentTab; });
+    placeIndicator(activeBtn);
+  });
+  window.addEventListener("load", function(){
+    var activeBtn = tabButtons.find(function(b){ return b.classList.contains("is-active"); });
+    placeIndicator(activeBtn);
+  });
+
+  /* ---------- scroll reveal ---------- */
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add("in");
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-  
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  
-  function openModal(pkg, price) {
-    document.getElementById('modalPackage').textContent = pkg;
-    document.getElementById('modalPrice').textContent = price ? `${price} ₽` : '';
-    document.getElementById('modal').classList.remove('hidden');
-    document.getElementById('modal').classList.add('flex');
-    document.getElementById('successMessage').classList.add('hidden');
-    document.querySelector('#modal form').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-  
-  function closeModal() {
-    document.getElementById('modal').classList.add('hidden');
-    document.getElementById('modal').classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-  
-  function submitForm(e) {
-    e.preventDefault();
-    document.querySelector('#modal form').classList.add('hidden');
-    document.getElementById('successMessage').classList.remove('hidden');
-    setTimeout(closeModal, 2500);
-  }
-  
-  document.getElementById('modal').addEventListener('click', (e) => {
-    if (e.target.id === 'modal') closeModal();
-  });
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
-</script>
+  }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+  document.querySelectorAll(".rv").forEach(function(el){ revealObserver.observe(el); });
 
+  /* ---------- counters ---------- */
+  function formatNum(n){
+    return Math.round(n).toLocaleString("ru-RU");
+  }
+  function animateCount(el){
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || "";
+    if(reduceMotion){ el.textContent = formatNum(target) + suffix; el.classList.add("counted"); return; }
+    var duration = 1600;
+    var start = null;
+    function tick(ts){
+      if(!start) start = ts;
+      var progress = Math.min(1, (ts - start) / duration);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = formatNum(target * eased) + (progress === 1 ? suffix : "");
+      if(progress < 1) requestAnimationFrame(tick);
+      else el.classList.add("counted");
+    }
+    requestAnimationFrame(tick);
+  }
+  function startCounters(scope){
+    scope.querySelectorAll("[data-count]:not(.counted)").forEach(animateCount);
+  }
+  var statsObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        startCounters(entry.target);
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  var statsBand = document.getElementById("statsBand");
+  if(statsBand) statsObserver.observe(statsBand);
+  // hero badge counter (independent)
+  var badgeObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.querySelectorAll("[data-count]:not(.counted)").forEach(animateCount);
+        badgeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  var heroBadge = document.querySelector(".hero-badge");
+  if(heroBadge) badgeObserver.observe(heroBadge);
+
+  /* ---------- event signup ---------- */
+  document.querySelectorAll(".ev-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      if(btn.classList.contains("joined")) return;
+      btn.classList.add("joined");
+      btn.textContent = "✓ Вы записаны";
+    });
+  });
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll(".faq-item").forEach(function(item){
+    var q = item.querySelector(".faq-q");
+    var a = item.querySelector(".faq-a");
+    q.addEventListener("click", function(){
+      var isOpen = item.classList.contains("open");
+      // close others
+      document.querySelectorAll(".faq-item.open").forEach(function(other){
+        if(other !== item){
+          other.classList.remove("open");
+          other.querySelector(".faq-a").style.maxHeight = "0px";
+        }
+      });
+      item.classList.toggle("open", !isOpen);
+      a.style.maxHeight = isOpen ? "0px" : a.scrollHeight + "px";
+    });
+  });
+
+  /* ---------- forms ---------- */
+  function bindForm(formId, successId){
+    var form = document.getElementById(formId);
+    var success = document.getElementById(successId);
+    if(!form) return;
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var valid = true;
+      form.querySelectorAll("[required]").forEach(function(f){
+        if(!f.value.trim()){
+          valid = false;
+          f.style.borderColor = "#c96a5b";
+          setTimeout(function(){ f.style.borderColor = ""; }, 2200);
+        }
+      });
+      if(!valid) return;
+      success.classList.add("show");
+      form.querySelector("button[type=submit]").textContent = "Отправлено ✓";
+      form.querySelector("button[type=submit]").style.background = "#5a7042";
+      setTimeout(function(){
+        form.reset();
+        form.querySelector("button[type=submit]").textContent = formId === "reqForm" ? "Отправить заявку" : "Отправить обращение";
+        form.querySelector("button[type=submit]").style.background = "";
+        success.classList.remove("show");
+      }, 6000);
+    });
+  }
+  bindForm("reqForm", "reqSuccess");
+  bindForm("contactForm", "cfSuccess");
+})();
+</script>
 </body>
 </html>
